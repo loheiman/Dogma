@@ -15,6 +15,9 @@
 		27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */; };
 		275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */; };
 		275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */; };
+		275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */; };
+		275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */; };
+		275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C719E4FB6800E94673 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveWalkViewController.swift; sourceTree = "<group>"; };
 		275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkViewController.swift; sourceTree = "<group>"; };
 		275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkSearchViewController.swift; sourceTree = "<group>"; };
+		275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationStep1ViewController.swift; sourceTree = "<group>"; };
+		275DD1C719E4FB6800E94673 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,9 @@
 		27050A2519E4D2FB0060AFBB /* Dogma */ = {
 			isa = PBXGroup;
 			children = (
+				275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */,
+				275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */,
+				275DD1C719E4FB6800E94673 /* StartViewController.swift */,
 				27050A2819E4D2FB0060AFBB /* AppDelegate.swift */,
 				27050A2A19E4D2FB0060AFBB /* ViewController.swift */,
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
@@ -218,9 +227,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */,
+				275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */,
 				275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */,
 				27050A2B19E4D2FB0060AFBB /* ViewController.swift in Sources */,
 				27050A2919E4D2FB0060AFBB /* AppDelegate.swift in Sources */,
+				275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */,
+				275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
