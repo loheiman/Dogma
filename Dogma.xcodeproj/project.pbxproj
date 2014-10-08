@@ -12,6 +12,9 @@
 		27050A2E19E4D2FB0060AFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27050A2C19E4D2FB0060AFBB /* Main.storyboard */; };
 		27050A3019E4D2FB0060AFBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27050A2F19E4D2FB0060AFBB /* Images.xcassets */; };
 		27050A3C19E4D2FB0060AFBB /* DogmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27050A3B19E4D2FB0060AFBB /* DogmaTests.swift */; };
+		27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */; };
+		275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */; };
+		275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		27050A3519E4D2FB0060AFBB /* DogmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27050A3A19E4D2FB0060AFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27050A3B19E4D2FB0060AFBB /* DogmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogmaTests.swift; sourceTree = "<group>"; };
+		27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveWalkViewController.swift; sourceTree = "<group>"; };
+		275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkViewController.swift; sourceTree = "<group>"; };
+		275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 				27050A2819E4D2FB0060AFBB /* AppDelegate.swift */,
 				27050A2A19E4D2FB0060AFBB /* ViewController.swift */,
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
+				275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */,
+				275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */,
+				27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */,
 				27050A2F19E4D2FB0060AFBB /* Images.xcassets */,
 				27050A2619E4D2FB0060AFBB /* Supporting Files */,
 			);
@@ -208,8 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */,
+				275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */,
 				27050A2B19E4D2FB0060AFBB /* ViewController.swift in Sources */,
 				27050A2919E4D2FB0060AFBB /* AppDelegate.swift in Sources */,
+				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +407,7 @@
 				27050A4119E4D2FB0060AFBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27050A4219E4D2FB0060AFBB /* Build configuration list for PBXNativeTarget "DogmaTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +416,7 @@
 				27050A4419E4D2FB0060AFBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
