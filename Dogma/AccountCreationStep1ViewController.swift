@@ -18,12 +18,11 @@ class AccountCreationStep1ViewController: UIViewController {
     @IBOutlet weak var creditCardNumberField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
        // creditCardNumberField.becomeFirstResponder()
-
-        // Do any additional setup after loading the view.
         
         scrollView.frame.size.width = 320
 
@@ -38,16 +37,19 @@ class AccountCreationStep1ViewController: UIViewController {
     }
     
     @IBAction func nextButton(sender: AnyObject) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        
+        if scrollView.contentOffset.x < scrollView.frame.size.width * 3 {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.scrollView.contentOffset.x += 320
-            }) { (Finished: Bool) -> Void in
-            //
+                }) { (Finished: Bool) -> Void in
+                    //
+            }
         }
         
         nextButton.hidden = true
     
     }
-
+    
     @IBAction func phoneNumberChanged(sender: AnyObject) {
     
         if phoneNumberField.text == "1" {

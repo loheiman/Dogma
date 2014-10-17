@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
 
@@ -16,6 +17,32 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card2Image: UIImageView!
     @IBOutlet weak var card3Image: UIImageView!
     @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var card1Label: UILabel!
+    @IBOutlet weak var card2Label: UILabel!
+    @IBOutlet weak var card3Label: UILabel!
+    
+    var walkCheckins = [
+        [
+            "image": "5 - Pickup 4-1",
+            "lat": "37",
+            "lng": "-122",
+            "details": "Jim Picked up spike at 7pm"
+        ],
+        [
+            "image": "5 - Pickup 3-1",
+            "lat": "42",
+            "lng": "122",
+            "details": "Jim took a photo of Spike at Dolores Park"
+        ],
+        [
+            "image": "5 - Pickup 6-1",
+            "lat": "22",
+            "lng": "-125",
+            "details": "Jim dropped Spike off at Home"
+        ]
+    ]
+    
+    var clickedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +52,39 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize.width = 804 + 12
         rateButton.alpha = 0
         
+        card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
+        card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
+        card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
+        
+        card1Label.text = walkCheckins[0]["details"]!
+        card2Label.text = walkCheckins[1]["details"]!
+        card3Label.text = walkCheckins[2]["details"]!
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destinationVC = segue.destinationViewController as PhotoDetailViewController
+        
+        var checkin = walkCheckins[clickedIndex]
+        
+        println(checkin)
+        
+        destinationVC.latString = checkin["lat"]
+        destinationVC.lngString = checkin["lng"]
+        destinationVC.imageString = checkin["image"]
+        destinationVC.details = checkin["details"]
+        
+    }
+    
+    @IBAction func onCheckinTap(sender: UITapGestureRecognizer) {
+        println(sender.view!.tag)
+        clickedIndex = sender.view!.tag
+        performSegueWithIdentifier("PhotoDetailSegue", sender: self)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -38,19 +93,19 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         switch offset {
         case 0:
             pageControl.currentPage = 0
-            delay(3, closure: { () -> () in
+            /*delay(3, closure: { () -> () in
                 self.card1Image.image = UIImage(named: "5 - Pickup 3-1")
                 self.card1Image.frame.size = UIImage(named: "5 - Pickup 3-1").size
-            })
+            })*/
         case scrollView.frame.size.width:
             pageControl.currentPage = 1
-            delay(3, closure: { () -> () in
+            /*delay(3, closure: { () -> () in
                 self.card2Image.image = UIImage(named: "5 - Pickup 4-1")
                 self.card2Image.frame.size = UIImage(named: "5 - Pickup 4-1").size
-            })
+            })*/
         case scrollView.frame.size.width * 2:
             pageControl.currentPage = 2
-            delay(3, closure: { () -> () in
+            /*delay(3, closure: { () -> () in
                 self.card3Image.image = UIImage(named: "5 - Pickup 6-1")
                 self.card3Image.frame.size = UIImage(named: "5 - Pickup 6-1").size
                 UIView.animateWithDuration(0.4, delay: 1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
@@ -58,7 +113,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
                     }, completion: { (finished:Bool) -> Void in
                     // here
                 })
-            })
+            })*/
         default:
             pageControl.currentPage = pageControl.currentPage
         }
