@@ -16,20 +16,42 @@ class PhotoDetailViewController: UIViewController  {
     @IBOutlet weak var detailsLabel: UILabel!
     
     var location: CLLocationCoordinate2D!
-    var latString: String!
-    var lngString: String!
     var imageString: String!
     var details: String!
+    var pickupPlaceID: String!
+    //var result: [NSDictionary] = []
+    /*var geometry: [NSDictionary] = []
+    var locationDictionary: [NSDictionary] = []*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         detailsLabel.text = details
         imageView.image = UIImage(named: imageString)
-        var location = CLLocationCoordinate2D(latitude: 37, longitude: -122)
+        
+        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID! + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+        var request = NSURLRequest(URL: url)
+        /*var lat:CLLocationDegrees
+        var lng:CLLocationDegrees*/
+
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+            var result = objects["result"] as [ NSDictionary ]
+            println(result)
+            /*var geometry = result["geometry"] as [ NSDictionary ]
+            var locationDictionary = geometry["location"] as [ NSDictionary ]
+            self.lat = locationDictionary["lat"] as CLLocationDegrees
+            self.lng = locationDictionary["lng"] as CLLocationDegrees
+            */
+            
+        }
+
+        
+        
+        /*var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegion(center: location, span: span)
-        
+
         mapView.setRegion(region, animated: true)
         mapView.scrollEnabled = false
         mapView.zoomEnabled = false
@@ -37,7 +59,7 @@ class PhotoDetailViewController: UIViewController  {
         let annotation = MKPointAnnotation()
         annotation.setCoordinate(location)
         
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(annotation)*/
     }
 
     override func didReceiveMemoryWarning() {

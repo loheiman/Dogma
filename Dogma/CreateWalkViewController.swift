@@ -18,8 +18,16 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var lengthPicker: UIPickerView!
     @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var estimateLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var scheduleButton: UIButton!
     
     var times = [ "30 minutes", "1 hour", "1.5 hours"]
+    var walkData = [
+        "address": "Pickup Address",
+        "pickupPlaceID": "",
+        "time": "",
+        "duration": ""
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +43,21 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        addressLabel.text = walkData["address"]
+        checkFields()
+    }
+    
     func numberOfComponentsInPickerView(pickerView:UIPickerView) -> Int {
-        println("at numberOfComponents")
         return 1
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return times.count
+    }
+
+    @IBAction func onAddressTap(sender: UITapGestureRecognizer) {
+        performSegueWithIdentifier("addressSearchSegue", sender: self)
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -79,7 +95,6 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         var strDate = datePicker.date
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
-        println(strDate)
         timeLabel.text = dateFormatter.stringFromDate(strDate)
     }
     
@@ -89,19 +104,29 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
 
     @IBAction func onPickDoneButton(sender: AnyObject) {
         lengthPickerView.hidden = true
+        checkFields()
     }
     
     @IBAction func onDoneButton(sender: AnyObject) {
         datePickerView.hidden = true
+        checkFields()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func checkFields() {
+        if addressLabel.text != "Pickup Address" && timeLabel.text != "Choose Time" {
+            scheduleButton.enabled = true
+        }
     }
-    */
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "FindingSegue" {
+            var destinationVC = segue.destinationViewController as CreateWalkSearchViewController
+            
+            walkData["address"] = addressLabel.text
+            walkData["time"] = timeLabel.text
+            walkData["duration"] = lengthLabel.text
+           
+            destinationVC.walkData = walkData
+        }
+    }
 }

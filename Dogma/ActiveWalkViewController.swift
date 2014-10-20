@@ -21,21 +21,23 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card2Label: UILabel!
     @IBOutlet weak var card3Label: UILabel!
     
+    var walkData:NSDictionary!
+    
     var walkCheckins = [
         [
-            "image": "5 - Pickup 4-1",
+            "image": "penny-1",
             "lat": "37",
             "lng": "-122",
             "details": "Jim Picked up spike at 7pm"
         ],
         [
-            "image": "5 - Pickup 3-1",
+            "image": "penny-2",
             "lat": "42",
             "lng": "122",
             "details": "Jim took a photo of Spike at Dolores Park"
         ],
         [
-            "image": "5 - Pickup 6-1",
+            "image": "penny-3",
             "lat": "22",
             "lng": "-125",
             "details": "Jim dropped Spike off at Home"
@@ -52,6 +54,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize.width = 804 + 12
         rateButton.alpha = 0
         
+        walkCheckins[0]["details"] = walkData["address"] as String!
+        
         card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
         card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
         card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
@@ -60,6 +64,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card2Label.text = walkCheckins[1]["details"]!
         card3Label.text = walkCheckins[2]["details"]!
         
+        println(walkData["pickupPlaceID"]!)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,29 +73,31 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var destinationVC = segue.destinationViewController as PhotoDetailViewController
         
         var checkin = walkCheckins[clickedIndex]
-        
-        println(checkin)
-        
-        destinationVC.latString = checkin["lat"]
-        destinationVC.lngString = checkin["lng"]
+ 
+        destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
+        /*destinationVC.lat = checkin["lat"]
+        destinationVC.lng = checkin["lng"]*/
         destinationVC.imageString = checkin["image"]
         destinationVC.details = checkin["details"]
         
     }
     
     @IBAction func onCheckinTap(sender: UITapGestureRecognizer) {
-        println(sender.view!.tag)
         clickedIndex = sender.view!.tag
         performSegueWithIdentifier("PhotoDetailSegue", sender: self)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.x
-        println(offset)
+
         switch offset {
         case 0:
             pageControl.currentPage = 0

@@ -19,6 +19,9 @@
 		275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */; };
 		275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C719E4FB6800E94673 /* StartViewController.swift */; };
 		2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */; };
+		27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */; };
+		27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */; };
+		27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationStep1ViewController.swift; sourceTree = "<group>"; };
 		275DD1C719E4FB6800E94673 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchTableViewCell.swift; sourceTree = "<group>"; };
+		27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundWalkerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 				27050A2A19E4D2FB0060AFBB /* ViewController.swift */,
 				2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */,
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
+				27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */,
+				27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */,
+				27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */,
 				275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */,
 				275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */,
 				27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */,
@@ -179,6 +188,11 @@
 				TargetAttributes = {
 					27050A2219E4D2FB0060AFBB = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					27050A3419E4D2FB0060AFBB = {
 						CreatedOnToolsVersion = 6.0;
@@ -232,12 +246,15 @@
 				27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */,
 				275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */,
 				275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */,
+				27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */,
 				27050A2B19E4D2FB0060AFBB /* ViewController.swift in Sources */,
 				27050A2919E4D2FB0060AFBB /* AppDelegate.swift in Sources */,
 				275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */,
+				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
 				275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
+				27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
