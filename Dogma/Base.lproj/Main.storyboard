@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GWq-iJ-Z8F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hVz-Yp-OCM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Address Search View Controller-->
@@ -53,7 +53,7 @@
                     <connections>
                         <outlet property="searchField" destination="yNo-M8-Aca" id="RLV-h8-UEW"/>
                         <outlet property="tableView" destination="79n-eg-4x2" id="7mp-J8-wGv"/>
-                        <segue destination="hVz-Yp-OCM" kind="modal" identifier="addressReturnSegue" id="IRB-7n-V7L"/>
+                        <segue destination="hVz-Yp-OCM" kind="modal" identifier="addressReturnSegue" modalTransitionStyle="crossDissolve" id="IRB-7n-V7L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v18-du-9PI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,7 +251,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="MTD-wx-Nm9">
-                                <rect key="frame" x="27" y="75" width="858" height="493"/>
+                                <rect key="frame" x="27" y="75" width="858" height="400"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="r8Z-qF-h1F">
@@ -272,19 +272,6 @@
                                             <outletCollection property="gestureRecognizers" destination="cF9-kw-dgD" appends="YES" id="xQO-Sp-IAW"/>
                                         </connections>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3gE-0M-u9h">
-                                        <rect key="frame" x="527" y="420" width="299" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Rate Jim">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="GWq-iJ-Z8F" kind="modal" id="EUv-r9-aks"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will take a photo of spike during the walk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x7E-Xu-YPX">
                                         <rect key="frame" x="299" y="344" width="210" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -323,6 +310,19 @@
                                 <color key="pageIndicatorTintColor" red="0.32700821356507132" green="0.37340491246785928" blue="0.38572600138121549" alpha="0.13" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3gE-0M-u9h">
+                                <rect key="frame" x="9" y="492" width="299" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Rate Jim">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="GWq-iJ-Z8F" kind="modal" id="73r-PJ-TkK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -429,6 +429,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="hVz-Yp-OCM" kind="modal" modalTransitionStyle="partialCurl" id="e0N-Bw-rvv"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walker-profile-image" id="MAp-Z7-uce">
                                 <rect key="frame" x="45" y="76" width="133" height="127"/>
@@ -498,6 +501,7 @@
                         <outlet property="star3Button" destination="0ik-yS-3mg" id="A1b-Pr-u5S"/>
                         <outlet property="star4Button" destination="D6c-G7-cjx" id="LR6-YW-71p"/>
                         <outlet property="star5Button" destination="bve-i9-4I4" id="rA4-S2-p7N"/>
+                        <outlet property="submitButton" destination="2Kq-fc-wrp" id="acZ-7p-N7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycV-aK-77t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -540,7 +544,7 @@
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <segue destination="nAw-lR-r9y" kind="modal" identifier="foundWalkerSegue" id="7Oe-nM-cEq"/>
+                        <segue destination="nAw-lR-r9y" kind="modal" identifier="foundWalkerSegue" modalTransitionStyle="crossDissolve" id="7Oe-nM-cEq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97b-Eb-5GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -771,9 +775,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="IRB-7n-V7L"/>
+    </inferredMetricsTieBreakers>
 </document>

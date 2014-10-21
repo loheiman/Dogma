@@ -11,6 +11,7 @@ import MapKit
 
 class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
 
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var card1Image: UIImageView!
@@ -49,10 +50,15 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        rateButton.hidden=true
+   
+        
         scrollView.delegate = self
         scrollView.frame.size.width = 272
         scrollView.contentSize.width = 804 + 12
-        rateButton.alpha = 0
+        
+        
+       
         
         walkCheckins[0]["details"] = walkData["address"] as String!
         
@@ -78,15 +84,19 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if sender?.identifier == "PhotoDetailSegue" {
         var destinationVC = segue.destinationViewController as PhotoDetailViewController
         
         var checkin = walkCheckins[clickedIndex]
+        
  
         destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
         /*destinationVC.lat = checkin["lat"]
         destinationVC.lng = checkin["lng"]*/
         destinationVC.imageString = checkin["image"]
         destinationVC.details = checkin["details"]
+        }
         
     }
     
@@ -113,6 +123,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             })*/
         case scrollView.frame.size.width * 2:
             pageControl.currentPage = 2
+            rateButton.hidden = false
             /*delay(3, closure: { () -> () in
                 self.card3Image.image = UIImage(named: "5 - Pickup 6-1")
                 self.card3Image.frame.size = UIImage(named: "5 - Pickup 6-1").size

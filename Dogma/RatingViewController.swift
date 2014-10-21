@@ -10,6 +10,7 @@ import UIKit
 
 class RatingViewController: UIViewController {
 
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var star1Button: UIButton!
     @IBOutlet weak var star2Button: UIButton!
@@ -21,6 +22,7 @@ class RatingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.enabled = false
 
         // Do any additional setup after loading the view.
         dogImage.layer.cornerRadius = dogImage.frame.size.width/2
@@ -35,7 +37,7 @@ class RatingViewController: UIViewController {
         ]
         
         for star in stars {
-            star.alpha = 0.5
+            star.alpha = 0.3
         }
     
     }
@@ -49,13 +51,16 @@ class RatingViewController: UIViewController {
     @IBAction func onStarTap(sender: UIButton) {
         
         for star in stars {
-            star.alpha = 0.5
+            star.alpha = 0.3
         }
         
         for index in 1...sender.tag {
             println(index)
             stars[index - 1].alpha = 1
         }
+        
+        submitButton.enabled = true
+
     }
         
 
