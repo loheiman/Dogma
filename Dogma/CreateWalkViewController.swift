@@ -43,6 +43,10 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidAppear(animated: Bool) {
         addressLabel.text = walkData["address"]
         checkFields()
