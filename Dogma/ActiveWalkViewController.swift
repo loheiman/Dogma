@@ -57,7 +57,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame.size.width = 272
         scrollView.contentSize.width = 804 + 12
         
-        
+        card1Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
+        card2Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
+        card3Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
        
         
         walkCheckins[0]["details"] = walkData["address"] as String!

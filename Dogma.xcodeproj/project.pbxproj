@@ -14,6 +14,7 @@
 		27050A3C19E4D2FB0060AFBB /* DogmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27050A3B19E4D2FB0060AFBB /* DogmaTests.swift */; };
 		27050A4619E4DEDA0060AFBB /* ActiveWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */; };
 		27118C2B19F60CF100110991 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27118C2A19F60CF100110991 /* RatingViewController.swift */; };
+		272B59E519F889EC00F691A5 /* Arial Rounded Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 272B59E419F889EC00F691A5 /* Arial Rounded Bold.ttf */; };
 		275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */; };
 		275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */; };
 		275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */; };
@@ -47,6 +48,7 @@
 		27050A3B19E4D2FB0060AFBB /* DogmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogmaTests.swift; sourceTree = "<group>"; };
 		27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveWalkViewController.swift; sourceTree = "<group>"; };
 		27118C2A19F60CF100110991 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		272B59E419F889EC00F691A5 /* Arial Rounded Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arial Rounded Bold.ttf"; sourceTree = "<group>"; };
 		275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkViewController.swift; sourceTree = "<group>"; };
 		275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkSearchViewController.swift; sourceTree = "<group>"; };
 		275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		27050A2619E4D2FB0060AFBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				272B59E419F889EC00F691A5 /* Arial Rounded Bold.ttf */,
 				27050A2719E4D2FB0060AFBB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -229,6 +232,7 @@
 			files = (
 				27050A2E19E4D2FB0060AFBB /* Main.storyboard in Resources */,
 				27050A3019E4D2FB0060AFBB /* Images.xcassets in Resources */,
+				272B59E519F889EC00F691A5 /* Arial Rounded Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

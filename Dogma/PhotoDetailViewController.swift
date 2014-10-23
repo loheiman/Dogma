@@ -26,7 +26,7 @@ class PhotoDetailViewController: UIViewController  {
         imageView.image = UIImage(named: imageString)
         
         var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID! + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
-        var request = NSURLRequest(URL: url!)
+        var request = NSURLRequest(URL: url)
 
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary

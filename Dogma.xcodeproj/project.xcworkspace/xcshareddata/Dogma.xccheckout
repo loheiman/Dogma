@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>17F94FF7-EF88-4542-ABB1-625686EDC9D2</string>
+	<string>8F000354-7DE0-43E8-AF86-61E50C6C57B8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Dogma</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8165F478B2827C2A33A36C6633F687932A74A0C2</key>
-		<string>https://github.com/loheiman/Dogma.git</string>
+		<string>github.com:loheiman/Dogma.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Dogma.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/loheiman/Dogma.git</string>
+	<string>github.com:loheiman/Dogma.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

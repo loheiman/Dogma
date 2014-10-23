@@ -113,7 +113,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     }
     
     func checkFields() {
-        if addressLabel.text != "Pickup Address" && timeLabel.text != "Choose Time" {
+        if addressLabel.text != "Pickup address" && timeLabel.text != "When?" {
             scheduleButton.enabled = true
         }
     }
