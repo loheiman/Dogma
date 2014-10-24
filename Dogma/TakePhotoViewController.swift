@@ -27,9 +27,7 @@ class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate
     func presentCamera() {
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
-        //cameraUI.sourceType = UIImagePickerControllerSourceType.
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
-        //cameraUI.mediaTypes = [kUTT]
         cameraUI.allowsEditing = false
         
         self.presentViewController(cameraUI, animated: true, completion: nil)
