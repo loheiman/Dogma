@@ -1,6 +1,6 @@
 Dogma
 =====
 
-On-demand dog walking
+On-demand dog swaggering
 
 by Jeff Smith, Kyle Pickering, Loren Heiman
