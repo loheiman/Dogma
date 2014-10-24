@@ -12,9 +12,7 @@ class AccountCreationStep1ViewController: UIViewController {
 
     
     @IBOutlet weak var phoneNumberField: UITextField!
-    
     @IBOutlet weak var dogNameField: UITextField!
-    @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var creditCardNumberField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,9 +24,9 @@ class AccountCreationStep1ViewController: UIViewController {
         
         scrollView.frame.size.width = 320
 
-        scrollView.contentSize = CGSize(width: 960, height: 480)
+        scrollView.contentSize = CGSize(width: 640, height: 506)
         
-        nextButton.hidden = true
+        nextButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +36,7 @@ class AccountCreationStep1ViewController: UIViewController {
     
     @IBAction func nextButton(sender: AnyObject) {
         
-        if scrollView.contentOffset.x < scrollView.frame.size.width * 3 {
+        if scrollView.contentOffset.x < scrollView.frame.size.width * 2 {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.scrollView.contentOffset.x += 320
                 }) { (Finished: Bool) -> Void in
@@ -46,30 +44,22 @@ class AccountCreationStep1ViewController: UIViewController {
             }
         }
         
-        nextButton.hidden = true
+        nextButton.enabled = false
     
     }
     
     @IBAction func phoneNumberChanged(sender: AnyObject) {
-    
-        if phoneNumberField.text == "1" {
+        if countElements(phoneNumberField.text) == 10 {
             creditCardNumberField.becomeFirstResponder()
         }
     }
     
-    
-    @IBAction func creditCardNumberChanged(sender: AnyObject) {
+    @IBAction func onCreditCardChanged(sender: AnyObject) {
         if countElements(creditCardNumberField.text) == 16 {
-            println("good")
+            nextButton.enabled = true
         }
-        nextButton.hidden = false
     }
-    
-    @IBAction func addressChanged(sender: AnyObject) {
-          nextButton.hidden = false
-        println("address change")
-    }
-    
+
     @IBAction func dogNameChanged(sender: AnyObject) {
         
     }
