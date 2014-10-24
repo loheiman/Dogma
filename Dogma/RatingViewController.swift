@@ -35,10 +35,6 @@ class RatingViewController: UIViewController {
             star4Button,
             star5Button
         ]
-        
-        for star in stars {
-            star.alpha = 0.3
-        }
     
     }
 
@@ -51,12 +47,12 @@ class RatingViewController: UIViewController {
     @IBAction func onStarTap(sender: UIButton) {
         
         for star in stars {
-            star.alpha = 0.3
+            star.setImage(UIImage(named: "icon-star"), forState: UIControlState.Normal)
         }
         
         for index in 1...sender.tag {
             println(index)
-            stars[index - 1].alpha = 1
+            stars[index - 1].setImage(UIImage(named: "icon-star-filled"), forState: UIControlState.Normal)
         }
         
         submitButton.enabled = true
