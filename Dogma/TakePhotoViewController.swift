@@ -7,36 +7,60 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TakePhotoViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate {
 
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        println("hey")
-    }
+    var cameraUI:UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        
+        self.presentCamera()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func presentCamera() {
+        cameraUI = UIImagePickerController()
+        cameraUI.delegate = self
+        //cameraUI.sourceType = UIImagePickerControllerSourceType.
+        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        //cameraUI.mediaTypes = [kUTT]
+        cameraUI.allowsEditing = false
+        
+        self.presentViewController(cameraUI, animated: true, completion: nil)
     }
-    */
+    
+    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary)
+    {
+        var mediaType:NSString = info.objectForKey(UIImagePickerControllerEditedImage) as NSString
+        var imageToSave:UIImage
+        
+        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        
+        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        //self.savedImage()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker:UIImagePickerController)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func savedImage()
+    {
+        var alert:UIAlertView = UIAlertView()
+        alert.title = "Saved!"
+        alert.message = "Your picture was saved to Camera Roll"
+        alert.delegate = self
+        alert.addButtonWithTitle("Awesome")
+        alert.show()
+    }
 
     @IBAction func onBackButton(sender: AnyObject) {
         dismissViewControllerAnimated(true , completion: nil
