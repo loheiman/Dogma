@@ -8,13 +8,15 @@
 
 import UIKit
 
-class StartViewController: UIViewController, UIAlertViewDelegate {
+class StartViewController: UIViewController, FBLoginViewDelegate {
 
-    
+    @IBOutlet var fbLoginView : FBLoginView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fbLoginView.delegate = self
+        self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
       
         // Do any additional setup after loading the view.
     }
@@ -24,38 +26,24 @@ class StartViewController: UIViewController, UIAlertViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    @IBAction func onFacebookLoginTap(sender: AnyObject) {
-        
-        var loginAlertView = UIAlertView(title: "Facebook", message: "Dogma would like to access your basic profile info", delegate: self, cancelButtonTitle: "Don't Allow", otherButtonTitles: "OK")
-        loginAlertView.show()
-        
-        }
-    
-    func alertView(loginAlertview: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-        
-        if buttonIndex == 0 {
-            println("Don't Allow")
-        }
-        
-        if buttonIndex == 1 {
-            println("OK")
-            performSegueWithIdentifier("toAccountCreationSegue", sender: self)
-        }
-        // buttonIndex is 0 for Cancel
-        // buttonIndex ranges from 1-n for the other buttons.
+    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+        println("User Logged In")
+        println("This is where you perform a segue.")
+        performSegueWithIdentifier("toAccountCreationSegue", sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
+        println("User Name: \(user.name)")
     }
-    */
+    
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        println("User Logged Out")
+    }
+    
+    func loginView(loginView : FBLoginView!, handleError:NSError) {
+        println("Error: \(handleError.localizedDescription)")
+    }
 
+        
+    
 }

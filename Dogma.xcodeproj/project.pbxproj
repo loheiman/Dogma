@@ -24,6 +24,7 @@
 		27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */; };
 		27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */; };
 		27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */; };
+		2B2A6DDB19F9F64A00333490 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
 		27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchTableViewCell.swift; sourceTree = "<group>"; };
 		27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundWalkerViewController.swift; sourceTree = "<group>"; };
+		2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		2B2A6DDC19F9F6D600333490 /* Dogma-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dogma-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2A6DDB19F9F64A00333490 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 		27050A1A19E4D2FB0060AFBB = {
 			isa = PBXGroup;
 			children = (
+				2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */,
 				27050A2519E4D2FB0060AFBB /* Dogma */,
 				27050A3819E4D2FB0060AFBB /* DogmaTests */,
 				27050A2419E4D2FB0060AFBB /* Products */,
@@ -115,6 +120,7 @@
 				27050A4519E4DEDA0060AFBB /* ActiveWalkViewController.swift */,
 				27050A2F19E4D2FB0060AFBB /* Images.xcassets */,
 				27050A2619E4D2FB0060AFBB /* Supporting Files */,
+				2B2A6DDC19F9F6D600333490 /* Dogma-Bridging-Header.h */,
 			);
 			path = Dogma;
 			sourceTree = "<group>";
@@ -378,10 +384,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dogma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dogma/Dogma-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -390,10 +403,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Dogma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Dogma/Dogma-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -51,7 +51,7 @@ class AddressSearchViewController: UIViewController,UITableViewDelegate, UITable
         var newContents = contents.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
         var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + newContents! + "&types=geocode&language=fr&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
-        var request = NSURLRequest(URL: url)
+        var request = NSURLRequest(URL: url!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
