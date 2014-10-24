@@ -8,9 +8,13 @@
 
 import UIKit
 
-class AccountCreationStep1ViewController: UIViewController {
+class AccountCreationStep1ViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate {
 
-    
+    var cameraUI:UIImagePickerController = UIImagePickerController()
+    var imageCaptured: UIImageView!
+    var fullCCNumber: String!
+
+    @IBOutlet weak var dogImageButton: UIButton!
     @IBOutlet weak var zipField: UITextField!
     @IBOutlet weak var cvvField: UITextField!
     @IBOutlet weak var expirationField: UITextField!
@@ -62,10 +66,15 @@ class AccountCreationStep1ViewController: UIViewController {
     }
     
     @IBAction func onCreditCardChanged(sender: UITextField) {
+
         if countElements(creditCardNumberField.text) == 16 {
-            creditCardNumberField.frame.size.width = 80
-            creditCardNumberField.frame.origin.x = 15
             creditCardNumberField.textAlignment = NSTextAlignment.Right
+            creditCardNumberField.frame.size.width = 60
+            //creditCardNumberField.frame.origin.x = 15
+            fullCCNumber = creditCardNumberField.text
+            
+            creditCardNumberField.text = fullCCNumber[advance(fullCCNumber.startIndex, 12)...advance(fullCCNumber.startIndex, 15)]
+            
             expirationField.becomeFirstResponder()
             zipField.hidden = false
             cvvField.hidden = false
@@ -98,14 +107,46 @@ class AccountCreationStep1ViewController: UIViewController {
     @IBAction func dogNameChanged(sender: AnyObject) {
         
     }
-        /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func onTakePhotoButton(sender: AnyObject) {
+        self.presentCamera()
     }
-    */
-
+    
+    
+    func presentCamera() {
+        cameraUI = UIImagePickerController()
+        cameraUI.delegate = self
+        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        cameraUI.allowsEditing = false
+        
+        self.presentViewController(cameraUI, animated: true, completion: {})
+    }
+    
+    
+    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary)
+    {
+        //var mediaType:NSString = info.objectForKey(UIImagePickerControllerEditedImage) as NSString
+        //println(mediaType)
+        var imageToSave:UIImage
+        
+        imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        
+        //imageCaptured.image = imageToSave
+        // UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        //self.savedImage()
+        dogImageButton.setImage(imageToSave, forState: UIControlState.Normal)
+        dogImageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
+     //   dogImageButton.imageView.contentMode = UIViewContentMode.Top
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker:UIImagePickerController)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func onTapOnView(sender: UITapGestureRecognizer){
+        view.endEditing(true)
+    }
 }

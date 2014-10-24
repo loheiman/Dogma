@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hVz-Yp-OCM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Address Search View Controller-->
@@ -638,7 +638,7 @@
                                         <rect key="frame" x="335" y="57" width="290" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="dogNameChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="NIb-Yc-Bca"/>
                                             <action selector="phoneNumberChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="PaQ-t7-Z1T"/>
@@ -671,8 +671,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Credit Card Number" textAlignment="center" minimumFontSize="17" background="text-field" id="Hjz-qD-EtK">
-                                        <rect key="frame" x="15" y="117" width="290" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text-field" id="nai-bQ-PeI">
+                                        <rect key="frame" x="15" y="118" width="290" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Credit Card Number" textAlignment="center" minimumFontSize="17" id="Hjz-qD-EtK">
+                                        <rect key="frame" x="15" y="118" width="290" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -680,17 +684,8 @@
                                             <action selector="onCreditCardChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="ogq-SS-ve9"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM / DD" textAlignment="center" minimumFontSize="17" background="text-field" id="4Mc-KP-7z3" userLabel="Expiration">
-                                        <rect key="frame" x="57" y="117" width="80" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <connections>
-                                            <action selector="onExpirationChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="29d-Ds-kOm"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" background="text-field" id="deb-v9-TTM" userLabel="CVV">
-                                        <rect key="frame" x="148" y="117" width="64" height="50"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" minimumFontSize="17" id="deb-v9-TTM" userLabel="CVV">
+                                        <rect key="frame" x="175" y="118" width="64" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -698,12 +693,24 @@
                                             <action selector="onCvvChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="Hht-1o-fR0"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cP4-Wj-ooU">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM/YY" minimumFontSize="17" id="4Mc-KP-7z3" userLabel="Expiration">
+                                        <rect key="frame" x="91" y="118" width="80" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="onExpirationChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="29d-Ds-kOm"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cP4-Wj-ooU" userLabel="Finished">
                                         <rect key="frame" x="335" y="440" width="290" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="button-finish">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="hVz-Yp-OCM" kind="modal" modalTransitionStyle="flipHorizontal" id="u69-JB-RXb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5KG-72-Jex">
                                         <rect key="frame" x="335" y="117" width="290" height="290"/>
@@ -713,11 +720,11 @@
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="mRC-Fy-IxH" kind="modal" id="eq5-zM-lrC"/>
+                                            <action selector="onTakePhotoButton:" destination="Wal-bc-Zwq" eventType="touchUpInside" id="5cx-38-apE"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP" textAlignment="center" minimumFontSize="17" background="text-field" id="wV3-Od-0Vx">
-                                        <rect key="frame" x="225" y="117" width="80" height="50"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP" minimumFontSize="17" id="wV3-Od-0Vx">
+                                        <rect key="frame" x="233" y="118" width="72" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -729,12 +736,17 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zJR-ak-Thh" appends="YES" id="Nn3-ty-5Hq"/>
+                        </connections>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="640" height="568"/>
                     <connections>
                         <outlet property="creditCardNumberField" destination="Hjz-qD-EtK" id="Ni8-BH-dcV"/>
                         <outlet property="cvvField" destination="deb-v9-TTM" id="zyV-FG-2pZ"/>
+                        <outlet property="dogImageButton" destination="5KG-72-Jex" id="k9M-Hf-HUA"/>
                         <outlet property="dogNameField" destination="wI8-Qm-6hB" id="B15-aZ-u6F"/>
                         <outlet property="expirationField" destination="4Mc-KP-7z3" id="ADX-mZ-o19"/>
                         <outlet property="nextButton" destination="ROc-4U-tPJ" id="fIR-hr-ubf"/>
@@ -744,36 +756,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Teo-cA-iUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zJR-ak-Thh">
+                    <connections>
+                        <action selector="onTapOnView:" destination="Wal-bc-Zwq" id="05B-7a-cOe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2305" y="406"/>
-        </scene>
-        <!--Take Photo View Controller-->
-        <scene sceneID="e4J-h6-6pi">
-            <objects>
-                <viewController id="mRC-Fy-IxH" customClass="TakePhotoViewController" customModule="Dogma" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="W0a-7J-ecX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QRd-cy-oKS">
-                                <rect key="frame" x="12" y="18" width="43" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onBackButton:" destination="mRC-Fy-IxH" eventType="touchUpInside" id="rgD-in-wGE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7LP-hj-Btq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2614" y="1106"/>
         </scene>
     </scenes>
     <resources>
@@ -790,12 +779,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IRB-7n-V7L"/>
+        <segue reference="u69-JB-RXb"/>
     </inferredMetricsTieBreakers>
 </document>

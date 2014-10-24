@@ -17,7 +17,6 @@
 		272B59E519F889EC00F691A5 /* Arial Rounded Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 272B59E419F889EC00F691A5 /* Arial Rounded Bold.ttf */; };
 		275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */; };
 		275DD1C419E4F23400E94673 /* CreateWalkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */; };
-		275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */; };
 		275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */; };
 		275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C719E4FB6800E94673 /* StartViewController.swift */; };
 		2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */; };
@@ -52,7 +51,6 @@
 		272B59E419F889EC00F691A5 /* Arial Rounded Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arial Rounded Bold.ttf"; sourceTree = "<group>"; };
 		275DD1C119E4F21000E94673 /* CreateWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkViewController.swift; sourceTree = "<group>"; };
 		275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalkSearchViewController.swift; sourceTree = "<group>"; };
-		275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationStep1ViewController.swift; sourceTree = "<group>"; };
 		275DD1C719E4FB6800E94673 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		27050A2519E4D2FB0060AFBB /* Dogma */ = {
 			isa = PBXGroup;
 			children = (
-				275DD1C519E4FB6800E94673 /* TakePhotoViewController.swift */,
 				275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */,
 				275DD1C719E4FB6800E94673 /* StartViewController.swift */,
 				27050A2819E4D2FB0060AFBB /* AppDelegate.swift */,
@@ -266,7 +263,6 @@
 				275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */,
 				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
-				275DD1C819E4FB6800E94673 /* TakePhotoViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
 				27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */,
 			);
