@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Address Search View Controller-->
@@ -604,21 +604,17 @@
                                 <rect key="frame" x="143" y="51" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vHB-Me-idP">
-                                <rect key="frame" x="15" y="500" width="290" height="52"/>
+                            <view contentMode="scaleToFill" id="K2K-51-qXv" customClass="FBLoginView">
+                                <rect key="frame" x="16" y="496" width="288" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="button-facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onFacebookLoginTap:" destination="1sz-H1-hk6" eventType="touchUpInside" id="4gn-bD-DEm"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="KkT-xZ-22Q"/>
                     <connections>
+                        <outlet property="fbLoginView" destination="K2K-51-qXv" id="JIW-c2-GUN"/>
                         <segue destination="Wal-bc-Zwq" kind="modal" identifier="toAccountCreationSegue" modalTransitionStyle="coverVertical" id="Hxw-8O-6nT"/>
                     </connections>
                 </viewController>
@@ -751,7 +747,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button-facebook" width="290" height="52"/>
         <image name="button-find-walker" width="290" height="52"/>
         <image name="button-finish" width="290" height="52"/>
         <image name="button-next" width="290" height="52"/>
@@ -765,10 +760,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="IRB-7n-V7L"/>
