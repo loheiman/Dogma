@@ -96,6 +96,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
         /*destinationVC.lat = checkin["lat"]
         destinationVC.lng = checkin["lng"]*/
+        println(walkCheckins)
+        println(clickedIndex)
         destinationVC.imageString = checkin["image"]
         destinationVC.details = checkin["details"]
         }

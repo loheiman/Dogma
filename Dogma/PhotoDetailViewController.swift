@@ -23,7 +23,7 @@ class PhotoDetailViewController: UIViewController  {
         super.viewDidLoad()
 
         detailsLabel.text = details
-        imageView.image = UIImage(named: imageString)
+        //imageView.image = UIImage(named: imageString)
         
         var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID! + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
         var request = NSURLRequest(URL: url!)
