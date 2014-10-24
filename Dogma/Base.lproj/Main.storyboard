@@ -677,9 +677,25 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
-                                            <action selector="creditCardNumberChanged:" destination="Wal-bc-Zwq" eventType="editingDidEnd" id="8ON-4X-3oq"/>
                                             <action selector="onCreditCardChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="ogq-SS-ve9"/>
-                                            <action selector="phoneNumberChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="Ubw-Kr-thK"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM / DD" textAlignment="center" minimumFontSize="17" background="text-field" id="4Mc-KP-7z3" userLabel="Expiration">
+                                        <rect key="frame" x="57" y="117" width="80" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="onExpirationChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="29d-Ds-kOm"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" background="text-field" id="deb-v9-TTM" userLabel="CVV">
+                                        <rect key="frame" x="148" y="117" width="64" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="onCvvChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="Hht-1o-fR0"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cP4-Wj-ooU">
@@ -700,6 +716,15 @@
                                             <segue destination="mRC-Fy-IxH" kind="modal" id="eq5-zM-lrC"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP" textAlignment="center" minimumFontSize="17" background="text-field" id="wV3-Od-0Vx">
+                                        <rect key="frame" x="225" y="117" width="80" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="onZipChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="qlQ-Jc-o9y"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -709,10 +734,13 @@
                     <size key="freeformSize" width="640" height="568"/>
                     <connections>
                         <outlet property="creditCardNumberField" destination="Hjz-qD-EtK" id="Ni8-BH-dcV"/>
+                        <outlet property="cvvField" destination="deb-v9-TTM" id="zyV-FG-2pZ"/>
                         <outlet property="dogNameField" destination="wI8-Qm-6hB" id="B15-aZ-u6F"/>
+                        <outlet property="expirationField" destination="4Mc-KP-7z3" id="ADX-mZ-o19"/>
                         <outlet property="nextButton" destination="ROc-4U-tPJ" id="fIR-hr-ubf"/>
                         <outlet property="phoneNumberField" destination="GvS-Sc-giP" id="9w6-m9-q7H"/>
                         <outlet property="scrollView" destination="HRB-WI-gLs" id="ywI-w6-adz"/>
+                        <outlet property="zipField" destination="wV3-Od-0Vx" id="hde-o6-b5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Teo-cA-iUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
