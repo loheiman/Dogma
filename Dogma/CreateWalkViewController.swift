@@ -23,7 +23,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
     var times = [ "30 minutes", "1 hour", "1.5 hours"]
     var walkData = [
-        "address": "Pickup Address",
+        "address": "Pickup address",
         "pickupPlaceID": "",
         "time": "",
         "duration": ""
