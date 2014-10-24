@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hVz-Yp-OCM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -643,11 +643,7 @@
                                         <rect key="frame" x="335" y="57" width="290" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="dogNameChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="NIb-Yc-Bca"/>
-                                            <action selector="phoneNumberChanged:" destination="Wal-bc-Zwq" eventType="editingChanged" id="PaQ-t7-Z1T"/>
-                                        </connections>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" background="text-field" id="GvS-Sc-giP">
                                         <rect key="frame" x="15" y="57" width="290" height="50"/>
@@ -753,6 +749,7 @@
                         <outlet property="dogImageButton" destination="5KG-72-Jex" id="k9M-Hf-HUA"/>
                         <outlet property="dogNameField" destination="wI8-Qm-6hB" id="B15-aZ-u6F"/>
                         <outlet property="expirationField" destination="4Mc-KP-7z3" id="ADX-mZ-o19"/>
+                        <outlet property="finishButton" destination="cP4-Wj-ooU" id="ddr-an-8L6"/>
                         <outlet property="nextButton" destination="ROc-4U-tPJ" id="fIR-hr-ubf"/>
                         <outlet property="phoneNumberField" destination="GvS-Sc-giP" id="9w6-m9-q7H"/>
                         <outlet property="scrollView" destination="HRB-WI-gLs" id="ywI-w6-adz"/>
@@ -789,6 +786,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e0N-Bw-rvv"/>
+        <segue reference="u69-JB-RXb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     var imageCaptured: UIImageView!
     var fullCCNumber: String!
 
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var dogImageButton: UIButton!
     @IBOutlet weak var zipField: UITextField!
     @IBOutlet weak var cvvField: UITextField!
@@ -38,6 +39,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         scrollView.contentSize = CGSize(width: 640, height: 506)
         
         nextButton.enabled = false
+        finishButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,16 +99,14 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     }
     
     @IBAction func onZipChanged(sender: UITextField) {
-        if countElements(zipField.text) == 3 {
+        if countElements(zipField.text) == 5 {
              nextButton.enabled = true
+            view.endEditing(true)
         }
     }
     
     
 
-    @IBAction func dogNameChanged(sender: AnyObject) {
-        
-    }
     
     
     @IBAction func onTakePhotoButton(sender: AnyObject) {
@@ -137,7 +137,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         //self.savedImage()
         dogImageButton.setImage(imageToSave, forState: UIControlState.Normal)
         dogImageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
-     //   dogImageButton.imageView.contentMode = UIViewContentMode.Top
+        finishButton.enabled = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
