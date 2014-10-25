@@ -47,12 +47,16 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onPhoneNumberEditing(sender: AnyObject) {
+        raiseNext()
+    }
+    
     @IBAction func nextButton(sender: AnyObject) {
         
         if scrollView.contentOffset.x < scrollView.frame.size.width * 2 {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 self.scrollView.contentOffset.x += 320
-                }) { (Finished: Bool) -> Void in
+                }) { (finished:Bool) -> Void in
                     //
             }
         }
@@ -106,13 +110,10 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     }
     
     
-
-    
     
     @IBAction func onTakePhotoButton(sender: AnyObject) {
         self.presentCamera()
     }
-    
     
     func presentCamera() {
         cameraUI = UIImagePickerController()
@@ -148,5 +149,22 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     @IBAction func onTapOnView(sender: UITapGestureRecognizer){
         view.endEditing(true)
+        lowerNext()
+    }
+    
+    func raiseNext() {
+        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.nextButton.frame.origin.y = 194
+            }) { (finished:Bool) -> Void in
+            // done
+        }
+    }
+    
+    func lowerNext() {
+        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.nextButton.frame.origin.y = 440
+            }) { (finished:Bool) -> Void in
+                // done
+        }
     }
 }

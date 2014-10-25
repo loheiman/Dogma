@@ -12,6 +12,8 @@ class CreateWalkSearchViewController: UIViewController {
 
     var walkData:NSDictionary!
     
+    @IBOutlet weak var dogImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,22 @@ class CreateWalkSearchViewController: UIViewController {
             self.performSegueWithIdentifier("foundWalkerSegue", sender: self)
         })
         
-        
+        animateDog()
+    }
+    
+    func animateDog() {
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: 0,y: 179))
+        path.addCurveToPoint(CGPoint(x: 360, y: 170), controlPoint1: CGPoint(x: 136, y: 200), controlPoint2: CGPoint(x: 179, y: 170))
+
+        let anim = CAKeyframeAnimation(keyPath: "position")
+
+        anim.path = path.CGPath
+
+        anim.rotationMode = kCAAnimationRotateAuto
+        anim.repeatCount = Float.infinity
+        anim.duration = 2.0
+        dogImage.layer.addAnimation(anim, forKey: "animate position along path")
     }
     
     func delay(delay:Double, closure:()->()) {

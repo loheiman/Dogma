@@ -21,7 +21,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var scheduleButton: UIButton!
     
-    var times = [ "30 minutes", "1 hour", "1.5 hours"]
+    var times = [ "30 minute walk", "1 hour walk", "1.5 hour walk"]
     var walkData = [
         "address": "Pickup address",
         "pickupPlaceID": "",
