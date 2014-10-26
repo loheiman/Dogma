@@ -23,7 +23,26 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card3Label: UILabel!
     
     var walkData:NSDictionary!
-    
+    var emptyData = [
+        [
+            "image": "",
+            "lat": "",
+            "lng": "",
+            "details": "Jim will pickup Spike in 4 hours"
+        ],
+        [
+            "image": "",
+            "lat": "",
+            "lng": "",
+            "details": "Jim will take a photo of Spike during the walk"
+        ],
+        [
+            "image": "penny-3",
+            "lat": "22",
+            "lng": "-125",
+            "details": "Jim will take a photo when they drop Spike off"
+        ]
+    ]
     var walkCheckins = [
         [
             "image": "penny-1",
@@ -50,17 +69,11 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rateButton.hidden=true
-   
+        rateButton.hidden = true
         
         scrollView.delegate = self
         scrollView.frame.size.width = 272
         scrollView.contentSize.width = 804 + 12
-        
-        card1Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
-        card2Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
-        card3Label.font = UIFont(name: "Arial Rounded MT Bold", size: 18)
-       
         
         walkCheckins[0]["details"] = walkData["address"] as String!
         
@@ -81,25 +94,16 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if sender?.identifier == "PhotoDetailSegue" {
-        var destinationVC = segue.destinationViewController as PhotoDetailViewController
+            println("here")
+            var destinationVC = segue.destinationViewController as PhotoDetailViewController
+            var checkin = walkCheckins[clickedIndex]
         
-        var checkin = walkCheckins[clickedIndex]
-        
- 
-        destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
-        /*destinationVC.lat = checkin["lat"]
-        destinationVC.lng = checkin["lng"]*/
-        println(walkCheckins)
-        println(clickedIndex)
-        destinationVC.imageString = checkin["image"]
-        destinationVC.details = checkin["details"]
+            destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
+            destinationVC.imageString = checkin["image"]
+            destinationVC.details = checkin["details"]
         }
         
     }

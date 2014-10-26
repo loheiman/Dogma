@@ -21,36 +21,38 @@ class PhotoDetailViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         detailsLabel.text = details
-        //imageView.image = UIImage(named: imageString)
         
-        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID! + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
-        var request = NSURLRequest(URL: url!)
-
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-            var result = objects["result"] as NSDictionary
-            var geometry = result["geometry"] as NSDictionary
-            var locations = geometry["location"] as NSDictionary
+        if pickupPlaceID != nil {
+            var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+            var request = NSURLRequest(URL: url!)
             
-            var lat = locations["lat"] as CLLocationDegrees
-            var lng = locations["lng"] as CLLocationDegrees
-
-            var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: location, span: span)
-            
-            self.mapView.setRegion(region, animated: true)
-            self.mapView.scrollEnabled = false
-            self.mapView.zoomEnabled = false
-            
-            let annotation = MKPointAnnotation()
-            annotation.setCoordinate(location)
-            
-            self.mapView.addAnnotation(annotation)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+                var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                var result = objects["result"] as NSDictionary
+                var geometry = result["geometry"] as NSDictionary
+                var locations = geometry["location"] as NSDictionary
+                
+                var lat = locations["lat"] as CLLocationDegrees
+                var lng = locations["lng"] as CLLocationDegrees
+                
+                var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                let span = MKCoordinateSpanMake(0.05, 0.05)
+                let region = MKCoordinateRegion(center: location, span: span)
+                
+                self.mapView.setRegion(region, animated: true)
+                self.mapView.scrollEnabled = false
+                self.mapView.zoomEnabled = false
+                
+                let annotation = MKPointAnnotation()
+                annotation.setCoordinate(location)
+                
+                self.mapView.addAnnotation(annotation)
+            }
         }
-
     }
 
     override func didReceiveMemoryWarning() {
