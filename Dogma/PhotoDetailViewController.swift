@@ -25,7 +25,8 @@ class PhotoDetailViewController: UIViewController  {
     
     override func viewDidAppear(animated: Bool) {
         detailsLabel.text = details
-        println(pickupPlaceID)
+        imageView.image = UIImage(named: imageString)
+
         
         if pickupPlaceID != nil {
             var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")

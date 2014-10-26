@@ -21,72 +21,52 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card1Label: UILabel!
     @IBOutlet weak var card2Label: UILabel!
     @IBOutlet weak var card3Label: UILabel!
-    var walkTimeStart: String!
+    var walkTimeStart: NSString!
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
-  
+    var clickedIndex = 0
     
-    var walkData:NSDictionary!
-    
-    //contains the Create Walk Data
-    
-    //  var pickupPlaceID = walkData["pickupPlaceID"]
-    /*
-    var emptyData = [
-        [
-            "details": "Jim will pickup Spike in 4 hours"
-        ],
-        [
-            "details": "Jim will take a photo of Spike during the walk"
-        ],
-        [
-            "details": "Jim will take a photo when they drop Spike off"
-        ]
-    ]
+    var walkData: NSDictionary! //contains the Create Walk Data
 
-*/
     var walkCheckins = [
         [
-            "image": "",
+            "image": "checkin-blank",
             "lat": "",
             "lng": "",
-            "details": "Jim",
+            "details": "Jim will pickup Spike at ",
+            "done": 0
 
         ],
         [
-            "image": "",
+            "image": "checkin-blank",
             "lat": "",
             "lng": "",
-            "details": ""
+            "details": "Jim will take a photo of Spike during the walk",
+            "done": 0
         ],
         [
-            "image": "",
+            "image": "checkin-blank",
             "lat": "",
             "lng": "",
-            "details": ""
+            "details": "Jim will drop Spike off at around",
+            "done": 0
         ]
     ]
     
-    var clickedIndex = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var walkTime = walkData["time"] as String
+        walkTimeStart = walkData["time"] as String
         
         
-        walkCheckins = [
-            [
-                "details": "Jim will pickup Spike at \(walkTimeStart)",
-                
-            ],
-            [
-                "details": "Jim will take a photo of Spike during the walk"
-            ],
-            [
-                "details": "Jim will drop Spike off at around\(walkTimeEnd)"
-            ]
-        ]
-
+        walkCheckins[0]["details"] = "Jim will pickup Spike at \(walkTimeStart)"
+       
+        walkCheckins[1]["details"] = "Jim will take a photo of Spike during the walk"
+        
+        walkCheckins[2]["details"] = "Jim will drop Spike off at around \(walkTimeEnd)"
+        
+       
         
         rateButton.hidden = true
         
@@ -94,18 +74,21 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame.size.width = 272
         scrollView.contentSize.width = 804 + 12
         
-        walkCheckins[0]["details"] = walkData["address"] as String!
+        
+        card1Image.image = UIImage(named: "checkin-blank")
+        card2Image.image = UIImage(named: "checkin-blank")
+        card3Image.image = UIImage(named: "checkin-blank")
+        
+        
+        card1Label.text = walkCheckins[0]["details"] as? String
+        card2Label.text = walkCheckins[1]["details"] as? String
+        card3Label.text = walkCheckins[2]["details"] as? String
         
         /*
-        card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
-        card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
-        card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
+        walkCheckin1done()
+        walkCheckin2done()
+        walkCheckin3done()
 */
-        
-        card1Label.text = walkCheckins[0]["details"]!
-        card2Label.text = walkCheckins[1]["details"]!
-        card3Label.text = walkCheckins[2]["details"]!
-        
       //  println(walkData["pickupPlaceID"]!)
         
     }
@@ -123,36 +106,39 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             var checkin = walkCheckins[clickedIndex]
         
             destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
-            destinationVC.imageString = checkin["image"]!
-           // destinationVC.details = checkin["details"]!
-      
-            /*
-            destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
-            destinationVC.imageString = checkin["image"]
-            destinationVC.details = checkin["details"]
-*/
+            destinationVC.imageString = checkin["image"] as String
+            destinationVC.details = checkin["details"] as String
+
         }
         
     }
     
+    
     func walkCheckin1done() {
-        card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
+        walkCheckins[0]["image"] = "penny-1"
+        card1Image.image = UIImage(named: walkCheckins[0]["image"] as String)
         walkCheckins[0]["details"] = "Jim picked up Spike at \(walkTimeStart)"
-         card1Label.text = walkCheckins[0]["details"]
+         card1Label.text = walkCheckins[0]["details"] as? String
+        walkCheckins[0]["done"] = 1
 
     }
     
     func walkCheckin2done() {
-        card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
+        walkCheckins[1]["image"] = "penny-2"
+        card2Image.image = UIImage(named: walkCheckins[1]["image"] as String)
         walkCheckins[1]["details"]! = "Jim took a photo of Spike at \(checkin2Location)"
-        card2Label.text = walkCheckins[1]["details"]
+        card2Label.text = walkCheckins[1]["details"] as? String
+        walkCheckins[1]["done"] = 1
     }
     
     func walkCheckin3done() {
-        card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
+        walkCheckins[2]["image"] = "penny-3"
+        card3Image.image = UIImage(named: walkCheckins[2]["image"] as String)
         walkCheckins[2]["details"]  = "Jim dropped Spike off at \(walkTimeEnd)"
-        card3Label.text = walkCheckins[2]["details"]
+        card3Label.text = walkCheckins[2]["details"] as? String
+        walkCheckins[2]["done"] = 1
     }
+
     
     
     
@@ -180,7 +166,10 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         case scrollView.frame.size.width * 2:
             pageControl.currentPage = 2
             
-            rateButton.hidden = false
+            if walkCheckins[2]["done"] == 1 {
+rateButton.hidden = false
+}
+            
             /*delay(3, closure: { () -> () in
                 self.card3Image.image = UIImage(named: "5 - Pickup 6-1")
                 self.card3Image.frame.size = UIImage(named: "5 - Pickup 6-1").size
