@@ -27,10 +27,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     var clickedIndex = 0
     
     var walkData: NSDictionary! //contains the Create Walk Data
-    
-    
 
-        var walkCheckins = [
+    var walkCheckins = [
         [
             "image": "checkin-blank",
             "lat": "",
