@@ -28,6 +28,10 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var testObject = PFObject(className:"TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackground()
+        
        // creditCardNumberField.becomeFirstResponder()
         
         zipField.hidden = true

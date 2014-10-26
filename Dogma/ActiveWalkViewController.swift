@@ -21,8 +21,17 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card1Label: UILabel!
     @IBOutlet weak var card2Label: UILabel!
     @IBOutlet weak var card3Label: UILabel!
+    var walkTimeStart: String!
+    var walkTimeEnd = "8:30pm"
+    var checkin2Location = "Dolores Park"
+  
     
     var walkData:NSDictionary!
+    
+    //contains the Create Walk Data
+    
+    //  var pickupPlaceID = walkData["pickupPlaceID"]
+    /*
     var emptyData = [
         [
             "details": "Jim will pickup Spike in 4 hours"
@@ -34,24 +43,27 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             "details": "Jim will take a photo when they drop Spike off"
         ]
     ]
+
+*/
     var walkCheckins = [
         [
-            "image": "penny-1",
-            "lat": "37",
-            "lng": "-122",
-            "details": "Jim Picked up spike at 7pm"
+            "image": "",
+            "lat": "",
+            "lng": "",
+            "details": "Jim",
+
         ],
         [
-            "image": "penny-2",
-            "lat": "42",
-            "lng": "122",
-            "details": "Jim took a photo of Spike at Dolores Park"
+            "image": "",
+            "lat": "",
+            "lng": "",
+            "details": ""
         ],
         [
-            "image": "penny-3",
-            "lat": "22",
-            "lng": "-125",
-            "details": "Jim dropped Spike off at Home"
+            "image": "",
+            "lat": "",
+            "lng": "",
+            "details": ""
         ]
     ]
     
@@ -59,6 +71,22 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var walkTime = walkData["time"] as String
+        
+        
+        walkCheckins = [
+            [
+                "details": "Jim will pickup Spike at \(walkTimeStart)",
+                
+            ],
+            [
+                "details": "Jim will take a photo of Spike during the walk"
+            ],
+            [
+                "details": "Jim will drop Spike off at around\(walkTimeEnd)"
+            ]
+        ]
+
         
         rateButton.hidden = true
         
@@ -68,15 +96,17 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
         walkCheckins[0]["details"] = walkData["address"] as String!
         
+        /*
         card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
         card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
         card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
+*/
         
         card1Label.text = walkCheckins[0]["details"]!
         card2Label.text = walkCheckins[1]["details"]!
         card3Label.text = walkCheckins[2]["details"]!
         
-        println(walkData["pickupPlaceID"]!)
+      //  println(walkData["pickupPlaceID"]!)
         
     }
 
@@ -87,17 +117,44 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if sender?.identifier == "PhotoDetailSegue" {
+        if segue.identifier == "PhotoDetailSegue" {
             println("here")
             var destinationVC = segue.destinationViewController as PhotoDetailViewController
             var checkin = walkCheckins[clickedIndex]
         
-            destinationVC.pickupPlaceID = walkData["pickupPlaceID"] as String
+            destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
+            destinationVC.imageString = checkin["image"]!
+           // destinationVC.details = checkin["details"]!
+      
+            /*
+            destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
             destinationVC.imageString = checkin["image"]
             destinationVC.details = checkin["details"]
+*/
         }
         
     }
+    
+    func walkCheckin1done() {
+        card1Image.image = UIImage(named: walkCheckins[0]["image"]!)
+        walkCheckins[0]["details"] = "Jim picked up Spike at \(walkTimeStart)"
+         card1Label.text = walkCheckins[0]["details"]
+
+    }
+    
+    func walkCheckin2done() {
+        card2Image.image = UIImage(named: walkCheckins[1]["image"]!)
+        walkCheckins[1]["details"]! = "Jim took a photo of Spike at \(checkin2Location)"
+        card2Label.text = walkCheckins[1]["details"]
+    }
+    
+    func walkCheckin3done() {
+        card3Image.image = UIImage(named: walkCheckins[2]["image"]!)
+        walkCheckins[2]["details"]  = "Jim dropped Spike off at \(walkTimeEnd)"
+        card3Label.text = walkCheckins[2]["details"]
+    }
+    
+    
     
     @IBAction func onCheckinTap(sender: UITapGestureRecognizer) {
         clickedIndex = sender.view!.tag
@@ -122,6 +179,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             })*/
         case scrollView.frame.size.width * 2:
             pageControl.currentPage = 2
+            
             rateButton.hidden = false
             /*delay(3, closure: { () -> () in
                 self.card3Image.image = UIImage(named: "5 - Pickup 6-1")
