@@ -20,6 +20,7 @@
 		275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */; };
 		275DD1CA19E4FB6800E94673 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275DD1C719E4FB6800E94673 /* StartViewController.swift */; };
 		2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */; };
+		27BE480519FD97EB003A1D5C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BE480419FD97EB003A1D5C /* MenuViewController.swift */; };
 		27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */; };
 		27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */; };
 		27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */; };
@@ -66,6 +67,7 @@
 		275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationStep1ViewController.swift; sourceTree = "<group>"; };
 		275DD1C719E4FB6800E94673 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		27BE480419FD97EB003A1D5C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
 		27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchTableViewCell.swift; sourceTree = "<group>"; };
 		27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundWalkerViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				27050A2A19E4D2FB0060AFBB /* ViewController.swift */,
 				2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */,
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
+				27BE480419FD97EB003A1D5C /* MenuViewController.swift */,
 				27118C2A19F60CF100110991 /* RatingViewController.swift */,
 				27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */,
 				27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */,
@@ -308,6 +311,7 @@
 				27118C2B19F60CF100110991 /* RatingViewController.swift in Sources */,
 				27050A2B19E4D2FB0060AFBB /* ViewController.swift in Sources */,
 				27050A2919E4D2FB0060AFBB /* AppDelegate.swift in Sources */,
+				27BE480519FD97EB003A1D5C /* MenuViewController.swift in Sources */,
 				275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */,
 				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
@@ -437,7 +441,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3afca440-5aff-49c8-9e7f-a5b07cccee65";
+				PROVISIONING_PROFILE = "22e375a6-1fc1-49f9-ada9-b37fc6cc677f";
 				SWIFT_OBJC_BRIDGING_HEADER = "Dogma/Dogma-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -457,7 +461,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3afca440-5aff-49c8-9e7f-a5b07cccee65";
+				PROVISIONING_PROFILE = "22e375a6-1fc1-49f9-ada9-b37fc6cc677f";
 				SWIFT_OBJC_BRIDGING_HEADER = "Dogma/Dogma-Bridging-Header.h";
 			};
 			name = Release;
