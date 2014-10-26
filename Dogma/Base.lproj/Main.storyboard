@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hVz-Yp-OCM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -63,6 +63,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v18-du-9PI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-106" y="-893"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="2rF-PN-J09">
+            <objects>
+                <viewController id="C8I-x3-lNe" customClass="MenuViewController" customModule="Dogma" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jXi-5a-Gdl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7fc-8i-Y6G">
+                                <rect key="frame" x="14" y="436" width="290" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <state key="normal" title="Logout" backgroundImage="button-blank">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logUserOut:" destination="C8I-x3-lNe" eventType="touchUpInside" id="ifY-T3-N3S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AjO-a7-CXX">
+                                <rect key="frame" x="14" y="496" width="290" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <state key="normal" title="Cancel" backgroundImage="button-blank">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCancelButton:" destination="C8I-x3-lNe" eventType="touchUpInside" id="GYl-Fi-7B3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="1sz-H1-hk6" kind="modal" identifier="backToStart" id="ueN-vN-YFj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bfo-QP-qO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-572" y="-490"/>
         </scene>
         <!--Create Walk View Controller-->
         <scene sceneID="hce-XO-CHN">
@@ -219,6 +262,16 @@
                                 <rect key="frame" x="143" y="30" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZzJ-ky-Spy">
+                                <rect key="frame" x="136" y="28" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="crossDissolve" id="M8Q-Dy-WBX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -616,8 +669,8 @@
                                 <rect key="frame" x="143" y="30" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="K2K-51-qXv" customClass="FBLoginView">
-                                <rect key="frame" x="16" y="496" width="288" height="59"/>
+                            <view contentMode="scaleToFill" id="lNN-83-YgU" customClass="FBLoginView">
+                                <rect key="frame" x="15" y="492" width="290" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -626,7 +679,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KkT-xZ-22Q"/>
                     <connections>
-                        <outlet property="fbLoginView" destination="K2K-51-qXv" id="JIW-c2-GUN"/>
+                        <outlet property="fbLoginView" destination="lNN-83-YgU" id="joJ-QJ-Qw2"/>
                         <outlet property="logoImage" destination="owQ-Uc-vbV" id="o6h-8Y-PC1"/>
                         <outlet property="welcomeLabel" destination="bOP-cg-kxF" id="oZy-1L-Qep"/>
                         <segue destination="Wal-bc-Zwq" kind="modal" identifier="toAccountCreationSegue" modalTransitionStyle="coverVertical" id="Hxw-8O-6nT"/>
@@ -757,6 +810,16 @@
                                 <rect key="frame" x="143" y="30" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3k6-gb-xK4" userLabel="Button Menu">
+                                <rect key="frame" x="137" y="28" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C8I-x3-lNe" kind="modal" id="WfN-Wn-Blz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -805,7 +868,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IRB-7n-V7L"/>
+        <segue reference="u69-JB-RXb"/>
+        <segue reference="M8Q-Dy-WBX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>

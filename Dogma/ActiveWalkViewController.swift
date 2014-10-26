@@ -25,21 +25,12 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     var walkData:NSDictionary!
     var emptyData = [
         [
-            "image": "",
-            "lat": "",
-            "lng": "",
             "details": "Jim will pickup Spike in 4 hours"
         ],
         [
-            "image": "",
-            "lat": "",
-            "lng": "",
             "details": "Jim will take a photo of Spike during the walk"
         ],
         [
-            "image": "penny-3",
-            "lat": "22",
-            "lng": "-125",
             "details": "Jim will take a photo when they drop Spike off"
         ]
     ]
