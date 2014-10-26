@@ -88,11 +88,14 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     @IBAction func onLengthButton(sender: AnyObject) {
         lengthPickerView.hidden = false
         datePickerView.hidden = true
+        
     }
     
     @IBAction func onTimeButton(sender: AnyObject) {
         datePickerView.hidden = false
         lengthPickerView.hidden = true
+        
+
     }
     
     func datePickerChanged(datePicker: UIDatePicker) {

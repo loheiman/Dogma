@@ -12,6 +12,7 @@ class FoundWalkerViewController: UIViewController {
 
     var walkData:NSDictionary!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -13,12 +13,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
+    
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let currentInstallation = PFInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+       // currentInstallation.channels =
+        currentInstallation.saveInBackground()
+        println("did register with remote notificaiotns")
+    }
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
        
         
-        Parse.setApplicationId("davbwGthV0heV7YvtZOpthYPdfH0uc9g3k8xv6ld",
-            clientKey: "YWCAAe3tRW3OLf7Ip2UKmSYb4B1Ic9X4g2FySJ7a")
+        Parse.setApplicationId("kX8MUMIOmxBYpRgBE1hzd3joaqG0rcoupL3VcIzG",
+            clientKey: "DODt0WE0Ug6UmKpsWIDQLZFenM30ALblWomSumtO")
+        
+        var notificationType: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        
+        var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationType, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        /*
+        var object = PFObject(className: "TestClass")
+        object.addObject("Banana", forKey: "favoriteFood")
+        object.addObject("Chocolate", forKey: "favoriteIceCream")
+        object.saveInBackground()
+*/
+
+        
+/*
+            let userNotificationTypes = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+            
+            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+*/
+        
+        
         PFUser.enableAutomaticUser()
         
         var defaultACL = PFACL()
@@ -38,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
         
         var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
@@ -54,14 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
+    /*
         var app = UIApplication.sharedApplication()
         var notification: UILocalNotification = UILocalNotification()
         var alarmDate = NSDate().dateByAddingTimeInterval(5.0)
         notification.alertBody = "Hi Guys!"
         notification.fireDate = alarmDate
         app.scheduleLocalNotification(notification)
+*/
+
     }
+
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
