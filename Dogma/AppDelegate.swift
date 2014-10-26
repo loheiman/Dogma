@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let currentInstallation = PFInstallation()
+        
         currentInstallation.setDeviceTokenFromData(deviceToken)
-       // currentInstallation.channels =
         currentInstallation.saveInBackground()
         println("did register with remote notificaiotns")
     }
@@ -26,34 +26,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
        
-        
-        Parse.setApplicationId("kX8MUMIOmxBYpRgBE1hzd3joaqG0rcoupL3VcIzG",
-            clientKey: "DODt0WE0Ug6UmKpsWIDQLZFenM30ALblWomSumtO")
+        Parse.setApplicationId("kX8MUMIOmxBYpRgBE1hzd3joaqG0rcoupL3VcIzG", clientKey: "DODt0WE0Ug6UmKpsWIDQLZFenM30ALblWomSumtO")
         
         var notificationType: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
         
         var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationType, categories: nil)
+
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        /*
+        
         var object = PFObject(className: "TestClass")
         object.addObject("Banana", forKey: "favoriteFood")
         object.addObject("Chocolate", forKey: "favoriteIceCream")
         object.saveInBackground()
-*/
 
+        FBLoginView.self
+        FBProfilePictureView.self
         
-/*
-            let userNotificationTypes = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
-            
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-*/
-        
-        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.BlackOpaque, animated: true)
+
         PFUser.enableAutomaticUser()
         
         var defaultACL = PFACL()
@@ -61,14 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultACL.setPublicReadAccess(true)
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
-        
-        FBLoginView.self
-        FBProfilePictureView.self
-        // Override point for customization after application launch.
-        
+        /*
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
         
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.BlackOpaque, animated: true)
+        */
         return true
     }
     
