@@ -84,11 +84,11 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
         
-        /*
+        
         walkCheckin1done()
         walkCheckin2done()
         walkCheckin3done()
-*/
+
       //  println(walkData["pickupPlaceID"]!)
         
     }
