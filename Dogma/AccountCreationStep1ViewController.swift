@@ -14,12 +14,26 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     var imageCaptured: UIImageView!
     var fullCCNumber: String!
 
+    
+    @IBOutlet weak var expirationFormatting: UILabel!
+    @IBOutlet weak var expirationField2: UITextField!
+    @IBOutlet weak var expirationField1: UITextField!
+    @IBOutlet weak var creditCardNumberButton: UIButton!
+    @IBOutlet weak var creditCardNumberField4: UITextField!
+    @IBOutlet weak var creditCardNumberField3: UITextField!
+    @IBOutlet weak var creditCardNumberField2: UITextField!
+    @IBOutlet weak var creditCardNumberField1: UITextField!
+    @IBOutlet weak var phoneNumberFormatting: UILabel!
+    @IBOutlet weak var phoneNumberButton: UIButton!
+    @IBOutlet weak var phoneNumberField3: UITextField!
+    @IBOutlet weak var phoneNumberField2: UITextField!
+    @IBOutlet weak var phoneNumberField1: UITextField!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var dogImageButton: UIButton!
     @IBOutlet weak var zipField: UITextField!
     @IBOutlet weak var cvvField: UITextField!
-    @IBOutlet weak var expirationField: UITextField!
-    @IBOutlet weak var phoneNumberField: UITextField!
+  
+
     @IBOutlet weak var dogNameField: UITextField!
     @IBOutlet weak var creditCardNumberField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
@@ -32,11 +46,23 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         testObject["foo"] = "bar"
         testObject.saveInBackground()
         
-       // creditCardNumberField.becomeFirstResponder()
+        
+        phoneNumberField1.text = ""
+        phoneNumberField2.text = ""
+        phoneNumberField3.text = ""
+        phoneNumberFormatting.hidden = true
+        
+        creditCardNumberField1.text = ""
+        creditCardNumberField2.text = ""
+        creditCardNumberField3.text = ""
+        creditCardNumberField4.text = ""
+
         
         zipField.hidden = true
         cvvField.hidden = true
-        expirationField.hidden = true
+        expirationField1.hidden = true
+        expirationField2.hidden = true
+        expirationFormatting.hidden = true
         
         scrollView.frame.size.width = 320
 
@@ -69,35 +95,98 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     }
     
-    @IBAction func phoneNumberChanged(sender: UITextField) {
-        if countElements(phoneNumberField.text) == 10 {
-            creditCardNumberField.becomeFirstResponder()
+    
+    
+    @IBAction func onPhoneNumberTapped(sender: UIButton) {
+        phoneNumberButton.setTitle("", forState: UIControlState.Normal)
+        phoneNumberFormatting.hidden = false
+        phoneNumberField1.becomeFirstResponder()
+        phoneNumberButton.hidden = true
+        raiseNext()
+    }
+    
+    
+    //PHONE NUMBER ENTRY
+    @IBAction func onPhoneNumberField1Changed(sender: UITextField) {
+        if countElements(phoneNumberField1.text) == 3 {
+            phoneNumberField2.becomeFirstResponder()
         }
     }
     
-    @IBAction func onCreditCardChanged(sender: UITextField) {
+    @IBAction func onPhoneNumberField2Changed(sender: UITextField) {
+        if countElements(phoneNumberField2.text) == 3 {
+            phoneNumberField3.becomeFirstResponder()
+        }
+    }
+    
+    @IBAction func onPhoneNumberField3Changed(sender: UITextField) {
+        if countElements(phoneNumberField3.text) == 4 {
+            creditCardNumberField1.becomeFirstResponder()
+        }
+    }
+    
+    //CREDIT CARD ENTRY
+    @IBAction func creditCardNumberField1(sender: UITextField) {
+        creditCardNumberButton.hidden = true
+        if countElements(creditCardNumberField1.text) == 4 {
+            creditCardNumberField2.becomeFirstResponder()
+        }
+    }
+    
+    @IBAction func creditCardNumberField2(sender: UITextField) {
+        if countElements(creditCardNumberField2.text) == 4 {
+            creditCardNumberField3.becomeFirstResponder()
+        }
+    }
+    
+    
+    @IBAction func creditCardNumberField3(sender: UITextField) {
+        if countElements(creditCardNumberField3.text) == 4 {
+            creditCardNumberField4.becomeFirstResponder()
+        }
+    }
+    
+    
+    @IBAction func creditCardNumberField4(sender: UITextField) {
+        if countElements(creditCardNumberField4.text) == 4 {
+            creditCardNumberField1.hidden = true
+            creditCardNumberField2.hidden = true
+            creditCardNumberField3.hidden = true
+            self.expirationField1.becomeFirstResponder()
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.creditCardNumberField4.frame.origin.x = 30
+                }, completion: { (Finished: Bool) -> Void in
+                    
+                    self.zipField.hidden = false
+                    self.cvvField.hidden = false
+                    self.expirationField1.hidden = false
+                    self.expirationField2.hidden = false
+                    self.expirationFormatting.hidden = false
+            })
 
-        if countElements(creditCardNumberField.text) == 16 {
-            creditCardNumberField.textAlignment = NSTextAlignment.Right
-            creditCardNumberField.frame.size.width = 60
-            //creditCardNumberField.frame.origin.x = 15
-            fullCCNumber = creditCardNumberField.text
             
-            creditCardNumberField.text = fullCCNumber[advance(fullCCNumber.startIndex, 12)...advance(fullCCNumber.startIndex, 15)]
-            
-            expirationField.becomeFirstResponder()
-            zipField.hidden = false
-            cvvField.hidden = false
-            expirationField.hidden = false
         }
     }
     
-    @IBAction func onExpirationChanged(sender: UITextField) {
-        if countElements(expirationField.text) == 4 {
+    
+    
+    @IBAction func onExpirationField1Changed(sender: UITextField) {
+        if countElements(expirationField1.text) == 2 {
+        expirationField2.becomeFirstResponder()
+        }
+
+    }
+    
+    
+    @IBAction func onExpirationField2Changed(sender: UITextField) {
+        if countElements(expirationField2.text) == 2 {
             cvvField.becomeFirstResponder()
         }
-
     }
+    
+    
+  
     
     
     @IBAction func onCvvChanged(sender: UITextField) {
