@@ -18,7 +18,7 @@ class CreateWalkSearchViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        dogImage.frame.origin.x = -90
     }
     
     override func viewDidAppear(animated: Bool) {

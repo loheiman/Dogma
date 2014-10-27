@@ -73,22 +73,16 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.frame.size.width = 272
         scrollView.contentSize.width = 804 + 12
-        
-        
-        card1Image.image = UIImage(named: "checkin-blank")
-        card2Image.image = UIImage(named: "checkin-blank")
-        card3Image.image = UIImage(named: "checkin-blank")
-        
-        
+
         card1Label.text = walkCheckins[0]["details"] as? String
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
         
-        
+        /*
         walkCheckin1done()
         walkCheckin2done()
         walkCheckin3done()
-
+        */
       //  println(walkData["pickupPlaceID"]!)
         
     }
