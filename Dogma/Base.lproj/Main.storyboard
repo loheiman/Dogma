@@ -300,6 +300,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="858" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path" id="zUs-kI-Wzu">
+                                <rect key="frame" x="144" y="213" width="569" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="MTD-wx-Nm9">
                                 <rect key="frame" x="27" y="75" width="858" height="400"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,7 +311,6 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="r8Z-qF-h1F">
                                         <rect key="frame" x="277" y="67" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="C0H-Ti-Tl1" appends="YES" id="dPe-bs-59r"/>
@@ -316,7 +319,6 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" id="6yi-2h-0m6">
                                         <rect key="frame" x="553" y="67" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="cF9-kw-dgD" appends="YES" id="xQO-Sp-IAW"/>
@@ -332,7 +334,6 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tL1-Mr-uCh">
                                         <rect key="frame" x="0.0" y="67" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="g3b-7t-hyU" appends="YES" id="SrT-LJ-J8x"/>
@@ -857,6 +858,7 @@
         <image name="icon-star" width="34" height="34"/>
         <image name="logo-large" width="67" height="51"/>
         <image name="logo-small" width="34" height="26"/>
+        <image name="path" width="569" height="76"/>
         <image name="penny-1" width="320" height="320"/>
         <image name="snap-photo-placeholder" width="290" height="290"/>
         <image name="text-field" width="290" height="50"/>
