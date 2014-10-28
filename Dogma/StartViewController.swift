@@ -52,7 +52,14 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
         println("This is where you perform a segue.")
-        performSegueWithIdentifier("toAccountCreationSegue", sender: self)
+        
+        if defaults.boolForKey("dogInfoEntered") == true {
+            performSegueWithIdentifier("startToCreateWalkSegue", sender: self)
+        }
+        
+        else {
+            performSegueWithIdentifier("toAccountCreationSegue", sender: self)
+        }
     }
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){

@@ -9,6 +9,8 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    var defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +31,13 @@ class MenuViewController: UIViewController {
     @IBAction func onCancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onClearDefaultsButton(sender: AnyObject) {
+        defaults.removeObjectForKey("dogName")
+        defaults.removeObjectForKey("dogImage")
+        defaults.removeObjectForKey("phoneNumberCreditCardEntered")
+        defaults.removeObjectForKey("dogInfoEntered")
+        
     }
-    */
-
+    
 }

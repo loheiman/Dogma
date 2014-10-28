@@ -18,10 +18,26 @@ class RatingViewController: UIViewController {
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
     
+    var defaults = NSUserDefaults.standardUserDefaults()
+    
+    
     var stars: [UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let possibleOldImagePath = defaults.objectForKey("path") as String?
+        
+        if let oldImagePath = possibleOldImagePath {
+            let oldFullPath = self.documentsPathForFileName(oldImagePath)
+            let oldImageData = NSData(contentsOfFile: oldFullPath)
+            // here is your saved image:
+            let oldImage = UIImage(data: oldImageData!)
+            dogImage.image = oldImage
+        }
+        
+        
+            
         submitButton.enabled = false
 
         // Do any additional setup after loading the view.
@@ -60,14 +76,14 @@ class RatingViewController: UIViewController {
     }
         
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // For saving dog image
+    func documentsPathForFileName(name: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
+        let path = paths[0] as String;
+        let fullPath = path.stringByAppendingPathComponent(name)
+        
+        return fullPath
     }
-    */
 
 }

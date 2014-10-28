@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -72,18 +72,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7fc-8i-Y6G">
-                                <rect key="frame" x="14" y="436" width="290" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
-                                <state key="normal" title="Logout" backgroundImage="button-blank">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logUserOut:" destination="C8I-x3-lNe" eventType="touchUpInside" id="ifY-T3-N3S"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AjO-a7-CXX">
                                 <rect key="frame" x="14" y="496" width="290" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,6 +82,30 @@
                                 </state>
                                 <connections>
                                     <action selector="onCancelButton:" destination="C8I-x3-lNe" eventType="touchUpInside" id="GYl-Fi-7B3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7fc-8i-Y6G">
+                                <rect key="frame" x="14" y="429" width="290" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <state key="normal" title="Logout" backgroundImage="button-blank">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logUserOut:" destination="C8I-x3-lNe" eventType="touchUpInside" id="ifY-T3-N3S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kr6-ln-gwq">
+                                <rect key="frame" x="68" y="383" width="185" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <state key="normal" title="Clear Defaults">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClearDefaultsButton:" destination="C8I-x3-lNe" eventType="touchUpInside" id="PVA-7P-eO0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -688,7 +700,8 @@
                         <outlet property="fbLoginView" destination="lNN-83-YgU" id="joJ-QJ-Qw2"/>
                         <outlet property="logoImage" destination="owQ-Uc-vbV" id="o6h-8Y-PC1"/>
                         <outlet property="welcomeLabel" destination="bOP-cg-kxF" id="oZy-1L-Qep"/>
-                        <segue destination="Wal-bc-Zwq" kind="modal" identifier="toAccountCreationSegue" modalTransitionStyle="coverVertical" id="Hxw-8O-6nT"/>
+                        <segue destination="Wal-bc-Zwq" kind="modal" identifier="toAccountCreationSegue" modalTransitionStyle="crossDissolve" id="Hxw-8O-6nT"/>
+                        <segue destination="hVz-Yp-OCM" kind="modal" identifier="startToCreateWalkSegue" modalTransitionStyle="flipHorizontal" id="pje-RS-esi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCp-3G-Dg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -978,8 +991,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DRs-Zy-92O"/>
         <segue reference="WfN-Wn-Blz"/>
+        <segue reference="DRs-Zy-92O"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>

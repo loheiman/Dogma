@@ -14,6 +14,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     var imageCaptured: UIImageView!
     var fullCCNumber: String!
     var defaults = NSUserDefaults.standardUserDefaults()
+    
 
     
     @IBOutlet weak var expirationFormatting: UILabel!
@@ -43,6 +44,8 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         var testObject = PFObject(className:"TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground()
@@ -71,7 +74,14 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         scrollView.contentSize = CGSize(width: 640, height: 506)
         
         nextButton.enabled = false
-       // finishButton.enabled = false
+    //    finishButton.enabled = false
+        
+        
+        if defaults.boolForKey("phoneNumberCreditCardEntered") == true {
+            self.scrollView.contentOffset.x = 320
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +103,8 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
             }
         }
         
+        defaults.setBool(true, forKey: "phoneNumberCreditCardEntered")
+        defaults.synchronize()
         nextButton.enabled = false
     
     }
@@ -261,6 +273,14 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         dogImageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
         finishButton.enabled = true
         
+        // Save dog image to NSuserdefaults
+        let imageData = UIImageJPEGRepresentation(imageToSave, 1)
+        let relativePath = "image_\(NSDate.timeIntervalSinceReferenceDate()).jpg"
+        let path = self.documentsPathForFileName(relativePath)
+        imageData.writeToFile(path, atomically: true)
+        defaults.setObject(relativePath, forKey: "path")
+        defaults.synchronize()
+        
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -293,8 +313,19 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     @IBAction func onFinishButton(sender: AnyObject) {
         defaults.setValue(dogNameField.text, forKey: "dogName")
+        defaults.setBool(true, forKey: "dogInfoEntered")
         defaults.synchronize()
         performSegueWithIdentifier("accountSetupToCreateWalkSegue", sender: self)
         
     }
+    
+    // For saving dog image
+    func documentsPathForFileName(name: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
+        let path = paths[0] as String;
+        let fullPath = path.stringByAppendingPathComponent(name)
+        
+        return fullPath
+    }
+    
 }
