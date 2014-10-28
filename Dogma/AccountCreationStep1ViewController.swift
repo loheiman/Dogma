@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountCreationStep1ViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate {
+class AccountCreationStep1ViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
 
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var imageCaptured: UIImageView!

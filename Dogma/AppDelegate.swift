@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -77,6 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
         
         */
+        
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d8ff03c11ca340083ce9ce7dc884d5ec")
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
+
         return true
     }
     
