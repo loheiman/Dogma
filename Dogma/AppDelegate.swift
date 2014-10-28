@@ -13,46 +13,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-    
-    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        //let currentInstallation = PFInstallation()
         var currentInstallation: PFInstallation = PFInstallation.currentInstallation()
         
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.saveInBackground()
+        
         println("did register with remote notificaiotns")
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: NSDictionary!) {
+        var notification: NSDictionary = userInfo.objectForKey("aps") as NSDictionary
+        println(notification)
+        if (notification.objectForKey("alert") != nil) {
+            if notification.objectForKey("alert")? as NSString == "first" {
+                NSNotificationCenter.defaultCenter().postNotificationName("ShowFirstImage", object: nil)
+            }
+            else if notification.objectForKey("alert")? as NSString == "second" {
+                NSNotificationCenter.defaultCenter().postNotificationName("ShowSecondImage", object: nil)
+            }
+            else if notification.objectForKey("alert")? as NSString == "third" {
+                NSNotificationCenter.defaultCenter().postNotificationName("ShowThirdImage", object: nil)
+            }
+        } else {
+            // handles the push if it's not one of the defined types
+            //PFPush.handlePush(userInfo)
+        }
+    }
 
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-       
+        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.BlackOpaque, animated: true)
+        
         Parse.setApplicationId("kX8MUMIOmxBYpRgBE1hzd3joaqG0rcoupL3VcIzG", clientKey: "DODt0WE0Ug6UmKpsWIDQLZFenM30ALblWomSumtO")
         
         var notificationType: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        
         var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationType, categories: nil)
 
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        
-        
+
+        /*
         var object = PFObject(className: "TestClass")
         object.addObject("Banana", forKey: "favoriteFood")
         object.addObject("Chocolate", forKey: "favoriteIceCream")
         object.saveInBackground()
-
+        */
+        
         FBLoginView.self
         FBProfilePictureView.self
-        
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.BlackOpaque, animated: true)
 
-        PFUser.enableAutomaticUser()
+        //PFUser.enableAutomaticUser()
         
-        var defaultACL = PFACL()
+        //var defaultACL = PFACL()
         // If you would like all objects to be private by default, remove this line.
-        defaultACL.setPublicReadAccess(true)
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        //defaultACL.setPublicReadAccess(true)
+        //PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
         /*
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
@@ -60,7 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         return true
     }
-    
     
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {

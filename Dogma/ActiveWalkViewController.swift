@@ -78,6 +78,11 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin1done", name: "ShowFirstImage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin2done", name: "ShowSecondImage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin3done", name: "ShowThirdImage", object: nil)
+        
         /*
         walkCheckin1done()
         walkCheckin2done()
