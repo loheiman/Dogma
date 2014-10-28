@@ -13,6 +13,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var imageCaptured: UIImageView!
     var fullCCNumber: String!
+    var defaults = NSUserDefaults.standardUserDefaults()
 
     
     @IBOutlet weak var expirationFormatting: UILabel!
@@ -47,6 +48,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         testObject.saveInBackground()
         
         
+
         phoneNumberField1.text = ""
         phoneNumberField2.text = ""
         phoneNumberField3.text = ""
@@ -69,7 +71,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         scrollView.contentSize = CGSize(width: 640, height: 506)
         
         nextButton.enabled = false
-        finishButton.enabled = false
+       // finishButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -232,6 +234,8 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         dogImageButton.setImage(imageToSave, forState: UIControlState.Normal)
         dogImageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
         finishButton.enabled = true
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -259,5 +263,12 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
             }) { (finished:Bool) -> Void in
                 // done
         }
+    }
+    
+    @IBAction func onFinishButton(sender: AnyObject) {
+        defaults.setValue(dogNameField.text, forKey: "dogName")
+        defaults.synchronize()
+        performSegueWithIdentifier("accountSetupToCreateWalkSegue", sender: self)
+        
     }
 }

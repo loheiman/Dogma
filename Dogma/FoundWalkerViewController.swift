@@ -11,10 +11,18 @@ import UIKit
 class FoundWalkerViewController: UIViewController {
 
     var walkData:NSDictionary!
+    var defaults = NSUserDefaults.standardUserDefaults()
     
+    @IBOutlet weak var walkerDetailsCopy: UILabel!
+    var dogName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        dogName = defaults.stringForKey("dogName")
+        
+        walkerDetailsCopy.text = "Jim will walk \(dogName)!"
 
         // Do any additional setup after loading the view.
     }

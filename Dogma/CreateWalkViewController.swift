@@ -10,6 +10,7 @@ import UIKit
 
 class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
+    @IBOutlet weak var findWalkerCopy: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
@@ -20,6 +21,9 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var estimateLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var scheduleButton: UIButton!
+    var dogName: String!
+    var defaults = NSUserDefaults.standardUserDefaults()
+
     
     var times = [ "30 minute walk", "1 hour walk", "1.5 hour walk"]
     var walkData = [
@@ -33,6 +37,11 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        dogName = defaults.stringForKey("dogName")
+        
+        findWalkerCopy.text = "Find a Walker for \(dogName)"
+
+        
         datePicker.datePickerMode = UIDatePickerMode.Time
         datePicker.minuteInterval = 15
         datePickerView.hidden = true

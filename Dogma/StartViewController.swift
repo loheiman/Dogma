@@ -13,11 +13,14 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet var fbLoginView : FBLoginView!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
+    var defaults = NSUserDefaults.standardUserDefaults()
 
     var readPermissions = ["public_profile", "email", "user_friends"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         self.fbLoginView.delegate = self
         logoImage.frame.origin.y = 223

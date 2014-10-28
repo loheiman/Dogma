@@ -21,7 +21,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card1Label: UILabel!
     @IBOutlet weak var card2Label: UILabel!
     @IBOutlet weak var card3Label: UILabel!
-    
+    var defaults = NSUserDefaults.standardUserDefaults()
+    var dogName: String!
     var walkTimeStart: NSString!
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
@@ -58,14 +59,18 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        dogName = defaults.stringForKey("dogName")
+        
         walkTimeStart = walkData["time"] as String
         
         
-        walkCheckins[0]["details"] = "Jim will pickup Spike at \(walkTimeStart)"
+        walkCheckins[0]["details"] = "Jim will pickup \(dogName) at \(walkTimeStart)"
        
-        walkCheckins[1]["details"] = "Jim will take a photo of Spike during the walk"
+        walkCheckins[1]["details"] = "Jim will take a photo of \(dogName) during the walk"
         
-        walkCheckins[2]["details"] = "Jim will drop Spike off at around \(walkTimeEnd)"
+        walkCheckins[2]["details"] = "Jim will drop \(dogName) off at around \(walkTimeEnd)"
         
         rateButton.hidden = true
         
@@ -126,7 +131,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         var imageData: NSData = NSData(contentsOfURL: url!)!
 
         card1Image.image = UIImage(data: imageData)
-        walkCheckins[0]["details"] = "Jim picked up Spike at \(walkTimeStart)"
+        walkCheckins[0]["details"] = "Jim picked up \(dogName) at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
         walkCheckins[0]["done"] = true
         
@@ -143,7 +148,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         var imageData: NSData = NSData(contentsOfURL: url!)!
         
         card2Image.image = UIImage(data: imageData)
-        walkCheckins[1]["details"]! = "Jim took a photo of Spike at \(checkin2Location)"
+        walkCheckins[1]["details"]! = "Jim took a photo of \(dogName) at \(checkin2Location)"
         card2Label.text = walkCheckins[1]["details"] as? String
         walkCheckins[1]["done"] = true
         
@@ -159,7 +164,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         var imageData: NSData = NSData(contentsOfURL: url!)!
         
         card3Image.image = UIImage(data: imageData)
-        walkCheckins[2]["details"]  = "Jim dropped Spike off at \(walkTimeEnd)"
+        walkCheckins[2]["details"]  = "Jim dropped \(dogName) off at \(walkTimeEnd)"
         card3Label.text = walkCheckins[2]["details"] as? String
         walkCheckins[2]["done"] = true
         

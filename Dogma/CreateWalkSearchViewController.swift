@@ -12,10 +12,19 @@ class CreateWalkSearchViewController: UIViewController {
 
     var walkData:NSDictionary!
     
+    @IBOutlet weak var findingWalkerCopy: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
+    var defaults = NSUserDefaults.standardUserDefaults()
+    var dogName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        dogName = defaults.stringForKey("dogName")
+        
+        findingWalkerCopy.text = "Finding a Walker for \(dogName)"
+
 
         // Do any additional setup after loading the view.
         dogImage.frame.origin.x = -90
