@@ -34,7 +34,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             "lat": "",
             "lng": "",
             "details": "Jim will pickup Spike at ",
-            "done": 0
+            "done": false
 
         ],
         [
@@ -42,14 +42,14 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             "lat": "",
             "lng": "",
             "details": "Jim will take a photo of Spike during the walk",
-            "done": 0
+            "done": false
         ],
         [
             "image": "checkin-blank",
             "lat": "",
             "lng": "",
             "details": "Jim will drop Spike off at around",
-            "done": 0
+            "done": false
         ]
     ]
     
@@ -91,6 +91,24 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
       //  println(walkData["pickupPlaceID"]!)
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        walkCheckin3done()
+        /*
+        if walkCheckins[2]["done"] == true {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width * 2)
+            })
+        } else if walkCheckins[1]["done"] == true {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
+            })
+        } else if walkCheckins[0]["done"] == true {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.scrollView.contentOffset.x = 0
+            })
+        }*/
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,7 +136,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card1Image.image = UIImage(named: walkCheckins[0]["image"] as String)
         walkCheckins[0]["details"] = "Jim picked up Spike at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
-        walkCheckins[0]["done"] = 1
+        walkCheckins[0]["done"] = true
 
     }
     
@@ -127,7 +145,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card2Image.image = UIImage(named: walkCheckins[1]["image"] as String)
         walkCheckins[1]["details"]! = "Jim took a photo of Spike at \(checkin2Location)"
         card2Label.text = walkCheckins[1]["details"] as? String
-        walkCheckins[1]["done"] = 1
+        walkCheckins[1]["done"] = true
     }
     
     func walkCheckin3done() {
@@ -135,7 +153,11 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card3Image.image = UIImage(named: walkCheckins[2]["image"] as String)
         walkCheckins[2]["details"]  = "Jim dropped Spike off at \(walkTimeEnd)"
         card3Label.text = walkCheckins[2]["details"] as? String
-        walkCheckins[2]["done"] = 1
+        walkCheckins[2]["done"] = true
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width * 2)
+        })
     }
 
     
