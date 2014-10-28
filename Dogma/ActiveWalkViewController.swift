@@ -21,11 +21,12 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var card1Label: UILabel!
     @IBOutlet weak var card2Label: UILabel!
     @IBOutlet weak var card3Label: UILabel!
+    
     var walkTimeStart: NSString!
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
     var clickedIndex = 0
-    
+
     var walkData: NSDictionary! //contains the Create Walk Data
 
     var walkCheckins = [
@@ -66,8 +67,6 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
         walkCheckins[2]["details"] = "Jim will drop Spike off at around \(walkTimeEnd)"
         
-       
-        
         rateButton.hidden = true
         
         scrollView.delegate = self
@@ -78,36 +77,26 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
         
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin1done", name: "ShowFirstImage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin2done", name: "ShowSecondImage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin3done", name: "ShowThirdImage", object: nil)
-        
-        /*
-        walkCheckin1done()
-        walkCheckin2done()
-        walkCheckin3done()
-        */
-      //  println(walkData["pickupPlaceID"]!)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin:", name: "ShowImage", object: nil)
+
     }
     
-    override func viewDidAppear(animated: Bool) {
-        walkCheckin3done()
-        /*
-        if walkCheckins[2]["done"] == true {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width * 2)
-            })
-        } else if walkCheckins[1]["done"] == true {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
-            })
-        } else if walkCheckins[0]["done"] == true {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.scrollView.contentOffset.x = 0
-            })
-        }*/
+    func walkCheckin(notification: NSNotification) {
+        println(notification)
+
+        var data: NSDictionary = notification.valueForKey("object") as NSDictionary
+        var walkStep = data.valueForKey("walkStep") as String
+        
+        switch walkStep {
+            case "1":
+                walkCheckin1done(data)
+            case "2":
+                walkCheckin2done(data)
+            case "3":
+                walkCheckin3done(data)
+            default:
+                println("invalid walkStep value")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,27 +119,46 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    
-    func walkCheckin1done() {
-        walkCheckins[0]["image"] = "penny-1"
-        card1Image.image = UIImage(named: walkCheckins[0]["image"] as String)
+    func walkCheckin1done(data: NSDictionary) {
+        walkCheckins[0]["image"] = data.valueForKey("imageURL") as String
+        
+        var url = NSURL(string: data.valueForKey("imageURL") as String)
+        var imageData: NSData = NSData(contentsOfURL: url!)!
+
+        card1Image.image = UIImage(data: imageData)
         walkCheckins[0]["details"] = "Jim picked up Spike at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
         walkCheckins[0]["done"] = true
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.scrollView.contentOffset.x = 0
+        })
 
     }
     
-    func walkCheckin2done() {
-        walkCheckins[1]["image"] = "penny-2"
-        card2Image.image = UIImage(named: walkCheckins[1]["image"] as String)
+    func walkCheckin2done(data: NSDictionary) {
+        walkCheckins[1]["image"] = data.valueForKey("imageURL") as String
+        
+        var url = NSURL(string: data.valueForKey("imageURL") as String)
+        var imageData: NSData = NSData(contentsOfURL: url!)!
+        
+        card2Image.image = UIImage(data: imageData)
         walkCheckins[1]["details"]! = "Jim took a photo of Spike at \(checkin2Location)"
         card2Label.text = walkCheckins[1]["details"] as? String
         walkCheckins[1]["done"] = true
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
+        })
     }
     
-    func walkCheckin3done() {
-        walkCheckins[2]["image"] = "penny-3"
-        card3Image.image = UIImage(named: walkCheckins[2]["image"] as String)
+    func walkCheckin3done(data: NSDictionary) {
+        walkCheckins[2]["image"] = data.valueForKey("imageURL") as String
+        
+        var url = NSURL(string: data.valueForKey("imageURL") as String)
+        var imageData: NSData = NSData(contentsOfURL: url!)!
+        
+        card3Image.image = UIImage(data: imageData)
         walkCheckins[2]["details"]  = "Jim dropped Spike off at \(walkTimeEnd)"
         card3Label.text = walkCheckins[2]["details"] as? String
         walkCheckins[2]["done"] = true

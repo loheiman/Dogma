@@ -24,22 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: NSDictionary!) {
-        var notification: NSDictionary = userInfo.objectForKey("aps") as NSDictionary
+        var notification: NSDictionary = userInfo.objectForKey("walkMessage") as NSDictionary
         println(notification)
-        if (notification.objectForKey("alert") != nil) {
-            if notification.objectForKey("alert")? as NSString == "first" {
-                NSNotificationCenter.defaultCenter().postNotificationName("ShowFirstImage", object: nil)
-            }
-            else if notification.objectForKey("alert")? as NSString == "second" {
-                NSNotificationCenter.defaultCenter().postNotificationName("ShowSecondImage", object: nil)
-            }
-            else if notification.objectForKey("alert")? as NSString == "third" {
-                NSNotificationCenter.defaultCenter().postNotificationName("ShowThirdImage", object: nil)
-            }
-        } else {
-            // handles the push if it's not one of the defined types
-            //PFPush.handlePush(userInfo)
-        }
+
+        NSNotificationCenter.defaultCenter().postNotificationName("ShowImage", object: notification)
+        
     }
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
