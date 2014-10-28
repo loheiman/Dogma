@@ -164,8 +164,6 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
                     self.expirationField2.hidden = false
                     self.expirationFormatting.hidden = false
             })
-
-            
         }
     }
     
@@ -205,13 +203,41 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     
     @IBAction func onTakePhotoButton(sender: AnyObject) {
-        self.presentCamera()
+        var sheet: UIActionSheet = UIActionSheet();
+        sheet.delegate = self;
+        sheet.addButtonWithTitle("Take Photo");
+        sheet.addButtonWithTitle("Choose Photo");
+        sheet.addButtonWithTitle("Cancel");
+        sheet.cancelButtonIndex = 2
+        sheet.showInView(self.view);
+    }
+    
+    func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 0:
+            // clicked Take Photo
+            self.presentCamera()
+        case 1:
+            // clicked Choose Photo
+            self.presentCameraRoll()
+        default:
+            println("cancel button")
+        }
     }
     
     func presentCamera() {
         cameraUI = UIImagePickerController()
         cameraUI.delegate = self
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        cameraUI.allowsEditing = false
+        
+        self.presentViewController(cameraUI, animated: true, completion: {})
+    }
+    
+    func presentCameraRoll() {
+        cameraUI = UIImagePickerController()
+        cameraUI.delegate = self
+        cameraUI.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         cameraUI.allowsEditing = false
         
         self.presentViewController(cameraUI, animated: true, completion: {})
