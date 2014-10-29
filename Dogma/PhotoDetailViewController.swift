@@ -15,7 +15,7 @@ class PhotoDetailViewController: UIViewController  {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var detailsLabel: UILabel!
 
-    var imageString: String!
+    var walkImage: UIImageView = UIImageView()
     var details: String!
     var pickupPlaceID: String!
 
@@ -25,7 +25,7 @@ class PhotoDetailViewController: UIViewController  {
     
     override func viewDidAppear(animated: Bool) {
         detailsLabel.text = details
-        imageView.image = UIImage(named: imageString)
+        imageView.image = walkImage.image
 
         
         if pickupPlaceID != nil {
