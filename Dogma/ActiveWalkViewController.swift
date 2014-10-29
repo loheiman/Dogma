@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
+class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,7 +27,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
     var clickedIndex = 0
-
+    var isPresenting: Bool = true
+    var cardImageToPass: UIImageView = UIImageView()
+    
     var walkData: NSDictionary! //contains the Create Walk Data
 
     var walkCheckins = [
@@ -84,7 +86,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         card1Label.text = walkCheckins[0]["details"] as? String
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
-        
+    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin:", name: "ShowImage", object: nil)
 
     }
@@ -93,6 +95,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         println(notification)
 
         var data: NSDictionary = notification.valueForKey("object") as NSDictionary
+        
         var walkStep = data.valueForKey("walkStep") as String
         
         switch walkStep {
@@ -110,21 +113,6 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "PhotoDetailSegue" {
-            println("here")
-            var destinationVC = segue.destinationViewController as PhotoDetailViewController
-            var checkin = walkCheckins[clickedIndex]
-        
-            destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
-            destinationVC.imageString = checkin["image"] as String
-            destinationVC.details = checkin["details"] as String
-
-        }
-        
     }
     
     func walkCheckin1done(data: NSDictionary) {
@@ -156,6 +144,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         walkCheckins[1]["done"] = true
         
         UIView.animateWithDuration(0.5, animations: { () -> Void in
+            println("here")
             self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
         })
     }
@@ -190,32 +179,17 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         switch offset {
         case 0:
             pageControl.currentPage = 0
-            /*delay(3, closure: { () -> () in
-                self.card1Image.image = UIImage(named: "5 - Pickup 3-1")
-                self.card1Image.frame.size = UIImage(named: "5 - Pickup 3-1").size
-            })*/
+
         case scrollView.frame.size.width:
             pageControl.currentPage = 1
-            /*delay(3, closure: { () -> () in
-                self.card2Image.image = UIImage(named: "5 - Pickup 4-1")
-                self.card2Image.frame.size = UIImage(named: "5 - Pickup 4-1").size
-            })*/
+
         case scrollView.frame.size.width * 2:
             pageControl.currentPage = 2
             
             if walkCheckins[2]["done"] == 1 {
-rateButton.hidden = false
-}
-            
-            /*delay(3, closure: { () -> () in
-                self.card3Image.image = UIImage(named: "5 - Pickup 6-1")
-                self.card3Image.frame.size = UIImage(named: "5 - Pickup 6-1").size
-                UIView.animateWithDuration(0.4, delay: 1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    self.rateButton.alpha = 1
-                    }, completion: { (finished:Bool) -> Void in
-                    // here
-                })
-            })*/
+                rateButton.hidden = false
+            }
+
         default:
             pageControl.currentPage = pageControl.currentPage
         }
@@ -230,4 +204,102 @@ rateButton.hidden = false
             ),
             dispatch_get_main_queue(), closure)
     }
-   }
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        if segue.identifier == "PhotoDetailSegue" {
+            var destinationVC = segue.destinationViewController as PhotoDetailViewController
+            destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+            destinationVC.transitioningDelegate = self
+            
+            var checkin = walkCheckins[clickedIndex]
+
+            destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
+            switch clickedIndex {
+                case 0:
+                    println(card1Image.frame)
+                    destinationVC.walkImage.image = card1Image.image!
+                    cardImageToPass.image = card1Image.image!
+                    
+                    var window = UIApplication.sharedApplication().keyWindow!
+                    var frame = window.convertRect(card1Image.frame, fromView: card1Image.superview)
+                    cardImageToPass.frame = frame
+                case 1:
+                    destinationVC.walkImage.image = card2Image.image!
+                    cardImageToPass.image = card2Image.image!
+                
+                    var window = UIApplication.sharedApplication().keyWindow!
+                    var frame = window.convertRect(card2Image.frame, fromView: card2Image.superview)
+                    cardImageToPass.frame = frame
+                case 2:
+                    destinationVC.walkImage.image = card3Image.image!
+                    cardImageToPass.image = card3Image.image!
+                
+                    var window = UIApplication.sharedApplication().keyWindow!
+                    var frame = window.convertRect(card3Image.frame, fromView: card3Image.superview)
+                    cardImageToPass.frame = frame
+                default:
+                    destinationVC.walkImage.image = card1Image.image!
+                    cardImageToPass.image = card1Image.image!
+                    cardImageToPass.frame = card1Image.frame
+            }
+            destinationVC.details = checkin["details"] as String
+        }
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        isPresenting = true
+        return self
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        isPresenting = false
+        return self
+    }
+    
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+        // The value here should be the duration of the animations scheduled in the animationTransition method
+        return 0.3
+    }
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        println("animating transition")
+        var containerView = transitionContext.containerView()
+        var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        var window = UIApplication.sharedApplication().keyWindow!
+        var newImageView: UIImageView = UIImageView(frame: cardImageToPass.frame)
+        
+        newImageView.image = cardImageToPass.image
+        
+        var finalFrame = CGRect(x: 0, y: 0, width: 320, height: 320)
+    
+        newImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        if (isPresenting) {
+            window.addSubview(newImageView)
+            containerView.addSubview(toViewController.view)
+            toViewController.view.alpha = 0
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                newImageView.frame = finalFrame
+                toViewController.view.alpha = 1
+                }) { (finished: Bool) -> Void in
+                    newImageView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+            }
+        } else {
+            newImageView.frame = finalFrame
+            window.addSubview(newImageView)
+            fromViewController.view.alpha = 0
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                newImageView.frame = self.cardImageToPass.frame
+                newImageView.contentMode = UIViewContentMode.ScaleAspectFit
+                
+                }) { (finished: Bool) -> Void in
+                    newImageView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+                    fromViewController.view.removeFromSuperview()
+            }
+        }
+    }
+}
