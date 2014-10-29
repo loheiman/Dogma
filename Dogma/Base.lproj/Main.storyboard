@@ -630,37 +630,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding a Walker for Spike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TlM-nZ-BY3">
-                                <rect key="frame" x="42" y="238" width="237" height="161"/>
+                                <rect key="frame" x="42" y="280" width="237" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="32"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-large" id="fqu-yR-t6f">
-                                <rect key="frame" x="127" y="179" width="67" height="51"/>
+                                <rect key="frame" x="127" y="254" width="67" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <connections>
-                        <outlet property="dogImage" destination="fqu-yR-t6f" id="WTA-59-YzB"/>
-                        <outlet property="findingWalkerCopy" destination="TlM-nZ-BY3" id="gFM-JU-HHQ"/>
-                        <segue destination="nAw-lR-r9y" kind="modal" identifier="foundWalkerSegue" modalTransitionStyle="crossDissolve" id="7Oe-nM-cEq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="97b-Eb-5GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="239" y="-218"/>
-        </scene>
-        <!--Found Walker View Controller-->
-        <scene sceneID="Vrc-Vk-ZrG">
-            <objects>
-                <viewController id="nAw-lR-r9y" customClass="FoundWalkerViewController" customModule="Dogma" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3gC-fW-FQ4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dND-vy-PGA">
                                 <rect key="frame" x="15" y="499" width="290" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -674,13 +653,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walker-profile-image" id="uy1-kT-ENB">
-                                <rect key="frame" x="98" y="113" width="125" height="125"/>
+                                <rect key="frame" x="98" y="147" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will walk Spike!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Db-OA-lr8">
-                                <rect key="frame" x="44" y="268" width="232" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will walk Spike!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vIH-8K-4dB">
+                                <rect key="frame" x="42" y="241" width="237" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -688,12 +667,17 @@
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="walkerDetailsCopy" destination="2Db-OA-lr8" id="Lff-C6-gWH"/>
+                        <outlet property="cancelButton" destination="fha-n9-E3B" id="Y2A-fT-juU"/>
+                        <outlet property="dogImage" destination="fqu-yR-t6f" id="WTA-59-YzB"/>
+                        <outlet property="findingWalkerCopy" destination="TlM-nZ-BY3" id="gFM-JU-HHQ"/>
+                        <outlet property="foundWalkerCopy" destination="vIH-8K-4dB" id="fp0-Jj-6tK"/>
+                        <outlet property="viewWalkButton" destination="dND-vy-PGA" id="fcQ-jt-tPG"/>
+                        <outlet property="walkerImageView" destination="uy1-kT-ENB" id="oNa-S7-qvD"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dwt-PE-gBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="97b-Eb-5GV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-218"/>
+            <point key="canvasLocation" x="239" y="-218"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="0JD-t9-Szz">
@@ -1019,7 +1003,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DRs-Zy-92O"/>
+        <segue reference="pje-RS-esi"/>
         <segue reference="yAz-je-A2q"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
