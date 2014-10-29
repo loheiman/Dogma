@@ -29,7 +29,6 @@
 		27BE480519FD97EB003A1D5C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BE480419FD97EB003A1D5C /* MenuViewController.swift */; };
 		27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */; };
 		27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */; };
-		27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */; };
 		2B2A6DDB19F9F64A00333490 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */; };
 		2BEB5E8B19FD88FC00798BFE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEB5E8919FD88FC00798BFE /* Bolts.framework */; };
 		2BEB5E8C19FD88FC00798BFE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEB5E8A19FD88FC00798BFE /* Parse.framework */; };
@@ -82,7 +81,6 @@
 		27BE480419FD97EB003A1D5C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
 		27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchTableViewCell.swift; sourceTree = "<group>"; };
-		27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundWalkerViewController.swift; sourceTree = "<group>"; };
 		2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2B2A6DDC19F9F6D600333490 /* Dogma-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dogma-Bridging-Header.h"; sourceTree = "<group>"; };
 		2BEB5E8919FD88FC00798BFE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
 				27BE480419FD97EB003A1D5C /* MenuViewController.swift */,
 				27118C2A19F60CF100110991 /* RatingViewController.swift */,
-				27F280F119F4858800F738E7 /* FoundWalkerViewController.swift */,
 				27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */,
 				27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */,
 				275DD1C319E4F23400E94673 /* CreateWalkSearchViewController.swift */,
@@ -375,7 +372,6 @@
 				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
-				27F280F219F4858800F738E7 /* FoundWalkerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

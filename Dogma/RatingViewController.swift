@@ -79,7 +79,7 @@ class RatingViewController: UIViewController {
             stars[index - 1].setImage(UIImage(named: "icon-star-filled"), forState: UIControlState.Normal)
         }
         
-        submitButton.enabled = true
+        activateButton(submitButton)
 
     }
         
@@ -93,5 +93,19 @@ class RatingViewController: UIViewController {
         
         return fullPath
     }
+    
+    func activateButton (sender: UIButton) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            sender.transform = CGAffineTransformMakeScale(1.05, 1.05)
+            }) { (Finished: Bool) -> Void in
+                sender.enabled = true
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                    }) { (Finished: Bool) -> Void in
+                        //
+                }
+        }
+    }
+    
 
 }

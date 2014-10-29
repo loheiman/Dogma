@@ -69,6 +69,7 @@ class CreateWalkSearchViewController: UIViewController {
                     
                     self.findingWalkerCopy.layer.opacity = 1
                     self.viewWalkButton.hidden = false
+                    self.activateButton(self.viewWalkButton)
             })
         })
     }
@@ -112,15 +113,18 @@ class CreateWalkSearchViewController: UIViewController {
         destinationVC.walkData = walkData
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func activateButton (sender: UIButton) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            sender.transform = CGAffineTransformMakeScale(1.05, 1.05)
+            }) { (Finished: Bool) -> Void in
+                sender.enabled = true
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                    }) { (Finished: Bool) -> Void in
+                        //
+                }
+        }
     }
-    */
 
+    
 }

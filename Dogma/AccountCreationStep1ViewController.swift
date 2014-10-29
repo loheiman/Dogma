@@ -209,8 +209,8 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     @IBAction func onZipChanged(sender: UITextField) {
         if countElements(zipField.text) == 5 {
-             nextButton.enabled = true
             view.endEditing(true)
+            activateButton(nextButton)
         }
     }
     
@@ -271,7 +271,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         //self.savedImage()
         dogImageButton.setImage(imageToSave, forState: UIControlState.Normal)
         dogImageButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
-        finishButton.enabled = true
+        activateButton(finishButton)
         
         // Save dog image to NSuserdefaults
         let imageData = UIImageJPEGRepresentation(imageToSave, 1)
@@ -326,6 +326,19 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         let fullPath = path.stringByAppendingPathComponent(name)
         
         return fullPath
+    }
+    
+    func activateButton (sender: UIButton) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            sender.transform = CGAffineTransformMakeScale(1.05, 1.05)
+            }) { (Finished: Bool) -> Void in
+                sender.enabled = true
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                    }) { (Finished: Bool) -> Void in
+                        //
+                }
+        }
     }
     
 }

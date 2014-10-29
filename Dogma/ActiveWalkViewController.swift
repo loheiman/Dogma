@@ -209,6 +209,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             
             if walkCheckins[2]["done"] == 1 {
                 rateButton.hidden = false
+                activateButton(rateButton)
                 callButton.hidden = true
                 
 }
@@ -239,6 +240,20 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func onCallButton(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(NSURL(string: "tel://4155356806")!)
+    }
+    
+    
+    func activateButton (sender: UIButton) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            sender.transform = CGAffineTransformMakeScale(1.05, 1.05)
+            }) { (Finished: Bool) -> Void in
+                sender.enabled = true
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                    sender.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                    }) { (Finished: Bool) -> Void in
+                        //
+                }
+        }
     }
     
    }
