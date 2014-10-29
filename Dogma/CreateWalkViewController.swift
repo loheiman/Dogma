@@ -140,7 +140,14 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
             
             walkData["address"] = addressLabel.text
             walkData["time"] = timeLabel.text
-            walkData["duration"] = lengthLabel.text
+            if lengthLabel.text == "30 minute walk" {
+                walkData["duration"] = "30 minutes"
+            } else if lengthLabel.text == "1 hour walk" {
+                walkData["duration"] = "1 hour"
+            } else if lengthLabel.text == "1.5 hour walk" {
+                walkData["duration"] = "1.5 hours"
+            }
+            
            
             destinationVC.walkData = walkData
         }

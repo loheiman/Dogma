@@ -12,6 +12,7 @@ import MapKit
 class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
 
+    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var card1Image: UIImageView!
@@ -29,7 +30,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     var clickedIndex = 0
     var isPresenting: Bool = true
     var cardImageToPass: UIImageView = UIImageView()
-    
+    var walkDuration: String!
+
     var walkData: NSDictionary! //contains the Create Walk Data
 
     var walkCheckins = [
@@ -62,6 +64,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        walkDuration = walkData["duration"] as String
+        
         card1Image.hidden = true
         card2Image.hidden = true
         card3Image.hidden = true
@@ -75,7 +79,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
        
         walkCheckins[1]["details"] = "Jim will take a photo of \(dogName) during the walk"
         
-        walkCheckins[2]["details"] = "Jim will drop \(dogName) off at around \(walkTimeEnd)"
+        walkCheckins[2]["details"] = "Jim will drop \(dogName) off \(walkDuration) later"
         
         rateButton.hidden = true
         
@@ -188,8 +192,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             
             if walkCheckins[2]["done"] == 1 {
                 rateButton.hidden = false
+                callButton.hidden = true
             }
-
         default:
             pageControl.currentPage = pageControl.currentPage
         }
@@ -302,4 +306,10 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             }
         }
     }
+
+    @IBAction func onCallButton(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://4155356806")!)
+    }
 }
+
+
