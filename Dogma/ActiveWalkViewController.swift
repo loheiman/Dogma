@@ -12,6 +12,7 @@ import MapKit
 class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
 
 
+    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var card1Image: UIImageView!
@@ -207,7 +208,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
             pageControl.currentPage = 2
             
             if walkCheckins[2]["done"] == 1 {
-rateButton.hidden = false
+                rateButton.hidden = false
+                callButton.hidden = true
+                
 }
             
             /*delay(3, closure: { () -> () in
@@ -233,4 +236,9 @@ rateButton.hidden = false
             ),
             dispatch_get_main_queue(), closure)
     }
+    
+    @IBAction func onCallButton(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://4155356806")!)
+    }
+    
    }

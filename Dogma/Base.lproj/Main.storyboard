@@ -412,12 +412,25 @@
                                     <segue destination="C8I-x3-lNe" kind="modal" id="yAz-je-A2q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Tb-9z-6Oy">
+                                <rect key="frame" x="14" y="497" width="290" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <state key="normal" title="Contact Jim" backgroundImage="button-blank-secondary">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCallButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="09d-Ud-lBs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784313725488" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="858" height="568"/>
                     <connections>
+                        <outlet property="callButton" destination="0Tb-9z-6Oy" id="73Y-7k-nMo"/>
                         <outlet property="card1Image" destination="tL1-Mr-uCh" id="IIl-Cp-ifl"/>
                         <outlet property="card1Label" destination="XtF-uR-8Sa" id="MO3-Xg-t5N"/>
                         <outlet property="card2Image" destination="r8Z-qF-h1F" id="lLb-Ko-aqu"/>
@@ -572,10 +585,6 @@
                                     <action selector="onStarTap:" destination="GWq-iJ-Z8F" eventType="touchUpInside" id="ZcN-8d-Zgs"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small" id="eFb-MW-nMp">
-                                <rect key="frame" x="143" y="30" width="34" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many woofs was that walk?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ph-bs-WNZ">
                                 <rect key="frame" x="6" y="230" width="308" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -666,10 +675,6 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walker-profile-image" id="uy1-kT-ENB">
                                 <rect key="frame" x="98" y="113" width="125" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small" id="Km2-Vn-7P8">
-                                <rect key="frame" x="143" y="30" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will walk Spike!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Db-OA-lr8">
@@ -998,6 +1003,7 @@
     </scenes>
     <resources>
         <image name="button-blank" width="290" height="52"/>
+        <image name="button-blank-secondary" width="290" height="50"/>
         <image name="icon-star" width="34" height="34"/>
         <image name="logo-large" width="67" height="51"/>
         <image name="logo-small" width="34" height="26"/>
@@ -1013,8 +1019,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pje-RS-esi"/>
-        <segue reference="M8Q-Dy-WBX"/>
+        <segue reference="DRs-Zy-92O"/>
+        <segue reference="yAz-je-A2q"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>
