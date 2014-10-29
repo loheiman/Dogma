@@ -96,7 +96,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     @IBAction func nextButton(sender: AnyObject) {
         
         if scrollView.contentOffset.x < scrollView.frame.size.width * 2 {
-            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 self.scrollView.contentOffset.x += 320
                 }) { (finished:Bool) -> Void in
                     //

@@ -62,6 +62,14 @@ class RatingViewController: UIViewController {
     
     @IBAction func onStarTap(sender: UIButton) {
         
+       // self.stars[sender.tag - 1].transform = CGAffineTransformMakeScale(0.7, 0.7)
+       /*
+        UIView.animateWithDuration(2, delay: 0.0, options: UIViewAnimationOptions.Autoreverse, animations: { () -> Void in
+            self.stars[sender.tag - 1].transform = CGAffineTransformMakeScale(1.2, 1.2)
+            }) { (Finished: Bool) -> Void in
+            println()
+        }*/
+        
         for star in stars {
             star.setImage(UIImage(named: "icon-star"), forState: UIControlState.Normal)
         }

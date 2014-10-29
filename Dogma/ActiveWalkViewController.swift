@@ -27,6 +27,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
     var clickedIndex = 0
+    var walkDuration: String!
 
     var walkData: NSDictionary! //contains the Create Walk Data
 
@@ -60,6 +61,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        walkDuration = walkData["duration"] as String
+        
         card1Image.hidden = true
         card2Image.hidden = true
         card3Image.hidden = true
@@ -73,7 +76,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
        
         walkCheckins[1]["details"] = "Jim will take a photo of \(dogName) during the walk"
         
-        walkCheckins[2]["details"] = "Jim will drop \(dogName) off at around \(walkTimeEnd)"
+        walkCheckins[2]["details"] = "Jim will drop \(dogName) off \(walkDuration) later"
         
         rateButton.hidden = true
         
