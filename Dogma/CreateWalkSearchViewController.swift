@@ -64,7 +64,7 @@ class CreateWalkSearchViewController: UIViewController {
             })
             
             UIView.animateWithDuration(0.5, delay: 0.8, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.4, options: nil, animations: { () -> Void in
-                self.walkerImageView.frame.origin.y = 150
+                self.walkerImageView.frame.origin.y = 180
                 }, completion: { (Finished: Bool) -> Void in
                     
                     self.findingWalkerCopy.layer.opacity = 1

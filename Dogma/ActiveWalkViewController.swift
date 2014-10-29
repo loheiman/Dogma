@@ -64,6 +64,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         walkDuration = walkData["duration"] as String
         
         card1Image.hidden = true
@@ -90,6 +91,12 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         card1Label.text = walkCheckins[0]["details"] as? String
         card2Label.text = walkCheckins[1]["details"] as? String
         card3Label.text = walkCheckins[2]["details"] as? String
+        
+        
+        // Loren Testing purposes
+        
+       // card1Image.hidden = false
+       // card1Image.image = UIImage(named: "penny-1")
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin:", name: "ShowImage", object: nil)
 
