@@ -50,7 +50,7 @@ class AddressSearchViewController: UIViewController,UITableViewDelegate, UITable
         var contents = searchField.text
         var newContents = contents.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
-        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + newContents! + "&types=geocode&language=fr&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + newContents! + "&types=geocode&language=en&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
         var request = NSURLRequest(URL: url!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
@@ -82,14 +82,9 @@ class AddressSearchViewController: UIViewController,UITableViewDelegate, UITable
         destinationVC.walkData["pickupPlaceID"] = pickupPlaceID!
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onCancelButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
-    */
+    
 
 }

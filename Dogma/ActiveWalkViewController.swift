@@ -60,6 +60,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        card1Image.hidden = true
+        card2Image.hidden = true
+        card3Image.hidden = true
         
         dogName = defaults.stringForKey("dogName")
         
@@ -129,7 +132,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
         var url = NSURL(string: data.valueForKey("imageURL") as String)
         var imageData: NSData = NSData(contentsOfURL: url!)!
-
+        card1Image.hidden = false
         card1Image.image = UIImage(data: imageData)
         walkCheckins[0]["details"] = "Jim picked up \(dogName) at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
@@ -146,7 +149,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
         var url = NSURL(string: data.valueForKey("imageURL") as String)
         var imageData: NSData = NSData(contentsOfURL: url!)!
-        
+        card2Image.hidden = false
         card2Image.image = UIImage(data: imageData)
         walkCheckins[1]["details"]! = "Jim took a photo of \(dogName) at \(checkin2Location)"
         card2Label.text = walkCheckins[1]["details"] as? String
@@ -162,7 +165,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate {
         
         var url = NSURL(string: data.valueForKey("imageURL") as String)
         var imageData: NSData = NSData(contentsOfURL: url!)!
-        
+        card3Image.hidden = false
         card3Image.image = UIImage(data: imageData)
         walkCheckins[2]["details"]  = "Jim dropped \(dogName) off at \(walkTimeEnd)"
         card3Label.text = walkCheckins[2]["details"] as? String
