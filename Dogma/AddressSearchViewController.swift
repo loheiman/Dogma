@@ -50,7 +50,7 @@ class AddressSearchViewController: UIViewController,UITableViewDelegate, UITable
         var contents = searchField.text
         var newContents = contents.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
-        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + newContents! + "&types=geocode&language=en&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+        var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + newContents! + "&location=37.76999,-122.44696&language=en&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
         var request = NSURLRequest(URL: url!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
