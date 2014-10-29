@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountCreationStep1ViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate {
+class AccountCreationStep1ViewController: UIViewController, UIImagePickerControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate {
 
     var cameraUI:UIImagePickerController = UIImagePickerController()
     var imageCaptured: UIImageView!
@@ -37,14 +37,13 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
   
 
     @IBOutlet weak var dogNameField: UITextField!
-    @IBOutlet weak var creditCardNumberField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.dogNameField.delegate = self
         
         var testObject = PFObject(className:"TestObject")
         testObject["foo"] = "bar"
@@ -74,7 +73,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         scrollView.contentSize = CGSize(width: 640, height: 506)
         
         nextButton.enabled = false
-    //    finishButton.enabled = false
+        finishButton.enabled = false
         
         
         if defaults.boolForKey("phoneNumberCreditCardEntered") == true {
@@ -339,6 +338,11 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
                         //
                 }
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true);
+        return false;
     }
     
 }

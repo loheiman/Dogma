@@ -78,7 +78,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         
         walkCheckins[0]["details"] = "Jim will pickup \(dogName) at \(walkTimeStart)"
        
-        walkCheckins[1]["details"] = "Jim will take a photo of \(dogName) during the walk"
+        walkCheckins[1]["details"] = "Jim will take another photo of \(dogName) mid-walk"
         
         walkCheckins[2]["details"] = "Jim will drop \(dogName) off \(walkDuration) later"
         
