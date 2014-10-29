@@ -58,6 +58,10 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         addressLabel.text = walkData["address"]
+        if addressLabel.text != "Pickup address" {
+            addressLabel.font = UIFont(name: addressLabel.font.fontName, size: 16)
+        }
+        
         checkFields()
     }
     
