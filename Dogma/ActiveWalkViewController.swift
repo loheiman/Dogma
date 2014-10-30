@@ -145,6 +145,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     
     func walkCheckin2done(data: NSDictionary) {
         walkCheckins[1]["image"] = data.valueForKey("imageURL") as String
+        walkCheckins[1]["pickupPlaceID"] = data.valueForKey("placeID") as String
+        
+        println(data.valueForKey("placeID") as String)
         
         var url = NSURL(string: data.valueForKey("imageURL") as String)
         var imageData: NSData = NSData(contentsOfURL: url!)!
@@ -226,6 +229,10 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             var checkin = walkCheckins[clickedIndex]
 
             destinationVC.pickupPlaceID = walkData["pickupPlaceID"]! as String
+            
+            if clickedIndex == 1 {
+                println(walkCheckins[1]["pickupPlaceID"]!)
+            }
             switch clickedIndex {
                 case 0:
                     println(card1Image.frame)
@@ -238,7 +245,9 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
                 case 1:
                     destinationVC.walkImage.image = card2Image.image!
                     cardImageToPass.image = card2Image.image!
-                
+                    
+                    destinationVC.pickupPlaceID = walkCheckins[1]["pickupPlaceID"]! as String
+                    
                     var window = UIApplication.sharedApplication().keyWindow!
                     var frame = window.convertRect(card2Image.frame, fromView: card2Image.superview)
                     cardImageToPass.frame = frame

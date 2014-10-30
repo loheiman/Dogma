@@ -27,6 +27,7 @@ class PhotoDetailViewController: UIViewController  {
         detailsLabel.text = details
         imageView.image = walkImage.image
 
+        println(pickupPlaceID)
         
         if pickupPlaceID != nil {
             var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
@@ -42,7 +43,7 @@ class PhotoDetailViewController: UIViewController  {
                 var lng = locations["lng"] as CLLocationDegrees
                 
                 var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                let span = MKCoordinateSpanMake(0.05, 0.05)
+                let span = MKCoordinateSpanMake(0.03, 0.03)
                 let region = MKCoordinateRegion(center: location, span: span)
                 
                 self.mapView.setRegion(region, animated: true)
