@@ -30,6 +30,8 @@
 		27C6707319F474A30070F2E4 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707219F474A30070F2E4 /* AddressSearchViewController.swift */; };
 		27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */; };
 		2B2A6DDB19F9F64A00333490 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */; };
+		2BB2DAEC1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2DAEB1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift */; };
+		2BB2DAEE1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2DAED1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift */; };
 		2BE8D7531A0B32A10056FC9C /* WalkerReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE8D7521A0B32A10056FC9C /* WalkerReadyViewController.swift */; };
 		2BEB5E8B19FD88FC00798BFE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEB5E8919FD88FC00798BFE /* Bolts.framework */; };
 		2BEB5E8C19FD88FC00798BFE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEB5E8A19FD88FC00798BFE /* Parse.framework */; };
@@ -84,6 +86,8 @@
 		27C6707419F474F70070F2E4 /* AddressSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchTableViewCell.swift; sourceTree = "<group>"; };
 		2B2A6DDA19F9F64A00333490 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2B2A6DDC19F9F6D600333490 /* Dogma-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dogma-Bridging-Header.h"; sourceTree = "<group>"; };
+		2BB2DAEB1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkRequestInboundViewController.swift; sourceTree = "<group>"; };
+		2BB2DAED1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerActiveWalkViewController.swift; sourceTree = "<group>"; };
 		2BE8D7521A0B32A10056FC9C /* WalkerReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerReadyViewController.swift; sourceTree = "<group>"; };
 		2BEB5E8919FD88FC00798BFE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2BEB5E8A19FD88FC00798BFE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				27050A2A19E4D2FB0060AFBB /* ViewController.swift */,
 				2781265E19F0AFE90057EBEF /* PhotoDetailViewController.swift */,
 				27050A2C19E4D2FB0060AFBB /* Main.storyboard */,
+				2BB2DAED1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift */,
+				2BB2DAEB1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift */,
 				2BE8D7521A0B32A10056FC9C /* WalkerReadyViewController.swift */,
 				27BE480419FD97EB003A1D5C /* MenuViewController.swift */,
 				27118C2A19F60CF100110991 /* RatingViewController.swift */,
@@ -372,8 +378,10 @@
 				27050A2919E4D2FB0060AFBB /* AppDelegate.swift in Sources */,
 				27BE480519FD97EB003A1D5C /* MenuViewController.swift in Sources */,
 				275DD1C919E4FB6800E94673 /* AccountCreationStep1ViewController.swift in Sources */,
+				2BB2DAEC1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift in Sources */,
 				2BE8D7531A0B32A10056FC9C /* WalkerReadyViewController.swift in Sources */,
 				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
+				2BB2DAEE1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,
 			);
