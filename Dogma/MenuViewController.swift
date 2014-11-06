@@ -10,12 +10,20 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var walkerButton: UIButton!
     var defaults = NSUserDefaults.standardUserDefaults()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if defaults.boolForKey("isWalker") == true {
+          //  walkerButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,4 +48,7 @@ class MenuViewController: UIViewController {
         
     }
     
+    @IBAction func onWalkerButtonTap(sender: AnyObject) {
+        defaults.setBool(true, forKey: "isWalker")
+    }
 }

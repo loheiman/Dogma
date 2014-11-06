@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*
         var app = UIApplication.sharedApplication()
         var notification: UILocalNotification = UILocalNotification()
-        var alarmDate = NSDate().dateByAddingTimeInterval(5.0)
+        var alarmDate = NSDate().dateByAddingTimeInterval(0.5)
         notification.alertBody = "Jim Picked up Spike!"
         notification.fireDate = alarmDate
         app.scheduleLocalNotification(notification)
