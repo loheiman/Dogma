@@ -26,10 +26,11 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
         logoImage.frame.origin.y = 223
         welcomeLabel.alpha = 0
         welcomeLabel.frame.origin.y -= 100
-
+/*
         var testObject = PFObject(className:"TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackgroundWithTarget(self, selector: nil)
+*/
     }
 
     override func viewDidAppear(animated: Bool) {

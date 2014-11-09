@@ -7,24 +7,26 @@
 //
 
 import UIKit
-import HockeySDK
+//import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    
+    
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        var currentInstallation: PFInstallation = PFInstallation.currentInstallation()
+      /*  var currentInstallation: PFInstallation = PFInstallation.currentInstallation()
         
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.saveInBackground()
         
-        println("did register with remote notificaiotns")
+        println("did register with remote notificaiotns")*/
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: NSDictionary!) {
-        var notification: NSDictionary = userInfo.objectForKey("walkMessage") as NSDictionary
+       /* var notification: NSDictionary = userInfo.objectForKey("walkMessage") as NSDictionary
         println(notification)
 
         NSNotificationCenter.defaultCenter().postNotificationName("ShowImage", object: notification)
@@ -33,18 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
+        */
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.BlackOpaque, animated: true)
         
+        /*
         Parse.setApplicationId("kX8MUMIOmxBYpRgBE1hzd3joaqG0rcoupL3VcIzG", clientKey: "DODt0WE0Ug6UmKpsWIDQLZFenM30ALblWomSumtO")
         
         var notificationType: UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
         var settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationType, categories: nil)
 
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+*/
 
         /*
         var object = PFObject(className: "TestClass")
@@ -67,12 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
         
         */
-        
+        /*
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier("d8ff03c11ca340083ce9ce7dc884d5ec")
         BITHockeyManager.sharedHockeyManager().startManager()
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
+*/
 
         return true
+
     }
     
     

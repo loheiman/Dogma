@@ -44,12 +44,13 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         super.viewDidLoad()
         
         self.dogNameField.delegate = self
+        /*
         
         var testObject = PFObject(className:"TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackground()
         
-        
+        */
 
         phoneNumberField1.text = ""
         phoneNumberField2.text = ""
