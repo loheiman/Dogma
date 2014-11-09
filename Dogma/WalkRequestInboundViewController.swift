@@ -27,7 +27,7 @@ class WalkRequestInboundViewController: UIViewController {
     var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
     var dogDetailsRef = Firebase(url:"https://dogma.firebaseio.com/dogDetails")
     var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
-    
+    var walkerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkerDetails")
     
     override func viewWillAppear(animated: Bool) {
         
@@ -37,6 +37,7 @@ class WalkRequestInboundViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        walkerDetailsRef.setValue(defaults.valueForKey("ownName"), forKey: "walkerName")
         
         walkDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             

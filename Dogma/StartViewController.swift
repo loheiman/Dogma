@@ -71,8 +71,9 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
         println(user.name)
-        ownerDetails["ownerName"] = user.name
-        ownerDetailsRef.setValue(ownerDetails)
+        defaults.setValue(user.name, forKey: "ownName")
+        //self.ownerDetails["ownerName"] = user.name
+       // ownerDetailsRef.setValue(user.name, forKey: "ownerName")
         
     }
 

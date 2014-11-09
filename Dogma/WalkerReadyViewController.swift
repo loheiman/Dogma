@@ -23,13 +23,20 @@ class WalkerReadyViewController: UIViewController {
         super.viewDidLoad()
         dogSpinnerImageView.alpha = 0.5
         // Do any additional setup after loading the view.
-        self.walkStatus == "pending"
+        
         
         firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
             self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
-            if self.walkStatus == "accepted" {
-                println("accepted")
-                self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+            println(self.walkStatus)
+            if self.walkStatus == "requested" {
+                println("equals requeted")
+                
+                 self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+                
+                self.delay(1, closure: { () -> () in
+                    
+                })
+               
             }
             })
         
@@ -86,7 +93,7 @@ class WalkerReadyViewController: UIViewController {
         
         UIView.animateWithDuration(0.35, delay: 0, options: UIViewAnimationOptions.Repeat | UIViewAnimationOptions.Autoreverse, animations: { () -> Void in
            //self.dogSpinnerImageView.transform = CGAffineTransformRotate(self.dogSpinnerImageView.transform, 6 )
-            self.dogSpinnerImageView.transform = CGAffineTransformMakeRotation(-2)
+            self.dogSpinnerImageView.transform = CGAffineTransformMakeRotation(-0.5)
             }) { (Finished: Bool) -> Void in
             println()
         }
@@ -104,6 +111,15 @@ class WalkerReadyViewController: UIViewController {
                         //
                 }
         }
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
 }

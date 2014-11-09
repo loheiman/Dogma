@@ -186,7 +186,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
             
              walkDetailsRef.setValue(walkDetails)
             var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
-            walkStatusRef.setValue("pending")
+            walkStatusRef.setValue("requested")
             
             walkData["time"] = timeLabel.text
            

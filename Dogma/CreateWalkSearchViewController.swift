@@ -64,8 +64,8 @@ class CreateWalkSearchViewController: UIViewController {
         firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
              self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
             
-            if self.walkStatus == "pending" {
-                println("pending")
+            if self.walkStatus == "requested" {
+                println("requested")
             }
             
             if self.walkStatus == "accepted" {

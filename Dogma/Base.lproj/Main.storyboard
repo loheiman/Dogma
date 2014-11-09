@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hVz-Yp-OCM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -130,7 +130,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onWalkerButtonTap:" destination="C8I-x3-lNe" eventType="touchUpInside" id="jhd-St-ExP"/>
-                                    <segue destination="idr-r3-b3x" kind="modal" modalTransitionStyle="flipHorizontal" id="wBg-cL-MOX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,6 +138,7 @@
                     <connections>
                         <outlet property="walkerButton" destination="G66-ZM-eNf" id="LBU-o6-E2H"/>
                         <segue destination="1sz-H1-hk6" kind="modal" identifier="backToStart" id="ueN-vN-YFj"/>
+                        <segue destination="idr-r3-b3x" kind="modal" identifier="toWalkerReadySegue" modalTransitionStyle="flipHorizontal" id="ODk-OQ-RzJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfo-QP-qO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,44 +348,53 @@
                                 <rect key="frame" x="27" y="195" width="833" height="284"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleAspectFit" id="FHW-Fh-LEx">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleAspectFill" id="FHW-Fh-LEx">
                                         <rect key="frame" x="277" y="7" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleAspectFit" id="ulY-LQ-vwt">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleAspectFill" id="ulY-LQ-vwt">
                                         <rect key="frame" x="553" y="7" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="M4Z-e4-RsP">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="M4Z-e4-RsP">
                                         <rect key="frame" x="0.0" y="7" width="260" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQc-RB-yGO">
-                                        <rect key="frame" x="278" y="111" width="258" height="52"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQc-RB-yGO">
+                                        <rect key="frame" x="318" y="111" width="179" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Pickup Spike" backgroundImage="button-blank">
+                                        <state key="normal" title="Take mid-walk photo" backgroundImage="button-blank">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCheckin2ButtonTap:" destination="QWl-gK-mml" eventType="touchUpInside" id="cO5-tg-2fj"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vn3-7F-uXW">
-                                        <rect key="frame" x="554" y="111" width="258" height="52"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZN6-Bi-hPf">
+                                        <rect key="frame" x="44" y="111" width="173" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Pickup Spike" backgroundImage="button-blank">
+                                        <state key="normal" title="Take pickup Spike" backgroundImage="button-blank">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCheckin1ButtonTap:" destination="QWl-gK-mml" eventType="touchUpInside" id="GYt-VY-Ykz"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZN6-Bi-hPf">
-                                        <rect key="frame" x="2" y="111" width="254" height="52"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vn3-7F-uXW">
+                                        <rect key="frame" x="594" y="111" width="178" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Pickup Spike" backgroundImage="button-blank">
+                                        <state key="normal" title="Take dropoff photo" backgroundImage="button-blank">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCheckin3ButtonTap:" destination="QWl-gK-mml" eventType="touchUpInside" id="zPo-Fp-HeZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -417,30 +426,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F7c-Qt-dRu">
-                                <rect key="frame" x="97" y="112" width="83" height="20"/>
+                                <rect key="frame" x="97" y="102" width="83" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nvh-m4-qrR">
-                                <rect key="frame" x="27" y="150" width="292" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GGT-RU-ByP">
-                                <rect key="frame" x="187" y="112" width="29" height="20"/>
+                                <rect key="frame" x="187" y="102" width="29" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5 hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6v1-M8-gfP">
-                                <rect key="frame" x="216" y="112" width="77" height="20"/>
+                                <rect key="frame" x="216" y="102" width="77" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4845 California St" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nvh-m4-qrR">
+                                <rect key="frame" x="99" y="121" width="194" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -451,6 +460,12 @@
                     <size key="freeformSize" width="858" height="568"/>
                     <connections>
                         <outlet property="callOwnerButton" destination="DRa-fP-9qY" id="htJ-1M-Rhk"/>
+                        <outlet property="checkin1Button" destination="ZN6-Bi-hPf" id="nnk-8P-Nah"/>
+                        <outlet property="checkin1ImageView" destination="M4Z-e4-RsP" id="NBu-Av-tJ5"/>
+                        <outlet property="checkin2Button" destination="mQc-RB-yGO" id="bgn-5W-VcI"/>
+                        <outlet property="checkin2ImageView" destination="FHW-Fh-LEx" id="bOy-X3-g3o"/>
+                        <outlet property="checkin3Button" destination="Vn3-7F-uXW" id="yAO-6D-Bui"/>
+                        <outlet property="checkin3ImageView" destination="ulY-LQ-vwt" id="JKi-tG-Sm8"/>
                         <outlet property="dogImage" destination="Ktk-Bd-dtF" id="mzu-ba-ZRS"/>
                         <outlet property="dogNameField" destination="7NJ-oL-Y4p" id="lbm-4V-VyN"/>
                         <outlet property="scrollView" destination="RAk-W1-x33" id="PTF-IE-2rp"/>
@@ -1335,8 +1350,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="M8Q-Dy-WBX"/>
-        <segue reference="e0N-Bw-rvv"/>
+        <segue reference="EcG-2k-y92"/>
+        <segue reference="pje-RS-esi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>

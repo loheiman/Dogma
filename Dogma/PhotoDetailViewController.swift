@@ -18,6 +18,8 @@ class PhotoDetailViewController: UIViewController  {
     var walkImage: UIImageView = UIImageView()
     var details: String!
     var pickupPlaceID = "Eiw1dGggU3RyZWV0LCBTYW4gRnJhbmNpc2NvLCBDQSwgVW5pdGVkIFN0YXRlcw"
+    var lat: Double!
+    var lng: Double!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,21 @@ class PhotoDetailViewController: UIViewController  {
         detailsLabel.text = details
         imageView.image = walkImage.image
 
-        println(pickupPlaceID)
+        var location = CLLocationCoordinate2D(latitude: self.lat, longitude: self.lng)
+        let span = MKCoordinateSpanMake(0.03, 0.03)
+        let region = MKCoordinateRegion(center: location, span: span)
         
-     //   if pickupPlaceID != nil {
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.scrollEnabled = false
+        self.mapView.zoomEnabled = false
+        
+        let annotation = MKPointAnnotation()
+        annotation.setCoordinate(location)
+        
+        self.mapView.addAnnotation(annotation)
+        
+     
+        /*
             var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
             var request = NSURLRequest(URL: url!)
             
@@ -39,10 +53,15 @@ class PhotoDetailViewController: UIViewController  {
                 var geometry = result["geometry"] as NSDictionary
                 var locations = geometry["location"] as NSDictionary
                 
-                var lat = locations["lat"] as CLLocationDegrees
-                var lng = locations["lng"] as CLLocationDegrees
                 
-                var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+//                var lat = locations["lat"] as CLLocationDegrees
+//                var lng = locations["lng"] as CLLocationDegrees
+                
+                self.lat = locations["lat"] as CLLocationDegrees
+                self.lng = locations["lng"] as CLLocationDegrees
+                
+                
+                var location = CLLocationCoordinate2D(latitude: self.lat, longitude: self.lng)
                 let span = MKCoordinateSpanMake(0.03, 0.03)
                 let region = MKCoordinateRegion(center: location, span: span)
                 
@@ -55,7 +74,13 @@ class PhotoDetailViewController: UIViewController  {
                 
                 self.mapView.addAnnotation(annotation)
             }
-       // }
+        */
+        
+        
+        
+        
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
