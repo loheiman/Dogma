@@ -17,7 +17,7 @@ class PhotoDetailViewController: UIViewController  {
 
     var walkImage: UIImageView = UIImageView()
     var details: String!
-    var pickupPlaceID: String!
+    var pickupPlaceID = "Eiw1dGggU3RyZWV0LCBTYW4gRnJhbmNpc2NvLCBDQSwgVW5pdGVkIFN0YXRlcw"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class PhotoDetailViewController: UIViewController  {
 
         println(pickupPlaceID)
         
-        if pickupPlaceID != nil {
+     //   if pickupPlaceID != nil {
             var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
             var request = NSURLRequest(URL: url!)
             
@@ -55,7 +55,7 @@ class PhotoDetailViewController: UIViewController  {
                 
                 self.mapView.addAnnotation(annotation)
             }
-        }
+       // }
     }
 
     override func didReceiveMemoryWarning() {

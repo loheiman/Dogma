@@ -34,6 +34,12 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     var walkDuration: String!
 
     var walkData: NSDictionary! //contains the Create Walk Data
+    
+    
+    var checkinsRef = Firebase(url:"https://dogma.firebaseio.com/checkins")
+    var checkin1Ref = Firebase(url:"https://dogma.firebaseio.com/checkins/checkin1")
+    var checkin2Ref = Firebase(url:"https://dogma.firebaseio.com/checkins/checkin2")
+    var checkin3Ref = Firebase(url:"https://dogma.firebaseio.com/checkins/checkin3")
 
     var walkCheckins = [
         [
@@ -61,9 +67,53 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     ]
     
     
+    var checkin1 = [
+        "status" : "incomplete",
+        "location" : "location",
+        "image": "imageURL"
+    ]
+    
+    var checkin2 = [
+        "status" : "incomplete",
+        "location" : "location",
+        "image": "imageURL"
+    ]
+    
+    var checkin3 = [
+        "status" : "incomplete",
+        "location" : "location",
+        "image": "imageURL"
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rateButton.setTitle("Rate \(walkerName)", forState: UIControlState.Normal)
+        
+        checkinsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+           
+            self.checkin1 = snapshot.value.valueForKeyPath("checkin1") as Dictionary
+            self.checkin2 = snapshot.value.valueForKeyPath("checkin2") as Dictionary
+            self.checkin3 = snapshot.value.valueForKeyPath("checkin3") as Dictionary
+            println(self.checkin1)
+            
+            if self.checkin1["status"] == "complete" {
+                self.walkCheckin1done(self.checkin1)
+            }
+            
+            if self.checkin2["status"] == "complete" {
+                self.walkCheckin2done(self.checkin2)
+            }
+            
+            if self.checkin3["status"] == "complete" {
+                self.walkCheckin3done(self.checkin3)
+            }
+            
+            
+        })
+
+        
         
         dogName = defaults.stringForKey("dogName")
         walkerName = defaults.stringForKey("walkerName")
@@ -102,13 +152,16 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
        // card1Image.hidden = false
        // card1Image.image = UIImage(named: "penny-1")
     
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin:", name: "ShowImage", object: nil)
+       // NSNotificationCenter.defaultCenter().addObserver(self, selector: "walkCheckin:", name: "ShowImage", object: nil)
 
     }
+    
+    /*
     
     func walkCheckin(notification: NSNotification) {
         println(notification)
 
+        
         var data: NSDictionary = notification.valueForKey("object") as NSDictionary
         
         var walkStep = data.valueForKey("walkStep") as String
@@ -124,20 +177,22 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
                 println("invalid walkStep value")
         }
     }
+*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func walkCheckin1done(data: NSDictionary) {
-        walkCheckins[0]["image"] = data.valueForKey("imageURL") as String
+    func walkCheckin1done(checkin: NSDictionary) {
+        walkCheckins[0]["image"] = checkin.valueForKey("imageURL") as? String
         
-        var url = NSURL(string: data.valueForKey("imageURL") as String)
-        var imageData: NSData = NSData(contentsOfURL: url!)!
+        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
+        println(url)
+        var imageData = NSData(contentsOfURL: url)?
         card1Image.hidden = false
-        card1Image.image = UIImage(data: imageData)
-        walkCheckins[0]["details"] = "Jim picked up \(dogName) at \(walkTimeStart)"
+        card1Image.image = UIImage(data: imageData!)!
+        walkCheckins[0]["details"] = "\(walkerName) picked up \(dogName) at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
         walkCheckins[0]["done"] = true
         
@@ -147,17 +202,16 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
 
     }
     
-    func walkCheckin2done(data: NSDictionary) {
-        walkCheckins[1]["image"] = data.valueForKey("imageURL") as String
-        walkCheckins[1]["pickupPlaceID"] = data.valueForKey("placeID") as String
+    
+    func walkCheckin2done(checkin: NSDictionary) {
+        walkCheckins[1]["image"] = checkin.valueForKey("imageURL") as? String
+        walkCheckins[1]["pickupPlaceID"] = checkin.valueForKey("location") as String
         
-        println(data.valueForKey("placeID") as String)
-        
-        var url = NSURL(string: data.valueForKey("imageURL") as String)
-        var imageData: NSData = NSData(contentsOfURL: url!)!
+        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
+        var imageData = NSData(contentsOfURL: url)?
         card2Image.hidden = false
-        card2Image.image = UIImage(data: imageData)
-        walkCheckins[1]["details"]! = "Jim took a photo of \(dogName) at \(checkin2Location)"
+        card2Image.image = UIImage(data: imageData!)!
+        walkCheckins[1]["details"]! = "\(walkerName) took a photo of \(dogName) at \(checkin2Location)"
         card2Label.text = walkCheckins[1]["details"] as? String
         walkCheckins[1]["done"] = true
         
@@ -167,14 +221,15 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         })
     }
     
-    func walkCheckin3done(data: NSDictionary) {
-        walkCheckins[2]["image"] = data.valueForKey("imageURL") as String
+    
+    func walkCheckin3done(checkin: NSDictionary) {
+        walkCheckins[2]["image"] = checkin.valueForKey("imageURL") as? String
         
-        var url = NSURL(string: data.valueForKey("imageURL") as String)
-        var imageData: NSData = NSData(contentsOfURL: url!)!
+        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
+        var imageData = NSData(contentsOfURL: url)?
         card3Image.hidden = false
-        card3Image.image = UIImage(data: imageData)
-        walkCheckins[2]["details"]  = "Jim dropped \(dogName) off at \(walkTimeEnd)"
+        card3Image.image = UIImage(data: imageData!)!
+        walkCheckins[2]["details"]  = "\(walkerName) dropped \(dogName) off after \(walkDuration)"
         card3Label.text = walkCheckins[2]["details"] as? String
         walkCheckins[2]["done"] = true
         
