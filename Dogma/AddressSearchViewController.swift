@@ -80,6 +80,7 @@ class AddressSearchViewController: UIViewController,UITableViewDelegate, UITable
         var destinationVC = segue.destinationViewController as CreateWalkViewController
         destinationVC.walkData["address"] = address
         destinationVC.walkData["pickupPlaceID"] = pickupPlaceID!
+    
     }
 
     @IBAction func onCancelButton(sender: AnyObject) {

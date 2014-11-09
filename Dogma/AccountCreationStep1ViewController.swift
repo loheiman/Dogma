@@ -15,7 +15,12 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     var fullCCNumber: String!
     var defaults = NSUserDefaults.standardUserDefaults()
     
+    var dogDetailsRef = Firebase(url:"https://dogma.firebaseio.com/dogDetails")
 
+    var dogDetails = [
+        "dogName": "dogName",
+        "dogImageURL": "dogImageURL"
+    ]
     
     @IBOutlet weak var expirationFormatting: UILabel!
     @IBOutlet weak var expirationField2: UITextField!
@@ -42,6 +47,8 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         self.dogNameField.delegate = self
         /*
@@ -315,6 +322,12 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         defaults.setValue(dogNameField.text, forKey: "dogName")
         defaults.setBool(true, forKey: "dogInfoEntered")
         defaults.synchronize()
+        
+        
+        
+        dogDetails["dogName"] = dogNameField.text
+        
+        dogDetailsRef.setValue(dogDetails)
         performSegueWithIdentifier("accountSetupToCreateWalkSegue", sender: self)
         
     }

@@ -23,6 +23,17 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var scheduleButton: UIButton!
     var dogName: String!
     var defaults = NSUserDefaults.standardUserDefaults()
+    var estimatedPrice = "$20.00"
+    
+
+    var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
+    
+    var walkDetails = [
+        "walkLocation" : "539 bryant st",
+        "walkDuration" : "1hr",
+        "walkTime": "7pm",
+        "walkFee" : "20"
+    ]
 
     
     var times = [ "30 minute walk", "1 hour walk", "1.5 hour walk"]
@@ -35,6 +46,12 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+    
+     
+      //  walkDetailsRef = firebaseRef.childByAppendingPath("walkDetails")
+  
 
         // Do any additional setup after loading the view.
         dogName = defaults.stringForKey("dogName")
@@ -79,7 +96,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         lengthLabel.text = times[row]
-        var estimatedPrice: String
+        
         switch row {
             case 0:
             estimatedPrice = "$20.00"
@@ -142,8 +159,7 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         if segue.identifier == "FindingSegue" {
             var destinationVC = segue.destinationViewController as CreateWalkSearchViewController
             
-            walkData["address"] = addressLabel.text
-            walkData["time"] = timeLabel.text
+            
             if lengthLabel.text == "30 minute walk" {
                 walkData["duration"] = "30 minutes"
             } else if lengthLabel.text == "1 hour walk" {
@@ -151,7 +167,28 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
             } else if lengthLabel.text == "1.5 hour walk" {
                 walkData["duration"] = "1.5 hours"
             }
+             walkData["address"] = addressLabel.text
             
+            var walkDetails = [
+                "walkLocation" : "25 bryant",
+                "walkDuration" : "2 hours",
+                "walkTime": "8:30pm",
+                "walkFee" : "$200"
+            ]
+            
+            
+            //Saving walk details for sending to firebase
+            walkDetails["walkLocation"] = addressLabel.text
+            walkDetails["walkDuration"] = walkData["duration"]
+            walkDetails["pickupPlaceID"] = walkData["pickupPlaceID"]
+            walkDetails["walkFee"] = estimatedPrice
+            walkDetails["walkTime"] = timeLabel.text
+            
+             walkDetailsRef.setValue(walkDetails)
+            var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
+            walkStatusRef.setValue("pending")
+            
+            walkData["time"] = timeLabel.text
            
             destinationVC.walkData = walkData
         }

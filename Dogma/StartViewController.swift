@@ -14,6 +14,12 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     var defaults = NSUserDefaults.standardUserDefaults()
+    
+    var ownerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/ownerDetails")
+    var ownerDetails = [
+        "ownerName": "ownerName",
+        "ownerImage": "ownerImageURL"
+    ]
 
     var readPermissions = ["public_profile", "email", "user_friends"]
 
@@ -64,7 +70,10 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     }
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        println("User Name: \(user.name)")
+        println(user.name)
+        ownerDetails["ownerName"] = user.name
+        ownerDetailsRef.setValue(ownerDetails)
+        
     }
 
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {

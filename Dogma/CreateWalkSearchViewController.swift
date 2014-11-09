@@ -20,9 +20,27 @@ class CreateWalkSearchViewController: UIViewController {
     @IBOutlet weak var dogImage: UIImageView!
     var defaults = NSUserDefaults.standardUserDefaults()
     var dogName: String!
+    var walkerName: String!
+    
+    var walkerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkerDetails")
+    var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
+    var walkStatus: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        walkerDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+          
+            self.walkerName = snapshot.value.valueForKey("walkerName") as? String
+            println(self.walkerName)
+            self.foundWalkerCopy.text = "\(self.walkerName) will walk \(self.dogName)!"
+             self.defaults.setValue(self.walkerName, forKey: "walkerName")
+
+        })
+
+        
+        
         walkerImageView.hidden = true
         walkerImageView.frame.origin.y = -150
         viewWalkButton.hidden = true
@@ -31,7 +49,6 @@ class CreateWalkSearchViewController: UIViewController {
         dogName = defaults.stringForKey("dogName")
         
         findingWalkerCopy.text = "Finding a Walker for \(dogName)"
-        foundWalkerCopy.text = "Jim will walk \(self.dogName)!"
         
         foundWalkerCopy.transform = CGAffineTransformMakeScale(0.7, 0.7)
         foundWalkerCopy.hidden = true
@@ -40,10 +57,57 @@ class CreateWalkSearchViewController: UIViewController {
         dogImage.frame.origin.x = -90
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         animateDog()
-    
         
+        firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+             self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
+            
+            if self.walkStatus == "pending" {
+                println("pending")
+            }
+            
+            if self.walkStatus == "accepted" {
+                println("accepted")
+                
+                self.walkerImageView.hidden = false
+                self.dogImage.hidden = true
+                self.cancelButton.hidden = true
+                self.findingWalkerCopy.hidden = true
+                
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    self.findingWalkerCopy.layer.opacity = 0
+                    }, completion: { (Finished: Bool) -> Void in
+                        self.findingWalkerCopy.hidden = true
+                        self.foundWalkerCopy.hidden = false
+                        
+                        UIView.animateWithDuration(0.2, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil, animations: { () -> Void in
+                            self.foundWalkerCopy.transform = CGAffineTransformMakeScale(1, 1)
+                            }, completion: { (Finished: Bool) -> Void in
+                                //
+                        })
+                })
+                
+                UIView.animateWithDuration(0.5, delay: 0.8, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.4, options: nil, animations: { () -> Void in
+                    self.walkerImageView.frame.origin.y = 180
+                    }, completion: { (Finished: Bool) -> Void in
+                        
+                        self.findingWalkerCopy.layer.opacity = 1
+                        self.viewWalkButton.hidden = false
+                        self.activateButton(self.viewWalkButton)
+                })
+                
+            }
+
+            
+        })
+        
+     
+
+        
+        
+        /*
         delay(4, closure: { () -> () in
             self.walkerImageView.hidden = false
             self.dogImage.hidden = true
@@ -72,7 +136,12 @@ class CreateWalkSearchViewController: UIViewController {
                     self.activateButton(self.viewWalkButton)
             })
         })
+        */
+        
+        
     }
+    
+    
     
     func animateDog() {
         let path = UIBezierPath()

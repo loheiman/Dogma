@@ -24,6 +24,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     @IBOutlet weak var card3Label: UILabel!
     var defaults = NSUserDefaults.standardUserDefaults()
     var dogName: String!
+    var walkerName: String!
     var walkTimeStart: NSString!
     var walkTimeEnd = "8:30pm"
     var checkin2Location = "Dolores Park"
@@ -64,23 +65,26 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dogName = defaults.stringForKey("dogName")
+        walkerName = defaults.stringForKey("walkerName")
         
+        callButton.setTitle("Contact \(walkerName)", forState: UIControlState.Normal)
         walkDuration = walkData["duration"] as String
         
         card1Image.hidden = true
         card2Image.hidden = true
         card3Image.hidden = true
         
-        dogName = defaults.stringForKey("dogName")
+       
         
         walkTimeStart = walkData["time"] as String
         
         
-        walkCheckins[0]["details"] = "Jim will pickup \(dogName) at \(walkTimeStart)"
+        walkCheckins[0]["details"] = "\(walkerName) will pickup \(dogName) at \(walkTimeStart)"
        
-        walkCheckins[1]["details"] = "Jim will take another photo of \(dogName) mid-walk"
+        walkCheckins[1]["details"] = "\(walkerName) will take another photo of \(dogName) mid-walk"
         
-        walkCheckins[2]["details"] = "Jim will drop \(dogName) off \(walkDuration) later"
+        walkCheckins[2]["details"] = "\(walkerName) will drop \(dogName) off \(walkDuration) later"
         
         rateButton.hidden = true
         

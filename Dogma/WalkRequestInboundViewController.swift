@@ -7,15 +7,66 @@
 //
 
 import UIKit
+import Mapkit
 
 class WalkRequestInboundViewController: UIViewController {
 
+ 
+   
+@IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var walkFeeField: UILabel!
+    @IBOutlet weak var walkLocationField: UILabel!
+    @IBOutlet weak var walkDurationField: UILabel!
+    @IBOutlet weak var walkTimeField: UILabel!
+    @IBOutlet weak var dogNameField: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
+    
+   
+    var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
+    var dogDetailsRef = Firebase(url:"https://dogma.firebaseio.com/dogDetails")
+    var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        walkDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.walkFeeField.text = snapshot.value.valueForKey("walkFee") as? String
+            self.walkLocationField.text = snapshot.value.valueForKey("walkLocation") as? String
+            self.walkDurationField.text = snapshot.value.valueForKey("walkDuration") as? String
+            self.walkTimeField.text = snapshot.value.valueForKey("walkTime") as? String
+        })
+        
+        
+        dogDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.dogNameField.text = snapshot.value.valueForKey("dogName") as? String
+            
+        })
+        
+        
+        dogImage.layer.cornerRadius = dogImage.frame.size.width/2
+        dogImage.clipsToBounds = true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        walkDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.walkFeeField.text = snapshot.value.valueForKey("walkFee") as? String
+             self.walkLocationField.text = snapshot.value.valueForKey("walkLocation") as? String
+             self.walkDurationField.text = snapshot.value.valueForKey("walkDuration") as? String
+             self.walkTimeField.text = snapshot.value.valueForKey("walkTime") as? String
+        })
+        
+        
+        ownerDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.dogNameField.text = snapshot.value.valueForKey("dogName") as? String
+
+        })
+        
 
         dogImage.layer.cornerRadius = dogImage.frame.size.width/2
         dogImage.clipsToBounds = true
+*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,14 +75,9 @@ class WalkRequestInboundViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onAcceptWalkButtonTap(sender: AnyObject) {
+        walkStatusRef.setValue("accepted")
     }
-    */
 
 }
