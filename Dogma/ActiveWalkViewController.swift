@@ -89,7 +89,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rateButton.setTitle("Rate \(walkerName)", forState: UIControlState.Normal)
+        
         
         checkinsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
            
@@ -117,6 +117,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         
         dogName = defaults.stringForKey("dogName")
         walkerName = defaults.stringForKey("walkerName")
+        rateButton.setTitle("Rate \(walkerName)", forState: UIControlState.Normal)
         
         callButton.setTitle("Contact \(walkerName)", forState: UIControlState.Normal)
         walkDuration = walkData["duration"] as String

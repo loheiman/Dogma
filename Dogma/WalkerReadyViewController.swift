@@ -16,10 +16,23 @@ class WalkerReadyViewController: UIViewController {
     @IBOutlet weak var waitingForWalkRequestCopy: UILabel!
     @IBOutlet weak var doneWalkingButton: UIButton!
     
+    var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
+    var walkStatus: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dogSpinnerImageView.alpha = 0.5
         // Do any additional setup after loading the view.
+        self.walkStatus == "pending"
+        
+        firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
+            if self.walkStatus == "accepted" {
+                println("accepted")
+                self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+            }
+            })
+        
     }
     
     override func viewWillAppear(animated: Bool) {

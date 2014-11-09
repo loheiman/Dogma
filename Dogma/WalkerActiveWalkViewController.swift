@@ -36,13 +36,13 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate {
     var checkin2 = [
         "status" : "incomplete",
         "location" : "ChIJueOuefqAhYARapAU-YtbztA",
-        "imageURL": "http://photos-a.ak.instagram.com/hphotos-ak-xaf1/1742640_741562002591024_935929873_n.jpg"
+        "imageURL": "http://photos-d.ak.instagram.com/hphotos-ak-xaf1/10632327_364503633708115_229544745_n.jpg"
     ]
     
     var checkin3 = [
         "status" : "incomplete",
         "location" : "ChIJueOuefqAhYARapAU-YtbztA",
-        "imageURL": "http://photos-a.ak.instagram.com/hphotos-ak-xaf1/1742640_741562002591024_935929873_n.jpg"
+        "imageURL": "http://photos-e.ak.instagram.com/hphotos-ak-xaf1/10735332_1712337005658708_1599530669_n.jpg"
     ]
   
     

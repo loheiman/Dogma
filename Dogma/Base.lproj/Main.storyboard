@@ -218,11 +218,12 @@
                         <outlet property="doneWalkingButton" destination="WXT-ac-MZX" id="i6O-jl-Vpi"/>
                         <outlet property="readyToWalkCopy" destination="CgK-fY-hDo" id="1QS-ou-KqL"/>
                         <outlet property="waitingForWalkRequestCopy" destination="Yan-rF-Z6L" id="r43-T6-Zz6"/>
+                        <segue destination="Xe4-QX-7dh" kind="modal" identifier="toWalkRequestInboundSegue" id="1Jg-vF-HWC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ema-IQ-san" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1283" y="-779"/>
+            <point key="canvasLocation" x="-1161" y="-781"/>
         </scene>
         <!--Walk Request Inbound View Controller-->
         <scene sceneID="E8t-j0-OXq">
