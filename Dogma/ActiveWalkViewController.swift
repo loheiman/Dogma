@@ -183,7 +183,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         
         //card1Image.image = UIImage(data: imageData!)!
         
-        walkCheckins[0]["details"] = "\(walkerName) picked up \(dogName) at \(walkTimeStart)"
+        walkCheckins[0]["details"] = "\(walkerName) picked up \(dogName)"
          card1Label.text = walkCheckins[0]["details"] as? String
         walkCheckins[0]["done"] = true
         
@@ -207,7 +207,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         card2Image.contentMode = UIViewContentMode.ScaleAspectFill
         
         card2Image.hidden = false
-        walkCheckins[1]["details"]! = "\(walkerName) took second photo of \(dogName)"
+        walkCheckins[1]["details"]! = "\(walkerName) took a second photo of \(dogName)"
         card2Label.text = walkCheckins[1]["details"] as? String
         walkCheckins[1]["done"] = true
         
@@ -229,7 +229,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         card3Image.contentMode = UIViewContentMode.ScaleAspectFill
         
         card3Image.hidden = false
-        walkCheckins[2]["details"]  = "\(walkerName) dropped \(dogName) off after \(walkDuration)"
+        walkCheckins[2]["details"]  = "\(walkerName) returned \(dogName) home safely"
         card3Label.text = walkCheckins[2]["details"] as? String
         walkCheckins[2]["done"] = true
         

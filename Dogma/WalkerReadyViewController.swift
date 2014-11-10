@@ -100,6 +100,7 @@ class WalkerReadyViewController: UIViewController {
                // if self.lat != nil && self.lng != nil {
                     
                     self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+                    println("seguing")
                // }
                 
                 

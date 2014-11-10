@@ -62,6 +62,8 @@ class WalkRequestInboundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println(defaults)
        
         walkerName = defaults.valueForKey("ownName") as String
         
@@ -134,7 +136,7 @@ class WalkRequestInboundViewController: UIViewController {
             self.mapView.scrollEnabled = false
             self.mapView.zoomEnabled = false
             
-            println("pickup location is \(location)")
+        
             
             let annotation = MKPointAnnotation()
             annotation.setCoordinate(location)
@@ -220,6 +222,7 @@ class WalkRequestInboundViewController: UIViewController {
 
     
     @IBAction func onAcceptWalkButtonTap(sender: AnyObject) {
+        println("WALK ACCEPTED!")
         walkStatusRef.setValue("accepted")
     }
 
