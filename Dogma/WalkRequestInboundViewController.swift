@@ -20,28 +20,53 @@ class WalkRequestInboundViewController: UIViewController {
     @IBOutlet weak var walkTimeField: UILabel!
     @IBOutlet weak var dogNameField: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
-    var pickupPlaceID = "Eiw1dGggU3RyZWV0LCBTYW4gRnJhbmNpc2NvLCBDQSwgVW5pdGVkIFN0YXRlcw"
+    var pickupPlaceID: String!
+    var walkerName: String!
+    var test: String!
     
      var defaults = NSUserDefaults.standardUserDefaults()
-   
+    
+    var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
     var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
     var dogDetailsRef = Firebase(url:"https://dogma.firebaseio.com/dogDetails")
     var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
     var walkerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkerDetails")
     
-    override func viewWillAppear(animated: Bool) {
-        
-    }
+    var walkDetails = [
+        "pickupPlaceID": "sldkgjsg",
+        "walkDuration": "6 hours",
+        "walkFee": "$22",
+        "walkLocation": "Bolvia boo",
+        "walkTime": "4:44pm"
+    ]
     
+    var walkerDetails = [
+        "walkerImageURL" : "walkerImageURL",
+        "walkerName" : "walkerImageURL"
+    ]
+    
+    override func viewDidAppear(animated: Bool) {
+        //
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        walkerName = defaults.valueForKey("ownName") as String
         
-        walkerDetailsRef.setValue(defaults.valueForKey("ownName"), forKey: "walkerName")
+        walkerDetails["walkerName"] = walkerName
+        
+        walkerDetailsRef.setValue(walkerDetails)
+        
+        /*
+        firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            self.walkDetails = snapshot.value.valueForKeyPath("walkDetails") as Dictionary
+            println(self.walkDetails)
+        })*/
+        
         
         walkDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            
-            
             
             self.walkFeeField.text = snapshot.value.valueForKey("walkFee") as? String
             self.walkLocationField.text = snapshot.value.valueForKey("walkLocation") as? String
@@ -50,29 +75,10 @@ class WalkRequestInboundViewController: UIViewController {
             self.defaults.setValue(self.walkDurationField.text, forKey: "walkDuration")
             self.walkTimeField.text = snapshot.value.valueForKey("walkTime") as? String
             self.defaults.setValue(self.walkTimeField.text, forKey: "walkTime")
-            self.pickupPlaceID = snapshot.value.valueForKey("pickupPlaceID") as String
-
-        })
-        
-        
-        dogDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            self.dogNameField.text = snapshot.value.valueForKey("dogName") as? String
-            self.defaults.setValue(self.dogNameField.text, forKey: "dogName")
+            self.pickupPlaceID = snapshot.value.valueForKey("pickupPlaceID") as? String
             
-        })
-        
-        
-        dogImage.layer.cornerRadius = dogImage.frame.size.width/2
-        dogImage.clipsToBounds = true
-        
-      println(pickupPlaceID)
-        
-        
-        
-        
-    
-     //   if pickupPlaceID != nil {
-            var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+            
+            var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + self.pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
             var request = NSURLRequest(URL: url!)
             
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
@@ -84,6 +90,9 @@ class WalkRequestInboundViewController: UIViewController {
                 var lat = locations["lat"] as CLLocationDegrees
                 var lng = locations["lng"] as CLLocationDegrees
                 
+                println("lat is \(lat)")
+                println("long is \(lng)")
+                
                 var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 let span = MKCoordinateSpanMake(0.03, 0.03)
                 let region = MKCoordinateRegion(center: location, span: span)
@@ -92,15 +101,34 @@ class WalkRequestInboundViewController: UIViewController {
                 self.mapView.scrollEnabled = false
                 self.mapView.zoomEnabled = false
                 
+                println("pickup location is \(location)")
+                
                 let annotation = MKPointAnnotation()
                 annotation.setCoordinate(location)
                 
                 self.mapView.addAnnotation(annotation)
+                
             }
-       // }
+
+           
+        })
+        
+        
+        
+        dogDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.dogNameField.text = snapshot.value.valueForKey("dogName") as? String
+            self.defaults.setValue(self.dogNameField.text, forKey: "dogName")
+            
+        })
+        
+        
+        dogImage.layer.cornerRadius = dogImage.frame.size.width/2
+        dogImage.clipsToBounds = true
+       
     
     
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,4 +141,7 @@ class WalkRequestInboundViewController: UIViewController {
         walkStatusRef.setValue("accepted")
     }
 
+    
+    
+    
 }

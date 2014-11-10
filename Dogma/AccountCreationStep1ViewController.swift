@@ -288,6 +288,13 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         defaults.setObject(relativePath, forKey: "path")
         defaults.synchronize()
         
+        /*
+        
+        var smallImage = ResizeImage(imageToSave, targetSize: CGSize(width: 320, height: 320))
+        var imageData = UIImagePNGRepresentation(smallImage)
+        let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
+
+        */
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -359,6 +366,33 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         return false;
     }
     
+    
+    func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
+        return newImage
+    }
     
     
 }

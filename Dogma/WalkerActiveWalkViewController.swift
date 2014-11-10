@@ -12,13 +12,14 @@ import CoreLocation
 class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var checkin3ImageView: UIImageView!
     @IBOutlet weak var checkin2ImageView: UIImageView!
     @IBOutlet weak var checkin1ImageView: UIImageView!
     @IBOutlet weak var checkin3Button: UIButton!
     @IBOutlet weak var checkin2Button: UIButton!
     @IBOutlet weak var checkin1Button: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+
     @IBOutlet weak var walkLocationField: UILabel!
     @IBOutlet weak var walkDurationField: UILabel!
     @IBOutlet weak var walkTimeField: UILabel!
@@ -87,6 +88,8 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkinNumber = 0
+        
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -122,6 +125,35 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
         dogImage.layer.cornerRadius = dogImage.frame.size.width/2
         dogImage.clipsToBounds = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        delay(0.6, closure: { () -> () in
+            
+      
+            if self.checkinNumber! == 1 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
+                    println("checkin1 should scroll")
+                })
+            } else if self.checkinNumber! == 2 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width) * 2
+                 
+                    println("checkin2 should scroll")
+                })
+            } else if self.checkinNumber! == 3 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width) * 2
+                    println("checkin3 should scroll")
+                })
+            }
+        })
+        
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -133,8 +165,8 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
         var locationArray = locations as NSArray
         var locationObj = locationArray.lastObject as CLLocation
         var coord = locationObj.coordinate
-        println(coord.latitude)
-        println(coord.longitude)
+        //println(coord.latitude)
+        //println(coord.longitude)
         lat = Float(coord.latitude)
         lng = Float(coord.longitude)
         
@@ -164,10 +196,11 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
         
         var imageToSave:UIImage
         imageToSave = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
-        
-        var imageData = UIImagePNGRepresentation(imageToSave)
+        var smallImage = ResizeImage(imageToSave, targetSize: CGSize(width: 320, height: 320))
+        var imageData = UIImagePNGRepresentation(smallImage)
+       // var imageData = UIImageJPEGRepresentation(smallImage, 0.8)
         let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
-        //println(base64String)
+      
         
         if checkinNumber == 1 {
            
@@ -177,17 +210,11 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
                 "imageURL": "http://photos-a.ak.instagram.com/hphotos-ak-xaf1/1742640_741562002591024_935929873_n.jpg",
                 "lat": lat,
                 "lng": lng,
-                "imageString" : "base64String"
+                "imageString" : base64String
             ]
             
             checkin1Ref.setValue(checkin1)
         self.checkin1ImageView.image = imageToSave
-            
-            delay(1, closure: { () -> () in
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.scrollView.contentOffset.x = 0
-                })
-            })
             
             
         } else if checkinNumber == 2 {
@@ -198,19 +225,11 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
                 "imageURL": "http://photos-a.ak.instagram.com/hphotos-ak-xaf1/1742640_741562002591024_935929873_n.jpg",
                 "lat": lat,
                 "lng": lng,
-                "imageString" : "base64String"
+                "imageString" : base64String
             ]
             
             checkin2Ref.setValue(checkin2)
             self.checkin2ImageView.image = imageToSave
-            
-            delay(1, closure: { () -> () in
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    println("here")
-                    self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
-                })
-            })
-            
            
             
         } else if checkinNumber == 3 {
@@ -221,18 +240,11 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
                 "imageURL": "http://photos-a.ak.instagram.com/hphotos-ak-xaf1/1742640_741562002591024_935929873_n.jpg",
                 "lat": lat,
                 "lng": lng,
-                "imageString" : "base64String"
+                "imageString" : base64String
             ]
             
             checkin3Ref.setValue(checkin3)
             self.checkin3ImageView.image = imageToSave
-            
-            delay(1, closure: { () -> () in
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width * 2)
-                })
-            })
-            
             
         }
         
@@ -276,6 +288,33 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
             dispatch_get_main_queue(), closure)
+    }
+    
+    func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        
+        return newImage
     }
 
 }

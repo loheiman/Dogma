@@ -107,7 +107,7 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             self.checkin1 = snapshot.value.valueForKeyPath("checkin1") as Dictionary
             self.checkin2 = snapshot.value.valueForKeyPath("checkin2") as Dictionary
             self.checkin3 = snapshot.value.valueForKeyPath("checkin3") as Dictionary
-            println(self.checkin1)
+           
             
             if self.checkin1["status"] == "complete" {
                 self.walkCheckin1done(self.checkin1)
@@ -174,11 +174,15 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         walkCheckins[0]["lat"] = checkin.valueForKey("lat") as Double
         walkCheckins[0]["lng"] = checkin.valueForKey("lng") as Double
         
-        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
-        println(url)
-        var imageData = NSData(contentsOfURL: url)?
+        var imageString = checkin.valueForKey("imageString") as String
+        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions(0))
+        var decodedImage = UIImage(data: decodedData!)
+        card1Image.image = decodedImage as UIImage!
+        card1Image.contentMode = UIViewContentMode.ScaleAspectFill
         card1Image.hidden = false
-        card1Image.image = UIImage(data: imageData!)!
+        
+        //card1Image.image = UIImage(data: imageData!)!
+        
         walkCheckins[0]["details"] = "\(walkerName) picked up \(dogName) at \(walkTimeStart)"
          card1Label.text = walkCheckins[0]["details"] as? String
         walkCheckins[0]["done"] = true
@@ -191,34 +195,40 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
     
     
     func walkCheckin2done(checkin: NSDictionary) {
-        walkCheckins[1]["image"] = checkin.valueForKey("imageURL") as? String
+       // walkCheckins[1]["image"] = checkin.valueForKey("imageURL") as? String
        // walkCheckins[1]["pickupPlaceID"] = checkin.valueForKey("location") as String
         walkCheckins[1]["lat"] = checkin.valueForKey("lat") as Double
         walkCheckins[1]["lng"] = checkin.valueForKey("lng") as Double
         
-        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
-        var imageData = NSData(contentsOfURL: url)?
+        var imageString = checkin.valueForKey("imageString") as String
+        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions(0))
+        var decodedImage = UIImage(data: decodedData!)
+        card2Image.image = decodedImage as UIImage!
+        card2Image.contentMode = UIViewContentMode.ScaleAspectFill
+        
         card2Image.hidden = false
-        card2Image.image = UIImage(data: imageData!)!
         walkCheckins[1]["details"]! = "\(walkerName) took second photo of \(dogName)"
         card2Label.text = walkCheckins[1]["details"] as? String
         walkCheckins[1]["done"] = true
         
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            println("here")
             self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width)
         })
     }
     
     
     func walkCheckin3done(checkin: NSDictionary) {
-        walkCheckins[2]["image"] = checkin.valueForKey("imageURL") as? String
+       // walkCheckins[2]["image"] = checkin.valueForKey("imageURL") as? String
         walkCheckins[2]["lat"] = checkin.valueForKey("lat") as Double
         walkCheckins[2]["lng"] = checkin.valueForKey("lng") as Double
-        var url = NSURL(string: checkin.valueForKey("imageURL") as String!)!
-        var imageData = NSData(contentsOfURL: url)?
+        
+        var imageString = checkin.valueForKey("imageString") as String
+        let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions(0))
+        var decodedImage = UIImage(data: decodedData!)
+        card3Image.image = decodedImage as UIImage!
+        card3Image.contentMode = UIViewContentMode.ScaleAspectFill
+        
         card3Image.hidden = false
-        card3Image.image = UIImage(data: imageData!)!
         walkCheckins[2]["details"]  = "\(walkerName) dropped \(dogName) off after \(walkDuration)"
         card3Label.text = walkCheckins[2]["details"] as? String
         walkCheckins[2]["done"] = true
@@ -281,14 +291,11 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             destinationVC.lat = walkCheckins[clickedIndex]["lat"]! as Double
             destinationVC.lng = walkCheckins[clickedIndex]["lng"]! as Double
             
-            /*
-            if clickedIndex == 1 {
-                println(walkCheckins[1]["pickupPlaceID"]!)
-            }*/
+            
             
             switch clickedIndex {
                 case 0:
-                    println(card1Image.frame)
+                    
                     destinationVC.walkImage.image = card1Image.image!
                     cardImageToPass.image = card1Image.image!
                     

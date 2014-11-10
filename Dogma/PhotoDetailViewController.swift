@@ -17,7 +17,7 @@ class PhotoDetailViewController: UIViewController  {
 
     var walkImage: UIImageView = UIImageView()
     var details: String!
-    var pickupPlaceID = "Eiw1dGggU3RyZWV0LCBTYW4gRnJhbmNpc2NvLCBDQSwgVW5pdGVkIFN0YXRlcw"
+   // var pickupPlaceID = "Eiw1dGggU3RyZWV0LCBTYW4gRnJhbmNpc2NvLCBDQSwgVW5pdGVkIFN0YXRlcw"
     var lat: Double!
     var lng: Double!
 

@@ -27,6 +27,8 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     
 
     var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
+    var ownerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/ownerDetails")
+    
     
     var walkDetails = [
         "walkLocation" : "539 bryant st",
@@ -44,14 +46,22 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         "duration": ""
         ]
     
+    var ownerDetails = [
+        "ownerImageURL" : "ownerImageURL",
+        "ownerName" : "ownerName"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     
-     
-      //  walkDetailsRef = firebaseRef.childByAppendingPath("walkDetails")
-  
+        
+        ownerDetails["ownerName"] = defaults.valueForKey("ownName")! as String
+       // println("owner is")
+      //  println(ownerDetails["ownerName"])
+        
+        ownerDetailsRef.setValue(ownerDetails)
 
         // Do any additional setup after loading the view.
         dogName = defaults.stringForKey("dogName")

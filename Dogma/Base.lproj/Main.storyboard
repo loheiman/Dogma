@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1sz-H1-hk6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xe4-QX-7dh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfo-QP-qO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1702" y="-830"/>
+            <point key="canvasLocation" x="-1562" y="-788"/>
         </scene>
         <!--Walker Ready View Controller-->
         <scene sceneID="lGZ-Xp-m2L">
@@ -164,7 +164,7 @@
                                 <rect key="frame" x="15" y="348" width="290" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                <state key="normal" title="OHH YEAAA!" backgroundImage="button-blank">
+                                <state key="normal" title="I walk the walk!" backgroundImage="button-blank">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -176,7 +176,7 @@
                                 <rect key="frame" x="7" y="503" width="306" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                <state key="normal" title="My feet hurt" backgroundImage="button-blank-secondary">
+                                <state key="normal" title="My feet hurt :(" backgroundImage="button-blank-secondary">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -244,7 +244,7 @@
                                 <rect key="frame" x="16" y="467" width="290" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                <state key="normal" title="Lets walk!" backgroundImage="button-blank">
+                                <state key="normal" title="Accept Walk" backgroundImage="button-blank">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -345,7 +345,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="RAk-W1-x33">
-                                <rect key="frame" x="27" y="195" width="833" height="284"/>
+                                <rect key="frame" x="27" y="195" width="815" height="284"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleAspectFill" id="FHW-Fh-LEx">
@@ -364,9 +364,9 @@
                                         <gestureRecognizers/>
                                     </imageView>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQc-RB-yGO">
-                                        <rect key="frame" x="318" y="111" width="179" height="52"/>
+                                        <rect key="frame" x="282" y="37" width="250" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Take mid-walk photo" backgroundImage="button-blank">
+                                        <state key="normal" backgroundImage="button-checkin2">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -375,9 +375,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZN6-Bi-hPf">
-                                        <rect key="frame" x="44" y="111" width="173" height="52"/>
+                                        <rect key="frame" x="5" y="37" width="250" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Take pickup Spike" backgroundImage="button-blank">
+                                        <state key="normal" backgroundImage="button-checkin1">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -386,9 +386,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vn3-7F-uXW">
-                                        <rect key="frame" x="594" y="111" width="178" height="52"/>
+                                        <rect key="frame" x="557" y="37" width="250" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Take dropoff photo" backgroundImage="button-blank">
+                                        <state key="normal" backgroundImage="button-checkin3">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -399,7 +399,7 @@
                                 </subviews>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-small" id="5AZ-uq-Dhw">
-                                <rect key="frame" x="128" y="30" width="34" height="26"/>
+                                <rect key="frame" x="143" y="30" width="34" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DRa-fP-9qY">
@@ -453,6 +453,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J9P-Ez-gH0">
+                                <rect key="frame" x="123" y="22" width="72" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="coverVertical" id="fdR-WV-LoV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -468,7 +478,7 @@
                         <outlet property="checkin3ImageView" destination="ulY-LQ-vwt" id="JKi-tG-Sm8"/>
                         <outlet property="dogImage" destination="Ktk-Bd-dtF" id="mzu-ba-ZRS"/>
                         <outlet property="dogNameField" destination="7NJ-oL-Y4p" id="lbm-4V-VyN"/>
-                        <outlet property="scrollView" destination="RAk-W1-x33" id="PTF-IE-2rp"/>
+                        <outlet property="scrollView" destination="RAk-W1-x33" id="VpK-S1-qj8"/>
                         <outlet property="walkDurationField" destination="6v1-M8-gfP" id="Ebd-na-hl1"/>
                         <outlet property="walkLocationField" destination="Nvh-m4-qrR" id="hKb-oh-C4c"/>
                         <outlet property="walkTimeField" destination="F7c-Qt-dRu" id="jUd-hX-G6e"/>
@@ -476,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNl-HO-ly5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="558" y="-795"/>
+            <point key="canvasLocation" x="568" y="-795"/>
         </scene>
         <!--Create Walk View Controller-->
         <scene sceneID="hce-XO-CHN">
@@ -640,7 +650,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="crossDissolve" id="M8Q-Dy-WBX"/>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="coverVertical" id="M8Q-Dy-WBX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -701,7 +711,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C8I-x3-lNe" kind="modal" id="yAz-je-A2q"/>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="coverVertical" id="yAz-je-A2q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Tb-9z-6Oy">
@@ -717,7 +727,7 @@
                                 </connections>
                             </button>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="MTD-wx-Nm9">
-                                <rect key="frame" x="27" y="75" width="858" height="400"/>
+                                <rect key="frame" x="27" y="75" width="813" height="400"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path" id="zUs-kI-Wzu">
@@ -741,23 +751,16 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will take a photo of spike during the walk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x7E-Xu-YPX">
-                                        <rect key="frame" x="277" y="352" width="260" height="50"/>
+                                        <rect key="frame" x="292" y="352" width="230" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will take a photo when they drop Spike off" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3dl-Bb-ski">
-                                        <rect key="frame" x="553" y="352" width="260" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim is expected to pick up Spike in 4 hours " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XtF-uR-8Sa">
-                                        <rect key="frame" x="0.0" y="352" width="260" height="50"/>
+                                        <rect key="frame" x="15" y="352" width="230" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -769,6 +772,13 @@
                                             <outletCollection property="gestureRecognizers" destination="g3b-7t-hyU" appends="YES" id="SrT-LJ-J8x"/>
                                         </connections>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jim will take a photo when they drop Spike off" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3dl-Bb-ski">
+                                        <rect key="frame" x="568" y="352" width="230" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1050,6 +1060,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DZt-l6-k1t">
+                                <rect key="frame" x="137" y="24" width="47" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="coverVertical" id="D76-yN-fUH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1085,7 +1105,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="C8I-x3-lNe" kind="modal" id="WfN-Wn-Blz"/>
+                                    <segue destination="C8I-x3-lNe" kind="modal" modalTransitionStyle="coverVertical" id="WfN-Wn-Blz"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="HRB-WI-gLs">
@@ -1149,7 +1169,7 @@
                                         <rect key="frame" x="335" y="132" width="290" height="290"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="snap-photo-placeholder">
+                                        <state key="normal" image="button-photoDog">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1335,12 +1355,15 @@
     <resources>
         <image name="button-blank" width="290" height="52"/>
         <image name="button-blank-secondary" width="290" height="50"/>
+        <image name="button-checkin1" width="250" height="200"/>
+        <image name="button-checkin2" width="250" height="200"/>
+        <image name="button-checkin3" width="250" height="200"/>
+        <image name="button-photoDog" width="290" height="290"/>
         <image name="icon-star" width="34" height="34"/>
         <image name="logo-large" width="67" height="51"/>
         <image name="logo-small" width="34" height="26"/>
         <image name="path" width="671" height="250"/>
         <image name="penny-1" width="320" height="320"/>
-        <image name="snap-photo-placeholder" width="290" height="290"/>
         <image name="text-field" width="290" height="50"/>
         <image name="walker-profile-image" width="125" height="125"/>
     </resources>
@@ -1350,8 +1373,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EcG-2k-y92"/>
-        <segue reference="pje-RS-esi"/>
+        <segue reference="DRs-Zy-92O"/>
+        <segue reference="fdR-WV-LoV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -26,17 +26,13 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        defaults.setValue("ownName", forKey: "ownName")
 
         self.fbLoginView.delegate = self
         logoImage.frame.origin.y = 223
         welcomeLabel.alpha = 0
         welcomeLabel.frame.origin.y -= 100
-/*
-        var testObject = PFObject(className:"TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithTarget(self, selector: nil)
-*/
+
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -70,10 +66,18 @@ class StartViewController: UIViewController, FBLoginViewDelegate {
     }
 
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        println(user.name)
-        defaults.setValue(user.name, forKey: "ownName")
-        //self.ownerDetails["ownerName"] = user.name
-       // ownerDetailsRef.setValue(user.name, forKey: "ownerName")
+
+        let fullName = user.name
+        let fullNameArray = fullName.componentsSeparatedByString(" ")
+        let firstName = fullNameArray[0]
+        defaults.setValue(firstName, forKey: "ownName")
+      // println(firstName)
+     /*
+        var profilePictureView : FBProfilePictureView!
+        profilePictureView.profileID = user.objectID
+      */  
+      //  var profileImage = profilePictureView.image as UIImage
+ 
         
     }
 

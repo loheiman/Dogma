@@ -21,6 +21,7 @@ class CreateWalkSearchViewController: UIViewController {
     var defaults = NSUserDefaults.standardUserDefaults()
     var dogName: String!
     var walkerName: String!
+    var walkerType: String!
     
     var walkerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkerDetails")
     var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
@@ -33,7 +34,7 @@ class CreateWalkSearchViewController: UIViewController {
         walkerDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
           
             self.walkerName = snapshot.value.valueForKey("walkerName") as? String
-            println(self.walkerName)
+          //  println("walker is \(self.walkerName)")
             self.foundWalkerCopy.text = "\(self.walkerName) will walk \(self.dogName)!"
              self.defaults.setValue(self.walkerName, forKey: "walkerName")
 
@@ -59,17 +60,17 @@ class CreateWalkSearchViewController: UIViewController {
     
     
     override func viewDidAppear(animated: Bool) {
+       
+        
         animateDog()
         
         firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
              self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
             
-            if self.walkStatus == "requested" {
-                println("requested")
-            }
+           
             
             if self.walkStatus == "accepted" {
-                println("accepted")
+               // println("accepted")
                 
                 self.walkerImageView.hidden = false
                 self.dogImage.hidden = true

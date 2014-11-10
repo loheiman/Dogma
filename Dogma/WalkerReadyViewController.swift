@@ -18,6 +18,9 @@ class WalkerReadyViewController: UIViewController {
     
     var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
     var walkStatus: String!
+    var walkerType: String!
+    
+    var defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +28,7 @@ class WalkerReadyViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
-            self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
-            println(self.walkStatus)
-            if self.walkStatus == "requested" {
-                println("equals requeted")
-                
-                 self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
-                
-                self.delay(1, closure: { () -> () in
-                    
-                })
-               
-            }
-            })
+        
         
     }
     
@@ -51,16 +41,25 @@ class WalkerReadyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        
+        firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
+           // println(self.walkStatus)
+            if self.walkStatus == "requested" {
+            //    println("equals requeted")
+                
+                self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+                /*
+                self.delay(1, closure: { () -> () in
+                
+                })*/
+                
+            }
+        })
     }
-    */
+
+    
     
     
     @IBAction func onActivateWalkingButtonTap(sender: AnyObject) {
@@ -95,7 +94,7 @@ class WalkerReadyViewController: UIViewController {
            //self.dogSpinnerImageView.transform = CGAffineTransformRotate(self.dogSpinnerImageView.transform, 6 )
             self.dogSpinnerImageView.transform = CGAffineTransformMakeRotation(-0.5)
             }) { (Finished: Bool) -> Void in
-            println()
+        
         }
         
     }
