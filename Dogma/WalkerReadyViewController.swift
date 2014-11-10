@@ -17,6 +17,9 @@ class WalkerReadyViewController: UIViewController {
     @IBOutlet weak var doneWalkingButton: UIButton!
     
     var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
+    
+    var lat: CLLocationDegrees!
+    var lng: CLLocationDegrees!
    
     
     var walkStatus: String!
@@ -68,17 +71,37 @@ class WalkerReadyViewController: UIViewController {
             self.walkDetails = snapshot.value.valueForKey("walkDetails") as Dictionary
             
             self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
-           // println(self.walkStatus)
+            
+            
+            var pickupPlaceID = self.walkDetails["pickupPlaceID"]
+            
+            print("PICKUP PLACE ID \(pickupPlaceID!)")
+            
+          
             if self.walkStatus == "requested" && self.userType == "walker" {
-            //    println("equals requeted")
+            
                 
-             //   println(self.dogDetails)
-                println(self.walkDetails)
-                self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
-                /*
-                self.delay(1, closure: { () -> () in
+                var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + pickupPlaceID! + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
+                var request = NSURLRequest(URL: url!)
                 
-                })*/
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+                    var objects = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                    var result = objects["result"] as NSDictionary
+                    var geometry = result["geometry"] as NSDictionary
+                    var locations = geometry["location"] as NSDictionary
+                    
+                    self.lat = locations["lat"] as CLLocationDegrees
+                    self.lng = locations["lng"] as CLLocationDegrees
+                    
+                    println(self.lat)
+                    println(self.lng)
+                }
+                
+               // if self.lat != nil && self.lng != nil {
+                    
+                    self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
+               // }
+                
                 
             }
         })
@@ -153,6 +176,8 @@ class WalkerReadyViewController: UIViewController {
             var destinationVC = segue.destinationViewController as WalkRequestInboundViewController
             destinationVC.walkDetails = walkDetails
             destinationVC.dogDetails = dogDetails
+            destinationVC.lat = lat
+            destinationVC.lng = lng
         
     }
     

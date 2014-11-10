@@ -23,6 +23,8 @@ class WalkRequestInboundViewController: UIViewController {
     var pickupPlaceID: String!
     var walkerName: String!
     var test: String!
+    var lat: CLLocationDegrees!
+    var lng: CLLocationDegrees!
     
      var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -94,7 +96,7 @@ class WalkRequestInboundViewController: UIViewController {
         self.defaults.setValue(self.walkDetails["walkDuration"], forKey: "walkDuration")
         
         
-        
+        /*
         var url = NSURL(string: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + self.pickupPlaceID + "&key=AIzaSyBR25mbykImkoIribmzpCFXLAuvPkfqCio")
         var request = NSURLRequest(URL: url!)
         
@@ -109,7 +111,21 @@ class WalkRequestInboundViewController: UIViewController {
             
             println("lat is \(lat)")
             println("long is \(lng)")
+        
+        
+*/
+        
+        if lat == nil || lng == nil {
             
+            lat = 37.784437
+            lng = -122.46964
+            
+            println("COORDINATES WERE NIL")
+        } else {
+            
+            println("COORDINATES ARE \(lat)  \(lng)")
+        }
+        
             var location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             let span = MKCoordinateSpanMake(0.03, 0.03)
             let region = MKCoordinateRegion(center: location, span: span)
@@ -125,7 +141,9 @@ class WalkRequestInboundViewController: UIViewController {
             
             self.mapView.addAnnotation(annotation)
             
-        }
+        
+        
+   //     }
         
         
         
