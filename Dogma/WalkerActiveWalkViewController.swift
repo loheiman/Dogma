@@ -12,6 +12,7 @@ import CoreLocation
 class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
    
+    @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var checkin3ImageView: UIImageView!
     @IBOutlet weak var checkin2ImageView: UIImageView!
@@ -46,7 +47,6 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
     
     let locationManager = CLLocationManager()
  
-    @IBOutlet weak var dogImage: UIImageView!
     
  
     var checkinsRef = Firebase(url:"https://dogma.firebaseio.com/checkins")
@@ -87,6 +87,19 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //retreiving dog image
+        let possibleOldImagePath = defaults.objectForKey("path") as String?
+        
+        if let oldImagePath = possibleOldImagePath {
+            let oldFullPath = self.documentsPathForFileName(oldImagePath)
+            let oldImageData = NSData(contentsOfFile: oldFullPath)
+            // here is your saved image:
+            let oldImage = UIImage(data: oldImageData!)
+            dogImage.image = oldImage
+        }
+        
+
         
         checkinNumber = 0
         
@@ -319,4 +332,17 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
         return newImage
     }
 
+    
+    // For saving dog image
+    func documentsPathForFileName(name: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
+        let path = paths[0] as String;
+        let fullPath = path.stringByAppendingPathComponent(name)
+        
+        return fullPath
+    }
+    
+    @IBAction func onCallButtonTap(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://4152982912")!)
+    }
 }

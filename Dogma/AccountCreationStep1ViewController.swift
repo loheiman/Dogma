@@ -19,7 +19,7 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
 
     var dogDetails = [
         "dogName": "dogName",
-        "dogImageURL": "dogImageURL"
+        "dogImageString": "dogImageString"
     ]
     
     @IBOutlet weak var expirationFormatting: UILabel!
@@ -288,13 +288,11 @@ class AccountCreationStep1ViewController: UIViewController, UIImagePickerControl
         defaults.setObject(relativePath, forKey: "path")
         defaults.synchronize()
         
-        /*
+        var smallImage = ResizeImage(imageToSave, targetSize: CGSize(width: 100, height: 100))
+        var imageDataPNG = UIImagePNGRepresentation(smallImage)
+        let base64String = imageDataPNG.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
+        dogDetails["dogImageString"] = base64String
         
-        var smallImage = ResizeImage(imageToSave, targetSize: CGSize(width: 320, height: 320))
-        var imageData = UIImagePNGRepresentation(smallImage)
-        let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
-
-        */
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

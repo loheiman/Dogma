@@ -28,6 +28,9 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
 
     var walkDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkDetails")
     var ownerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/ownerDetails")
+    var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
+    var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
+
     
     
     var walkDetails = [
@@ -55,9 +58,10 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
         super.viewDidLoad()
         
         
+        defaults.setValue("dogOwner", forKey: "userType")
     
         
-        ownerDetails["ownerName"] = defaults.valueForKey("ownName")! as String
+        ownerDetails["ownerName"] = defaults.valueForKey("ownName") as String
        // println("owner is")
       //  println(ownerDetails["ownerName"])
         
@@ -84,6 +88,9 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        walkStatusRef.setValue("inputting")
+        
         addressLabel.text = walkData["address"]
         if addressLabel.text != "Pickup address" {
             addressLabel.font = UIFont(name: addressLabel.font.fontName, size: 16)
@@ -195,7 +202,6 @@ class CreateWalkViewController: UIViewController, UIPickerViewDelegate {
             walkDetails["walkTime"] = timeLabel.text
             
              walkDetailsRef.setValue(walkDetails)
-            var walkStatusRef = Firebase(url:"https://dogma.firebaseio.com/walkStatus")
             walkStatusRef.setValue("requested")
             
             walkData["time"] = timeLabel.text

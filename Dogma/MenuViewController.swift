@@ -49,9 +49,11 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func onWalkerButtonTap(sender: AnyObject) {
+        
+        defaults.setValue("walker", forKey: "userType")
        performSegueWithIdentifier("toWalkerReadySegue", sender: self)
        
         
-       // defaults.setBool(true, forKey: "isWalker")
+      
     }
 }

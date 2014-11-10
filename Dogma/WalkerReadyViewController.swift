@@ -17,17 +17,34 @@ class WalkerReadyViewController: UIViewController {
     @IBOutlet weak var doneWalkingButton: UIButton!
     
     var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
+   
+    
     var walkStatus: String!
-    var walkerType: String!
+    var userType: String!
+    
+    var walkDetails = [
+        "pickupPlaceID": "sldkgjsg",
+        "walkDuration": "6 hours",
+        "walkFee": "$22",
+        "walkLocation": "Bolvia boo",
+        "walkTime": "4:44pm"
+    ]
+    
+    var dogDetails = [
+        "dogImageString" : "dogImageString",
+        "dogrName" : "dogName"
+    ]
+    
     
     var defaults = NSUserDefaults.standardUserDefaults()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dogSpinnerImageView.alpha = 0.5
         // Do any additional setup after loading the view.
         
-        
+        userType = defaults.valueForKey("userType") as String
         
         
     }
@@ -43,12 +60,20 @@ class WalkerReadyViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        
+        
         firebaseRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
+            
+            self.dogDetails = snapshot.value.valueForKey("dogDetails") as Dictionary
+            self.walkDetails = snapshot.value.valueForKey("walkDetails") as Dictionary
+            
             self.walkStatus = snapshot.value.valueForKey("walkStatus") as? String
            // println(self.walkStatus)
-            if self.walkStatus == "requested" {
+            if self.walkStatus == "requested" && self.userType == "walker" {
             //    println("equals requeted")
                 
+             //   println(self.dogDetails)
+                println(self.walkDetails)
                 self.performSegueWithIdentifier("toWalkRequestInboundSegue", sender: self)
                 /*
                 self.delay(1, closure: { () -> () in
@@ -120,5 +145,17 @@ class WalkerReadyViewController: UIViewController {
             ),
             dispatch_get_main_queue(), closure)
     }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
+            var destinationVC = segue.destinationViewController as WalkRequestInboundViewController
+            destinationVC.walkDetails = walkDetails
+            destinationVC.dogDetails = dogDetails
+        
+    }
+    
+    
     
 }

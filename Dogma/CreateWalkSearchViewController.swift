@@ -21,7 +21,7 @@ class CreateWalkSearchViewController: UIViewController {
     var defaults = NSUserDefaults.standardUserDefaults()
     var dogName: String!
     var walkerName: String!
-    var walkerType: String!
+    var userType: String!
     
     var walkerDetailsRef = Firebase(url:"https://dogma.firebaseio.com/walkerDetails")
     var firebaseRef = Firebase(url:"https://dogma.firebaseio.com")
@@ -30,6 +30,8 @@ class CreateWalkSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userType = defaults.valueForKey("userType")! as String
         
         walkerDetailsRef.observeEventType(FEventType.Value, withBlock: { (snapshot: FDataSnapshot!) -> Void in
           
@@ -69,7 +71,7 @@ class CreateWalkSearchViewController: UIViewController {
             
            
             
-            if self.walkStatus == "accepted" {
+            if self.walkStatus == "accepted" && self.userType == "dogOwner" {
                // println("accepted")
                 
                 self.walkerImageView.hidden = false
