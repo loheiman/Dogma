@@ -37,6 +37,7 @@
 		5CC75C0C1A0ED12200A425D3 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC75C0B1A0ED12200A425D3 /* Firebase.framework */; };
 		5CC75C0E1A0ED13800A425D3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC75C0D1A0ED13800A425D3 /* libicucore.dylib */; };
 		5CC75C101A0ED13F00A425D3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC75C0F1A0ED13F00A425D3 /* libc++.dylib */; };
+		5CE8B3711A107A5E00D5D4C6 /* WalkerFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B3701A107A5E00D5D4C6 /* WalkerFinishedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5CC75C0B1A0ED12200A425D3 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		5CC75C0D1A0ED13800A425D3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5CC75C0F1A0ED13F00A425D3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		5CE8B3701A107A5E00D5D4C6 /* WalkerFinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerFinishedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		27050A2519E4D2FB0060AFBB /* Dogma */ = {
 			isa = PBXGroup;
 			children = (
+				5CE8B3701A107A5E00D5D4C6 /* WalkerFinishedViewController.swift */,
 				275DD1C619E4FB6800E94673 /* AccountCreationStep1ViewController.swift */,
 				275DD1C719E4FB6800E94673 /* StartViewController.swift */,
 				27050A2819E4D2FB0060AFBB /* AppDelegate.swift */,
@@ -333,6 +336,7 @@
 				2BB2DAEC1A0B3E37002F6A3B /* WalkRequestInboundViewController.swift in Sources */,
 				2BE8D7531A0B32A10056FC9C /* WalkerReadyViewController.swift in Sources */,
 				27C6707519F474F70070F2E4 /* AddressSearchTableViewCell.swift in Sources */,
+				5CE8B3711A107A5E00D5D4C6 /* WalkerFinishedViewController.swift in Sources */,
 				2BB2DAEE1A0B4735002F6A3B /* WalkerActiveWalkViewController.swift in Sources */,
 				2781265F19F0AFE90057EBEF /* PhotoDetailViewController.swift in Sources */,
 				275DD1C219E4F21000E94673 /* CreateWalkViewController.swift in Sources */,

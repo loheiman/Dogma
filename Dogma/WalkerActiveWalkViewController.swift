@@ -148,6 +148,8 @@ class WalkerActiveWalkViewController: UIViewController, UIScrollViewDelegate, CL
                     self.scrollView.contentOffset.x = CGFloat(self.scrollView.frame.size.width) * 2
                     println("checkin3 should scroll")
                 })
+                
+               self.performSegueWithIdentifier("toWalkerFinishedSegue", sender: self)
             }
         })
         
