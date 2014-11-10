@@ -921,12 +921,8 @@
                                     <segue destination="hVz-Yp-OCM" kind="modal" modalTransitionStyle="partialCurl" id="e0N-Bw-rvv"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walker-profile-image" id="MAp-Z7-uce">
-                                <rect key="frame" x="45" y="76" width="133" height="127"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="penny-1" id="iVu-7H-C5i">
-                                <rect key="frame" x="151" y="76" width="127" height="127"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-photo-loren" id="MAp-Z7-uce">
+                                <rect key="frame" x="45" y="76" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cdx-HU-HHO">
@@ -986,6 +982,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="penny-1" id="iVu-7H-C5i">
+                                <rect key="frame" x="151" y="76" width="125" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1053,7 +1053,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walker-profile-image" id="uy1-kT-ENB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-photo-loren" id="uy1-kT-ENB">
                                 <rect key="frame" x="98" y="217" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1401,8 +1401,8 @@
         <image name="logo-small" width="34" height="26"/>
         <image name="path" width="671" height="250"/>
         <image name="penny-1" width="320" height="320"/>
+        <image name="profile-photo-loren" width="125" height="125"/>
         <image name="text-field" width="290" height="50"/>
-        <image name="walker-profile-image" width="125" height="125"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1410,9 +1410,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DRs-Zy-92O"/>
-        <segue reference="fdR-WV-LoV"/>
         <segue reference="ZzA-R0-NbR"/>
+        <segue reference="fdR-WV-LoV"/>
+        <segue reference="e0N-Bw-rvv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.81960784310000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>
