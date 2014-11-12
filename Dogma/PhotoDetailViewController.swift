@@ -33,7 +33,7 @@ class PhotoDetailViewController: UIViewController  {
         let span = MKCoordinateSpanMake(0.03, 0.03)
         let region = MKCoordinateRegion(center: location, span: span)
         
-        self.mapView.setRegion(region, animated: true)
+        self.mapView.setRegion(region, animated: false)
         self.mapView.scrollEnabled = false
         self.mapView.zoomEnabled = false
         

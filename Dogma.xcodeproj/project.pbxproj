@@ -258,7 +258,7 @@
 					};
 					27050A3419E4D2FB0060AFBB = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = E7MUW2QU95;
+						DevelopmentTeam = 5DW6WQ7TAM;
 						TestTargetID = 27050A2219E4D2FB0060AFBB;
 					};
 				};

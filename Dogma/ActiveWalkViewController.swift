@@ -354,10 +354,13 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
         
         var finalFrame = CGRect(x: 0, y: 0, width: 320, height: 320)
     
-        newImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        newImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        newImageView.clipsToBounds = true
+        
         
         if (isPresenting) {
             window.addSubview(newImageView)
+            
             containerView.addSubview(toViewController.view)
             toViewController.view.alpha = 0
             
@@ -374,7 +377,8 @@ class ActiveWalkViewController: UIViewController, UIScrollViewDelegate, UIViewCo
             fromViewController.view.alpha = 0
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 newImageView.frame = self.cardImageToPass.frame
-                newImageView.contentMode = UIViewContentMode.ScaleAspectFit
+                newImageView.contentMode = UIViewContentMode.ScaleAspectFill
+                newImageView.clipsToBounds = true
                 
                 }) { (finished: Bool) -> Void in
                     newImageView.removeFromSuperview()

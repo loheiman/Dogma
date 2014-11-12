@@ -119,8 +119,8 @@ class WalkRequestInboundViewController: UIViewController {
         
         if lat == nil || lng == nil {
             
-            lat = 37.784437
-            lng = -122.46964
+            lat = 37.41835
+            lng = -122.025
             
             println("COORDINATES WERE NIL")
         } else {
