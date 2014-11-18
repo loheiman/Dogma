@@ -1,6 +1,9 @@
 Dogma
 =====
 
-On-demand dog swaggering
+On-demand dog walking
 
 by Jeff Smith, Kyle Pickering, Loren Heiman
+
+
+![Alt tag](Dogma-Walkthru.gif)
